@@ -1,9 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/db.dart';
-import '../data/repositories/local/local_repository.dart';
-import '../utils/shared_ledger_picker_filter.dart';
 import 'database_providers.dart';
-import 'shared_ledger_providers.dart';
 
 /// 标签列表刷新触发器
 final tagListRefreshProvider = StateProvider<int>((ref) => 0);
@@ -34,17 +31,12 @@ final allTagsProvider = FutureProvider<List<Tag>>((ref) async {
   return await repo.getAllTags();
 });
 
-/// §7 共享账本 picker:按当前 ledger 过滤后的 tags。
-/// Editor + 共享账本 → 只看 Owner mirror tags;单人账本 / Owner → 排除 mirror。
+/// 标签列表按当前账本过滤。FinVerse v1 是单人账本:直接返回全部标签,
+/// 不再按共享账本的 Owner/Editor 角色做 mirror 过滤。
 final tagsForCurrentLedgerProvider = FutureProvider<List<Tag>>((ref) async {
   ref.watch(tagListRefreshProvider);
-  ref.watch(sharedResourceRefreshProvider);  // WS 推送后强制 rebuild
   final repo = ref.watch(repositoryProvider);
-  final all = await repo.getAllTags();
-  if (repo is! LocalRepository) return all;
-  final ledgerId = ref.watch(currentLedgerIdProvider);
-  final ctx = await repo.db.loadLedgerPickerContext(ledgerId);
-  return repo.db.filterTagsForLedger(all, ctx);
+  return await repo.getAllTags();
 });
 
 /// 标签列表带统计信息 Provider（响应式）
@@ -91,29 +83,12 @@ final batchTransactionTagsProvider = FutureProvider.family<Map<int, List<Tag>>, 
   return await repo.getTagsForTransactions(transactionIds);
 });
 
-/// §7 共享账本 picker 用:最近使用 tags 按当前 ledger 过滤后的版本。
-///
-/// 两条分支各走各的取数,**不共用** `filterTagsForLedger`(#443):
-/// - 单人账本 / Owner → 主表 `getRecentlyUsedTags`(tags ⨝ transaction_tags)。
-/// - 共享账本 Editor → `recentSharedTagsForLedger`,从 TransactionTagOverrides
-///   取。Editor 的 tag 关联不在主表,而 `filterTagsForLedger` 又是"丢弃入参返回
-///   全量 mirror"的语义,把 recent 子集喂给它会被放大成全量,「最近使用」于是
-///   跟「全部标签」一字不差。
+/// 最近使用的标签 Provider(按当前账本)。FinVerse v1 是单人账本:直接返回
+/// 最近使用的标签,不再走共享账本 Editor 的 TransactionTagOverrides 分支。
 final recentTagsForCurrentLedgerProvider = FutureProvider<List<Tag>>((ref) async {
   ref.watch(tagListRefreshProvider);
-  ref.watch(sharedResourceRefreshProvider);
   final repo = ref.watch(repositoryProvider);
-  if (repo is! LocalRepository) return repo.getRecentlyUsedTags(limit: 10);
-  final ledgerId = ref.watch(currentLedgerIdProvider);
-  final ctx = await repo.db.loadLedgerPickerContext(ledgerId);
-  if (ctx != null && ctx.isEditorInShared && ctx.ledgerSyncId != null) {
-    return repo.db.recentSharedTagsForLedger(
-      ledgerId: ledgerId,
-      ledgerSyncId: ctx.ledgerSyncId!,
-      limit: 10,
-    );
-  }
-  return repo.getRecentlyUsedTags(limit: 10);
+  return await repo.getRecentlyUsedTags(limit: 10);
 });
 
 /// 最近使用的标签 Provider
