@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yaml/yaml.dart';
-import 'package:flutter_cloud_sync/flutter_cloud_sync.dart';
 import 'package:drift/drift.dart' as d;
 import '../../utils/app_localizations_resolver.dart';
 import '../../data/db.dart';
@@ -1259,100 +1258,8 @@ class ConfigExportService {
   }) async {
     final prefs = await SharedPreferences.getInstance();
 
-    // 读取Supabase配置
-    SupabaseConfig? supabaseConfig;
-    final supabaseCfgRaw = prefs.getString('cloud_supabase_cfg');
-    if (supabaseCfgRaw != null) {
-      try {
-        final cfg = decodeCloudConfig(supabaseCfgRaw);
-        if (cfg.supabaseUrl != null && cfg.supabaseAnonKey != null) {
-          supabaseConfig = SupabaseConfig(
-            url: cfg.supabaseUrl!,
-            anonKey: cfg.supabaseAnonKey!,
-            bucket: cfg.supabaseBucket,
-            email: cfg.supabaseEmail,
-            password: cfg.supabasePassword,
-          );
-        }
-      } catch (e) {
-        logger.warning('ConfigExport', '读取Supabase配置失败: $e');
-      }
-    }
-
-    // 读取WebDAV配置
-    WebdavConfig? webdavConfig;
-    final webdavCfgRaw = prefs.getString('cloud_webdav_cfg');
-    if (webdavCfgRaw != null) {
-      try {
-        final cfg = decodeCloudConfig(webdavCfgRaw);
-        if (cfg.webdavUrl != null &&
-            cfg.webdavUsername != null &&
-            cfg.webdavPassword != null) {
-          webdavConfig = WebdavConfig(
-            url: cfg.webdavUrl!,
-            username: cfg.webdavUsername!,
-            password: cfg.webdavPassword!,
-            remotePath: cfg.webdavRemotePath,
-          );
-        }
-      } catch (e) {
-        logger.warning('ConfigExport', '读取WebDAV配置失败: $e');
-      }
-    }
-
-    // 读取S3配置
-    S3Config? s3Config;
-    final s3CfgRaw = prefs.getString('cloud_s3_cfg');
-    if (s3CfgRaw != null) {
-      try {
-        final cfg = decodeCloudConfig(s3CfgRaw);
-        if (cfg.s3Endpoint != null &&
-            cfg.s3Region != null &&
-            cfg.s3AccessKey != null &&
-            cfg.s3SecretKey != null &&
-            cfg.s3Bucket != null) {
-          s3Config = S3Config(
-            endpoint: cfg.s3Endpoint!,
-            region: cfg.s3Region!,
-            accessKey: cfg.s3AccessKey!,
-            secretKey: cfg.s3SecretKey!,
-            bucket: cfg.s3Bucket!,
-            useSSL: cfg.s3UseSSL,
-            port: cfg.s3Port,
-          );
-        }
-      } catch (e) {
-        logger.warning('ConfigExport', '读取S3配置失败: $e');
-      }
-    }
-
-    // 读取 BeeCount Cloud 配置。base_url + email 总是导出（方便 B 设备导入
-    // 快速填回登录表单）；access/refresh token 属于登录态，需 options 显式
-    // 勾选才带上。当前实现：cloud_beecount_cloud_cfg 里只存 base_url+email，
-    // session token 另一把 SharedPreferences key 管 —— 导出 yaml 只取前者。
-    BeeCountCloudConfig? beecountCloudConfig;
-    final beecountCfgRaw = prefs.getString('cloud_beecount_cloud_cfg');
-    if (beecountCfgRaw != null) {
-      try {
-        final cfg = decodeCloudConfig(beecountCfgRaw);
-        final baseUrl = cfg.beecountCloudBaseUrl ?? '';
-        if (baseUrl.isNotEmpty) {
-          beecountCloudConfig = BeeCountCloudConfig(
-            baseUrl: baseUrl,
-            email: cfg.beecountCloudEmail,
-            // 跟 Supabase 一样：如果用户在 mobile 勾过 "记住账号密码"，
-            // beecountCloudPassword 就会在 SharedPreferences 里，带上它方便
-            // B 设备导入后无感登录。没勾就是 null，yaml 也不写这一行。
-            password: cfg.beecountCloudPassword,
-            // access/refresh token 走独立 session storage（key 里带 baseUrl
-            // sha1），跨设备迁移风险高，导出 yaml 不带。
-          );
-        }
-      } catch (e) {
-        logger.warning('ConfigExport', '读取 BeeCount Cloud 配置失败: $e');
-      }
-    }
-
+    // FinVerse v1:云备份已移除。Supabase/WebDAV/S3/BeeCount Cloud 配置
+    // 不再导出(原实现依赖 flutter_cloud_sync 的 decodeCloudConfig)。
     // 读取AI配置
     AIConfig? aiConfig;
     final glmApiKey = prefs.getString(AIConstants.keyGlmApiKey);
@@ -1732,12 +1639,7 @@ class ConfigExportService {
       }
     }
 
-    // 根据选项过滤云服务和AI配置
-    final exportSupabase = options.appSettings ? supabaseConfig : null;
-    final exportWebdav = options.appSettings ? webdavConfig : null;
-    final exportS3 = options.appSettings ? s3Config : null;
-    final exportBeecountCloud =
-        options.appSettings ? beecountCloudConfig : null;
+    // 根据选项过滤AI配置(云服务配置已随云备份移除，不再导出)
     final exportAi = options.ai ? aiConfig : null;
     final exportAppSettings = options.appSettings ? appSettings : null;
 
@@ -1747,10 +1649,6 @@ class ConfigExportService {
     }
 
     final config = AppConfig(
-      supabase: exportSupabase,
-      webdav: exportWebdav,
-      s3: exportS3,
-      beecountCloud: exportBeecountCloud,
       ai: exportAi,
       appSettings: exportAppSettings,
       ledgers: ledgersConfig,
