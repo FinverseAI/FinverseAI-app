@@ -5,7 +5,8 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-// Google Play 自动保护要求 AAB 至少 API 24；APK 继续支持 API 23。
+// Google Play 要求 AAB 至少 API 24；Flutter 3.35 的 integration_test 库也要求 minSdk 24，
+// 所以 APK 同样用 24（Android 6.0 / API 23 设备不再支持）。
 def buildingAppBundle = gradle.startParameter.taskNames.any { it.toLowerCase().contains("bundle") }
 // Explicit APK-only switch used by the audited Beta/local wrapper. Normal
 // release builds retain the established multi-ABI outputs.
@@ -48,7 +49,7 @@ android {
         applicationId = "com.tntlikely.beecount"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = buildingAppBundle ? 24 : 23
+        minSdk = 24
         // 硬编码 36(Android 16):Google Play 自 2026-11-01 起要求 targetSdk >= 36,
         // 而当前锁定的 Flutter 3.27.3 内置 flutter.targetSdkVersion 仍为 35。
         // 升 Flutter 后可考虑改回 flutter.targetSdkVersion。
