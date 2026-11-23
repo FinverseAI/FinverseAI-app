@@ -10,10 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'mine_avatar.dart';
 import '../../../../providers.dart';
 import '../../../../utils/format_money.dart';
-import '../../../../services/system/logger_service.dart';
 import '../../../../services/ui/avatar_service.dart';
 import '../../../../providers/avatar_providers.dart';
-import '../../../../providers/sync_providers.dart' as sp;
 import '../../../../l10n/app_localizations.dart';
 
 /// Profile edits retain the existing avatar, nickname and cloud update services.
@@ -170,14 +168,12 @@ class MineProfileBindingState extends ConsumerState<MineProfileBinding> {
         if (mounted && path != null) {
           setState(() => _avatarPath = path);
           ref.invalidate(avatarPathProvider);
-          await _syncAvatarToCloud(path);
         }
       } else if (result == 'camera') {
         final path = await AvatarService.takePhotoAndSaveAvatar();
         if (mounted && path != null) {
           setState(() => _avatarPath = path);
           ref.invalidate(avatarPathProvider);
-          await _syncAvatarToCloud(path);
         }
       } else if (result == 'delete') {
         await AvatarService.deleteAvatar();
@@ -190,42 +186,6 @@ class MineProfileBindingState extends ConsumerState<MineProfileBinding> {
       if (!mounted) return;
       showBeeToast(context, '${AppLocalizations.of(context).commonError}: $e',
           tone: BeeTone.error);
-    }
-  }
-
-  /// 头像同步到 BeeCount Cloud（走 /api/v1/profile/avatar）。
-  /// 失败仅记日志，不阻塞用户使用本地头像；iCloud/WebDAV/Supabase 场景跳过。
-  Future<void> _syncAvatarToCloud(String absolutePath) async {
-    try {
-      final providerInstance =
-          await ref.read(sp.beecountCloudProviderInstance.future);
-      if (providerInstance == null) {
-        logger.debug('avatar_sync', '非 BeeCount Cloud 模式，跳过头像云同步');
-        return;
-      }
-      final file = File(absolutePath);
-      if (!file.existsSync()) {
-        logger.warning(
-            'avatar_sync', 'upload skipped: file missing $absolutePath');
-        return;
-      }
-      final bytes = await file.readAsBytes();
-      final name = absolutePath.split('/').last;
-      logger.info('avatar_sync',
-          'upload start path=$absolutePath size=${bytes.length}B');
-      final result = await providerInstance.uploadMyAvatar(
-        bytes: bytes,
-        fileName: name,
-        mimeType:
-            name.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg',
-      );
-      // 上传成功后把本地 remoteVersion 立刻推到 server 的新版本，避免下一次
-      // bootstrap 再触发一次重新下载自己刚传的头像。
-      await AvatarService.setStoredRemoteVersion(result.avatarVersion);
-      logger.info('avatar_sync',
-          'upload done server_version=${result.avatarVersion} url=${result.avatarUrl}');
-    } catch (e, st) {
-      logger.warning('avatar_sync', 'upload failed (non-blocking): $e', st);
     }
   }
 
@@ -269,9 +229,8 @@ class MineProfileBindingState extends ConsumerState<MineProfileBinding> {
     );
   }
 
-  /// 编辑用户昵称。保存写入 displayNameProvider —— 本地持久化与(仅 BeeCount
-  /// Cloud 模式)云推送由 provider 的 listener 自动完成。v1 不支持清空已设昵称:
-  /// trim 为空则不改动。
+  /// 编辑用户昵称。保存写入 displayNameProvider —— 本地持久化。
+  /// v1 不支持清空已设昵称:trim 为空则不改动。
   ///
   /// controller 由弹窗 [_EditDisplayNameDialog] 自己持有/释放,不在本异步方法里
   /// `finally { controller.dispose() }` —— 否则取消时弹窗退场动画未结束、TextField

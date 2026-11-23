@@ -1,117 +1,47 @@
+import 'package:beecount_ui/beecount_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:beecount_ui/beecount_ui.dart';
-import 'package:beecount_business_ui/beecount_business_ui.dart';
-import 'package:flutter_cloud_sync/flutter_cloud_sync.dart' hide SyncStatus;
-import '../../../../providers.dart';
-import '../../../../cloud/sync_service.dart';
-import '../../../../l10n/app_localizations.dart';
-import '../../../cloud/cloud_service_page.dart';
-import '../../../cloud/cloud_sync_page.dart';
-import '../../../cloud/beecount_cloud_sync_page.dart';
 
-/// The authentication future is owned by Riverpod, not recreated on every paint.
-final mineCloudUserProvider =
-    FutureProvider.autoDispose<CloudUser?>((ref) async {
-  final auth = await ref.watch(authServiceProvider.future);
-  return auth.currentUser;
+import '../../../../providers.dart';
+
+/// Pending local changes: rows in the Drift `LocalChanges` table whose
+/// `pushedAt` is still null. FinVerse v1 is local-only, so nothing pushes
+/// yet — the count only grows until the FinVerse sync layer lands. It is
+/// shown so the user can see nothing is lost while sync is unavailable.
+final _pendingChangesProvider = FutureProvider<int>((ref) async {
+  final db = ref.watch(databaseProvider);
+  final rows = await (db.select(db.localChanges)
+        ..where((c) => c.pushedAt.isNull()))
+      .get();
+  return rows.length;
 });
 
-({BeeSyncState state, String label}) mineSyncPresentation(
-        SyncDiff? diff, AppLocalizations l) =>
-    switch (diff) {
-      SyncDiff.notLoggedIn => (
-          state: BeeSyncState.signedOut,
-          label: l.mineSyncNotLoggedIn
-        ),
-      SyncDiff.notConfigured => (
-          state: BeeSyncState.unconfigured,
-          label: l.mineSyncNotConfigured
-        ),
-      SyncDiff.noRemote => (
-          state: BeeSyncState.noCloudData,
-          label: l.mineSyncNoRemote
-        ),
-      SyncDiff.inSync => (
-          state: BeeSyncState.synced,
-          label: l.mineSyncInSyncSimple
-        ),
-      SyncDiff.localNewer => (
-          state: BeeSyncState.localNewer,
-          label: l.mineSyncLocalNewerSimple
-        ),
-      SyncDiff.cloudNewer => (
-          state: BeeSyncState.cloudNewer,
-          label: l.mineSyncCloudNewerSimple
-        ),
-      SyncDiff.different => (
-          state: BeeSyncState.conflict,
-          label: l.mineSyncDifferent
-        ),
-      SyncDiff.error => (state: BeeSyncState.error, label: l.mineSyncError),
-      null => (state: BeeSyncState.checking, label: l.mineCloudServiceLoading)
-    };
-
+/// FinVerse sync status (local-only for v1).
+///
+/// The BeeCount Cloud status this binding used to show is gone: no cloud
+/// account, no sync engine. The row states plainly that FinVerse sync
+/// arrives with the backend wiring, and shows how many local changes are
+/// waiting to sync once it does. No backend calls are made here.
 class MineCloudBinding extends ConsumerWidget {
   const MineCloudBinding({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l = AppLocalizations.of(context),
-        cfg = ref.watch(activeCloudConfigProvider);
-    final version = ref.watch(beecountCloudServerVersionProvider).valueOrNull;
-    final auth = ref.watch(mineCloudUserProvider);
-    final ledgerId = ref.watch(currentLedgerIdProvider);
-    final live = ref.watch(syncStatusProvider(ledgerId));
-    final status =
-        live.valueOrNull ?? ref.watch(lastSyncStatusProvider(ledgerId));
-    final local = cfg.valueOrNull?.type == CloudBackendType.local;
-    final canUseCloud = !local &&
-        (cfg.valueOrNull?.type == CloudBackendType.icloud ||
-            auth.valueOrNull != null);
-    final projection =
-        mineSyncPresentation(local ? SyncDiff.notConfigured : status?.diff, l);
-    final error = cfg.error ?? auth.error ?? live.error;
-    final state = error != null
-        ? BeeSyncState.error
-        : canUseCloud && live.isLoading
-            ? BeeSyncState.checking
-            : projection.state;
-    final label = error != null ? l.mineSyncError : projection.label;
-    void open(Widget page) =>
-        Navigator.push(context, MaterialPageRoute<void>(builder: (_) => page));
+    final pending = ref.watch(_pendingChangesProvider);
+    final detail = pending.when(
+      loading: () => 'FinVerse sync arrives with backend wiring.',
+      error: (_, __) => 'FinVerse sync arrives with backend wiring.',
+      data: (count) => count == 0
+          ? 'FinVerse sync arrives with backend wiring. Nothing pending.'
+          : 'FinVerse sync arrives with backend wiring. '
+              '$count change${count == 1 ? '' : 's'} waiting to sync.',
+    );
     return Column(mainAxisSize: MainAxisSize.min, children: [
       BeeMenuRow(
-          title: l.mineCloudService,
-          leading: const BeeLineIcon('Cloud', size: 19),
-          subtitle: cfg.when(
-              loading: () => l.mineCloudServiceLoading,
-              error: (e, _) => '${l.commonError}: $e',
-              data: (value) => switch (value.type) {
-                    CloudBackendType.local => l.mineCloudServiceOffline,
-                    CloudBackendType.webdav => l.mineCloudServiceWebDAV,
-                    CloudBackendType.icloud => 'iCloud',
-                    CloudBackendType.supabase => l.mineCloudServiceCustom,
-                    CloudBackendType.s3 => 'S3',
-                    CloudBackendType.beecountCloud =>
-                      version?.isNotEmpty == true
-                          ? 'BeeCount Cloud v$version'
-                          : 'BeeCount Cloud'
-                  }),
-          onTap: () => open(const CloudServicePage())),
-      const Divider(height: 1, indent: 12, endIndent: 12),
-      Opacity(
-          opacity: local ? .45 : 1,
-          child: BeeSyncStatus(
-              state: state,
-              title: l.mineSyncTitle,
-              label: label,
-              detail: error?.toString(),
-              onTap: local
-                  ? null
-                  : () => open(
-                      cfg.valueOrNull?.type == CloudBackendType.beecountCloud
-                          ? const BeeCountCloudSyncPage()
-                          : const CloudSyncPage())))
+        title: 'FinVerse Sync',
+        leading: const BeeLineIcon('Cloud', size: 19),
+        subtitle: detail,
+      ),
     ]);
   }
 }

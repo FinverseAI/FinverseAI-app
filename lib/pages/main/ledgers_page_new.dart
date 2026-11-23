@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cloud_sync/flutter_cloud_sync.dart'
-    show CloudBackendType;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../../providers.dart';
 import '../../models/ledger_display_item.dart';
-import '../../cloud/transactions_sync_manager.dart';
-import '../../cloud/sync_service.dart';
-import '../../cloud/sync/sync_engine.dart';
 import 'package:beecount_ui/beecount_ui.dart';
 import 'ledgers/widgets/ledger_card.dart';
-import '../cloud/member_list_page.dart';
-import '../cloud/member_stats_page.dart';
-import '../cloud/join_shared_ledger_page.dart';
 import '../budget/budget_page.dart';
 import '../../utils/currencies.dart';
 import '../../services/attachment_service.dart';
@@ -31,6 +22,35 @@ import '../shared/scaffold/widgets/page_scaffold.dart';
 part 'ledgers/bindings/ledger_actions.dart';
 part 'ledgers/widgets/ledger_overview.dart';
 
+/// 本地账本列表(个人账本切换器的数据源)。FinVerse v1 只有本地单人账本:直接读
+/// Drift + 本地统计,不再经过云同步的 local/remote 两路 provider。
+/// ledger_picker_sheet.dart 也用它。
+final localLedgersProvider =
+    FutureProvider<List<LedgerDisplayItem>>((ref) async {
+  final repo = ref.watch(repositoryProvider);
+  ref.watch(statsRefreshProvider);
+  final ledgers = await repo.getAllLedgers();
+  final accountFeatureEnabled =
+      await ref.watch(accountFeatureEnabledProvider.future);
+  final items = <LedgerDisplayItem>[];
+  for (final ledger in ledgers) {
+    final stats = await repo.getLedgerStats(
+        ledgerId: ledger.id,
+        accountFeatureEnabled: accountFeatureEnabled);
+    items.add(LedgerDisplayItem.fromLocal(
+      id: ledger.id,
+      name: ledger.name,
+      currency: ledger.currency,
+      createdAt: ledger.createdAt,
+      transactionCount: stats.transactionCount,
+      balance: stats.balance,
+      isShared: ledger.isShared,
+      myRole: ledger.myRole,
+    ));
+  }
+  return items;
+});
+
 class LedgersPageNew extends ConsumerStatefulWidget {
   const LedgersPageNew({super.key, this.autoOpenCreateDialog = false});
   final bool autoOpenCreateDialog;
@@ -40,8 +60,6 @@ class LedgersPageNew extends ConsumerStatefulWidget {
 
 class _LedgersPageNewState extends ConsumerState<LedgersPageNew>
     with _LedgerActions, _LedgerOverview {
-  @override
-  bool _isRestoring = false;
   @override
   void initState() {
     super.initState();
@@ -57,14 +75,6 @@ class _LedgersPageNewState extends ConsumerState<LedgersPageNew>
     final l = AppLocalizations.of(context);
     final currentId = ref.watch(currentLedgerIdProvider);
     final local = ref.watch(localLedgersProvider);
-    final remote = ref.watch(remoteLedgersProvider);
-    ref.listen<ImportProgress>(importProgressProvider, (previous, next) {
-      if (previous?.running == true &&
-          next.isJustCompleted &&
-          next.ledgerId != null) {
-        PostProcessor.sync(ref, ledgerId: next.ledgerId!);
-      }
-    });
     return V4PageScaffold(
         body: Column(children: [
       BeePageHeader(
@@ -79,11 +89,10 @@ class _LedgersPageNewState extends ConsumerState<LedgersPageNew>
                 label: MaterialLocalizations.of(context)
                     .refreshIndicatorSemanticLabel,
                 icon: const BeeLineIcon('RefreshCw'),
-                onPressed: () =>
-                    ref.read(ledgerListRefreshProvider.notifier).state++),
+                onPressed: () => ref.invalidate(localLedgersProvider)),
           ]),
       Expanded(
-          child: _buildProgressiveList(context, ref, currentId, local, remote)),
+          child: _buildProgressiveList(context, ref, currentId, local)),
     ]));
   }
 }

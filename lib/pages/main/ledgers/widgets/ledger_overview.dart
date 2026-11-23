@@ -1,15 +1,14 @@
 part of '../../ledgers_page_new.dart';
 
 mixin _LedgerOverview on ConsumerState<LedgersPageNew>, _LedgerActions {
+  // FinVerse v1 是本地单人账本:只有本地账本列表,没有云端/共享账本分区。
   Widget _buildProgressiveList(
       BuildContext context,
       WidgetRef ref,
       int? currentId,
-      AsyncValue<List<LedgerDisplayItem>> localAsync,
-      AsyncValue<List<LedgerDisplayItem>> remoteAsync) {
+      AsyncValue<List<LedgerDisplayItem>> localAsync) {
     final l = AppLocalizations.of(context);
     final local = localAsync.valueOrNull ?? [];
-    final remote = remoteAsync.valueOrNull ?? [];
     if (localAsync.isLoading && local.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -22,28 +21,12 @@ mixin _LedgerOverview on ConsumerState<LedgersPageNew>, _LedgerActions {
               detail: '${localAsync.error}',
               action: BeeButton(
                   label: l.helpCenterRetry,
-                  onPressed: () =>
-                      ref.read(ledgerListRefreshProvider.notifier).state++)));
+                  onPressed: () => ref.invalidate(localLedgersProvider))));
     }
-    final beeCloud = ref.watch(activeCloudConfigProvider).valueOrNull?.type ==
-        CloudBackendType.beecountCloud;
-    final empty = local.isEmpty &&
-        remote.isEmpty &&
-        !remoteAsync.isLoading &&
-        !remoteAsync.hasError;
+    final empty = local.isEmpty;
     return ListView(
         padding: const EdgeInsets.fromLTRB(17, 8, 17, 24),
         children: [
-          if (beeCloud) ...[
-            BeeSurface(
-                padding: EdgeInsets.zero,
-                child: BeeMenuRow(
-                    title: l.sharedJoinPageTitle,
-                    leading: const BeeLineIcon('Users', size: 21),
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => const JoinSharedLedgerPage())))),
-            const SizedBox(height: 12),
-          ],
           if (empty) ...[
             BeeEmptyState(
                 title: l.ledgersEmpty,
@@ -65,52 +48,7 @@ mixin _LedgerOverview on ConsumerState<LedgersPageNew>, _LedgerActions {
                     onEdit: ledger.myRole == 'owner'
                         ? () => _showLocalLedgerActions(context, ledger,
                             initialAction: 'edit')
-                        : null,
-                    onMembers: beeCloud && ledger.isShared
-                        ? () => _showLocalLedgerActions(context, ledger,
-                            initialAction: 'members')
                         : null))),
-          ],
-          if (remoteAsync.isLoading ||
-              remote.isNotEmpty ||
-              remoteAsync.hasError) ...[
-            _ledgerSection(l.ledgersRemote,
-                remoteAsync.isLoading ? null : '${remote.length}',
-                action: remote.isNotEmpty
-                    ? BeeButton(
-                        label: l.ledgersRestoreAll,
-                        compact: true,
-                        kind: BeeButtonKind.quiet,
-                        loading: _isRestoring,
-                        icon: const BeeLineIcon('CloudDownload', size: 17),
-                        onPressed: _isRestoring
-                            ? null
-                            : () => _handleBatchRestore(context))
-                    : null),
-            if (remoteAsync.isLoading)
-              const Padding(
-                  padding: EdgeInsets.all(24),
-                  child: Center(child: CircularProgressIndicator()))
-            else if (remoteAsync.hasError)
-              BeeStatus(
-                  tone: BeeTone.error,
-                  label: l.commonError,
-                  detail: '${remoteAsync.error}',
-                  action: BeeButton(
-                      label: l.helpCenterRetry,
-                      onPressed: () =>
-                          ref.read(ledgerListRefreshProvider.notifier).state++))
-            else
-              ...remote.map((ledger) => Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: LedgerCard(
-                      ledger: ledger,
-                      onTap: () => _handleRemoteLedgerTap(context, ledger),
-                      onLongPress: () =>
-                          _showRemoteLedgerActions(context, ledger),
-                      onMore: () =>
-                          _showRemoteLedgerActions(context, ledger)))),
-            const SizedBox(height: 12),
           ],
           BeeButton(
               label: l.ledgersNew,
