@@ -1,6 +1,5 @@
 import '../shared/scaffold/widgets/page_scaffold.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
-import '../../dev/component_gallery/component_gallery_page.dart';
 import 'home/widgets/home_reminders.dart';
 import 'home/widgets/home_overview.dart';
 import 'home/widgets/home_journal.dart';
@@ -20,12 +19,10 @@ import '../transaction/search_page.dart';
 import '../ai/ai_chat_page.dart';
 import '../../l10n/app_localizations.dart';
 import '../../utils/month_range.dart';
-import '../../services/export/share_poster_service.dart';
 import '../report/annual_report_page.dart';
 import '../calendar/calendar_page.dart';
 import '../shared/selectors/ledger_picker_sheet.dart';
 import 'ledgers_page_new.dart';
-import '../../providers/shared_ledger_providers.dart';
 import '../../providers/home_startup_preview_provider.dart';
 
 // 优化版首页 - 使用FlutterListView实现精准定位和丝滑跳转
@@ -186,7 +183,6 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   void _openHomeTool(String value) {
-    final month = ref.read(selectedMonthProvider);
     switch (value) {
       case 'calendar':
         Navigator.push(
@@ -197,17 +193,9 @@ class _HomePageState extends ConsumerState<HomePage> {
             MaterialPageRoute(
                 builder: (_) =>
                     AnnualReportPage(initialYear: DateTime.now().year)));
-      case 'share':
-        SharePosterService.showPosterCarouselPreview(context,
-            year: month.year, month: month.month);
       case 'ledgers':
         Navigator.push(
             context, MaterialPageRoute(builder: (_) => const LedgersPageNew()));
-      case 'components':
-        if (kDebugMode) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (_) => const ComponentGalleryPage()));
-        }
       case 'theme':
         if (kDebugMode) {
           final current = ref.read(themeModeProvider);
@@ -248,20 +236,6 @@ class _HomePageState extends ConsumerState<HomePage> {
       }
     });
 
-    // D 方案后:Drift JOIN + SharedLedger* table-watch 已经在 Repository 层
-    // 自动响应共享资源变化(分类 / 账户),tx stream 会重 emit 出带新 name
-    // 的记录。不再需要在 HomePage 强制 _streamBuilderKey++ / invalidate
-    // accountForTxProvider 这种激进刷新 — 那会让 Editor 编辑 tx 的本地
-    // push-pull 循环触发整个 StreamBuilder 子树重建("首页全局刷新"症状)。
-    // 如果有 forceStreamModeImmediate 的语义需要(强制把 preloaded 切到
-    // live stream),可以单独 listen sharedResourceRefreshProvider 处理,
-    // 但 StreamBuilder key 重建保持不动。
-    ref.listen<int>(sharedResourceRefreshProvider, (previous, next) {
-      if (previous != next) {
-        _transactionListKey.currentState?.forceStreamModeImmediate();
-      }
-    });
-
     return V4PageScaffold(
       locallyComposedSkin: true,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor, // ⭐ 自适应背景色
@@ -286,10 +260,6 @@ class _HomePageState extends ConsumerState<HomePage> {
               }
             }),
         reminders: HomeReminders(
-            onMonthly: (month) => SharePosterService.showPosterCarouselPreview(
-                context,
-                year: month.year,
-                month: month.month),
             onAnnual: (year) => Navigator.push(
                 context,
                 MaterialPageRoute(

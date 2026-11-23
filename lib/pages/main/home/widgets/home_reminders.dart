@@ -2,12 +2,10 @@ import 'package:beecount_business_ui/beecount_business_ui.dart';
 import 'package:beecount_ui/beecount_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../providers.dart';
 import '../../../../providers/budget_providers.dart';
-import '../../../../utils/month_range.dart';
 
 /// Retains the original reminder windows and preference keys across V4.
 class HomeReminderPolicy {
@@ -34,12 +32,7 @@ class HomeReminderPolicy {
 /// The reusable UI only renders the status, actions and dismiss control.
 class HomeReminders extends ConsumerStatefulWidget {
   const HomeReminders(
-      {super.key,
-      required this.onMonthly,
-      required this.onAnnual,
-      required this.onBudget,
-      this.now});
-  final ValueChanged<DateTime> onMonthly;
+      {super.key, required this.onAnnual, required this.onBudget, this.now});
   final ValueChanged<int> onAnnual;
   final VoidCallback onBudget;
   final DateTime? now;
@@ -49,7 +42,7 @@ class HomeReminders extends ConsumerStatefulWidget {
 
 class _HomeRemindersState extends ConsumerState<HomeReminders> {
   HomeReminderPolicy? policy;
-  bool monthly = false, annual = false, budget = false;
+  bool annual = false, budget = false;
   @override
   void initState() {
     super.initState();
@@ -63,7 +56,6 @@ class _HomeRemindersState extends ConsumerState<HomeReminders> {
         HomeReminderPolicy(widget.now ?? DateTime.now(), preferences);
     setState(() {
       policy = loaded;
-      monthly = loaded.monthly;
       annual = loaded.annual;
       budget = loaded.budget;
     });
@@ -87,22 +79,7 @@ class _HomeRemindersState extends ConsumerState<HomeReminders> {
             overview.hasValue &&
             !overview.hasError &&
             overview.valueOrNull?.totalBudget == null;
-    final label =
-        labelForDate(current.now, ref.watch(currentMonthStartDayProvider));
-    final lastMonth = DateTime(label.year, label.month - 1);
     final cards = <Widget>[
-      if (monthly)
-        _notice(context,
-            icon: 'Sparkles',
-            label:
-                '${DateFormat.MMMM(l10n.localeName).format(lastMonth)} ${l10n.homeLastMonthReportSubtitle}',
-            action: l10n.homeLastMonthReportView,
-            onOpen: () {
-              widget.onMonthly(lastMonth);
-              setState(() => monthly = false);
-            },
-            onDismiss: () =>
-                _dismiss(current.dismissMonthly, () => monthly = false)),
       if (annual)
         _notice(context,
             icon: 'ChartNoAxesCombined',

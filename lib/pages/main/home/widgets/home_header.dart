@@ -149,10 +149,6 @@ class HomeHeaderBinding extends ConsumerWidget {
                         label: l.calendarTitle,
                         icon: const BeeLineIcon('CalendarDays', size: 20)),
                     BeeMenuAction(
-                        value: 'share',
-                        label: l.v4HomeMonthShare,
-                        icon: const BeeLineIcon('Share2', size: 20)),
-                    BeeMenuAction(
                         value: 'annual',
                         label: l.annualReportTitle,
                         icon:
@@ -185,10 +181,6 @@ class HomeHeaderBinding extends ConsumerWidget {
                     if (kDebugMode &&
                         const bool.fromEnvironment(
                             'BEECOUNT_V4_RECORDING')) ...[
-                      const BeeMenuAction(
-                          value: 'components',
-                          label: 'V4 组件验收',
-                          icon: BeeLineIcon('Grid2x2', size: 20)),
                       const BeeMenuAction(
                           value: 'theme',
                           label: '切换深浅色',

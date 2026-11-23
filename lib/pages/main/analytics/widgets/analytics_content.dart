@@ -20,7 +20,6 @@ class AnalyticsContent extends ConsumerWidget {
       required this.month,
       required this.onTypeChanged,
       required this.onAnnual,
-      required this.onShare,
       required this.onRecalculate,
       this.onPeriod,
       this.onPrevious,
@@ -30,7 +29,7 @@ class AnalyticsContent extends ConsumerWidget {
   final DateTime month;
   final ValueChanged<String> onTypeChanged;
   final ValueChanged<int> onRecalculate;
-  final VoidCallback onAnnual, onShare;
+  final VoidCallback onAnnual;
   final VoidCallback? onPeriod, onPrevious, onNext;
 
   @override
@@ -247,17 +246,6 @@ class AnalyticsContent extends ConsumerWidget {
                     style: const TextStyle(fontSize: 10)),
                 trailing: const BeeLineIcon('ChevronRight', size: 14),
                 onTap: onAnnual),
-            Divider(
-                height: 1,
-                indent: 17,
-                endIndent: 17,
-                color: BeeCardTheme.of(context).divider),
-            ListTile(
-                leading: const BeeLineIcon('Image', size: 20),
-                title: Text(l.annualReportShareButton,
-                    style: const TextStyle(fontSize: 12)),
-                trailing: const BeeLineIcon('ChevronRight', size: 14),
-                onTap: onShare)
           ]))
     ];
     return LayoutBuilder(

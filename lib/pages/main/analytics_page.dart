@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers.dart';
 import '../shared/pickers/wheel_date_picker.dart';
-import '../../services/export/share_poster_service.dart';
 import '../../utils/month_range.dart';
 import 'analytics/bindings/analytics_data.dart';
 import 'analytics/widgets/analytics_content.dart';
@@ -54,10 +53,6 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage>
                     context,
                     MaterialPageRoute<void>(
                         builder: (_) => const AIChatPage()))),
-            BeeIconButton(
-                label: l.sharePosterShare,
-                icon: const BeeLineIcon('Share2'),
-                onPressed: _share)
           ]),
       Padding(
           padding:
@@ -106,7 +101,6 @@ class _AnalyticsPageState extends ConsumerState<AnalyticsPage>
                         MaterialPageRoute<void>(
                             builder: (_) =>
                                 AnnualReportPage(initialYear: month.year))),
-                    onShare: _share,
                     onPeriod: _scope == 'all' ? null : _showPeriodPicker,
                     onRecalculate: _runRecalcForeignTx,
                     onPrevious: _scope == 'all' ? null : () => _movePeriod(-1),

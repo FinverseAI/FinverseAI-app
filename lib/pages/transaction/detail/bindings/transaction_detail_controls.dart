@@ -18,7 +18,6 @@ import '../../../../providers.dart';
 import '../../../../utils/category_utils.dart';
 import '../../../../utils/transaction_edit_utils.dart';
 import '../../../../utils/format_money.dart';
-import 'transaction_receipt_dialog.dart';
 import '../../../shared/scaffold/widgets/page_scaffold.dart';
 import '../../../shared/resources/bindings/recording_category_icon.dart';
 import 'transaction_detail_data.dart';
@@ -75,7 +74,7 @@ class _TransactionDetailControlsState
         _refresh();
         return;
       }
-      if (action != 'receipt' && !data.canWrite) {
+      if (!data.canWrite) {
         throw StateError(l.commonFailed);
       }
       switch (action) {
@@ -84,8 +83,6 @@ class _TransactionDetailControlsState
               context, ref, data.row.t, data.row.category);
         case 'copy':
           await TransactionEditUtils.copyTransaction(context, ref, data.row.t);
-        case 'receipt':
-          await TransactionReceiptDialog.open(context, ref, data.row.t);
       }
     } catch (error) {
       if (mounted) {
@@ -310,7 +307,6 @@ class _TransactionDetailControlsState
       ],
       copyLabel: l.transactionCopyAction,
       editLabel: l.commonEdit,
-      receiptLabel: l.transactionReceiptAction,
       busy: _busy,
       onCopy: !widget.previewOnly &&
               data.canWrite &&
@@ -319,7 +315,6 @@ class _TransactionDetailControlsState
           : null,
       onEdit:
           !widget.previewOnly && data.canWrite ? () => _action('edit') : null,
-      onReceipt: widget.previewOnly ? null : () => _action('receipt'),
     );
   }
 

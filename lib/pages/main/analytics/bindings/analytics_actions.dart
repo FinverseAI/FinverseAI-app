@@ -62,29 +62,4 @@ mixin _AnalyticsActions on ConsumerState<AnalyticsPage> {
     showBeeToast(context, l.recalcForeignTxDone(n), tone: BeeTone.success);
     ref.read(statsRefreshProvider.notifier).state++;
   }
-
-  Future<void> _share() async {
-    final l = AppLocalizations.of(context),
-        id = ref.read(currentLedgerIdProvider),
-        month = ref.read(selectedMonthProvider);
-    if (id == 0) {
-      showBeeToast(context, l.sharePosterNoLedger, tone: BeeTone.warning);
-      return;
-    }
-    try {
-      await SharePosterService.showDynamicPosterPreview(context, ref,
-          type: _scope == 'month'
-              ? 'month'
-              : _scope == 'year'
-                  ? 'year'
-                  : 'ledger',
-          ledgerId: id,
-          year: _scope == 'all' ? null : month.year,
-          month: _scope == 'month' ? month.month : null);
-    } catch (e) {
-      if (mounted) {
-        showBeeToast(context, '${l.commonError}: $e', tone: BeeTone.error);
-      }
-    }
-  }
 }

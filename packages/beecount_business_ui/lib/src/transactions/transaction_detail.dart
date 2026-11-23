@@ -20,7 +20,7 @@ class BeeTransactionDetail extends StatelessWidget {
     required this.items,
     required this.copyLabel,
     required this.editLabel,
-    required this.receiptLabel,
+    this.receiptLabel,
     required this.attachmentLabel,
     this.incomeIsRed = true,
     this.hidden = false,
@@ -51,8 +51,8 @@ class BeeTransactionDetail extends StatelessWidget {
       currency,
       copyLabel,
       editLabel,
-      receiptLabel,
       attachmentLabel;
+  final String? receiptLabel;
   final BeeTransactionKind kind;
   final Widget icon;
   final Widget? attachmentPlaceholder;
@@ -219,13 +219,15 @@ class BeeTransactionDetail extends StatelessWidget {
                 Expanded(child: buttons[1])
               ]);
       }),
-      const SizedBox(height: 8),
-      BeeButton(
-          key: const ValueKey('transaction-detail-receipt'),
-          label: receiptLabel,
-          icon: const BeeLineIcon('Share2', size: 18),
-          kind: BeeButtonKind.quiet,
-          onPressed: busy ? null : onReceipt),
+      if (receiptLabel != null && onReceipt != null) ...[
+        const SizedBox(height: 8),
+        BeeButton(
+            key: const ValueKey('transaction-detail-receipt'),
+            label: receiptLabel!,
+            icon: const BeeLineIcon('Share2', size: 18),
+            kind: BeeButtonKind.quiet,
+            onPressed: busy ? null : onReceipt),
+      ],
     ]);
   }
 }
