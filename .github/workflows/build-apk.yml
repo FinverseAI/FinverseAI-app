@@ -39,7 +39,7 @@ jobs:
       - name: Tune Gradle for the runner (3G heap, Jetifier off)
         run: sed -i 's/^org.gradle.jvmargs=.*/org.gradle.jvmargs=-Xmx3G -XX:MaxMetaspaceSize=1G -XX:+HeapDumpOnOutOfMemoryError/' android/gradle.properties && sed -i 's/^android.enableJetifier=.*/android.enableJetifier=false/' android/gradle.properties && grep -E 'jvmargs|enableJetifier' android/gradle.properties
       - name: Build debug APK (dev flavor)
-        run: flutter build apk --debug --verbose
+        run: flutter build apk --debug --verbose --flavor dev
 
       - name: Build release APKs (prod flavor, per-ABI splits)
         run: flutter build apk --release --flavor prod
