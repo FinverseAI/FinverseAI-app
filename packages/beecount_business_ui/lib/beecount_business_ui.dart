@@ -101,3 +101,5 @@ export 'src/app_profile/auth/two_factor_challenge.dart';
 export 'src/app_profile/support/promotion.dart';
 
 export 'src/transactions/transaction_row_title.dart';
+export 'src/cloud_data/file_transfer_components.dart';
+export 'src/resources/currency/currency_picker.dart';

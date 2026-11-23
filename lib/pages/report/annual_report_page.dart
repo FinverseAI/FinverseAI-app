@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers.dart';
 import '../../data/db.dart';
+import '../../utils/month_range.dart';
+import 'annual/widgets/annual_report_sections.dart';
 
 /// 年度账单数据
 class AnnualReportData {
@@ -193,6 +195,23 @@ final annualReportDataProvider =
 });
 
 /// 年度账单页面。数据与原生导出保留 App 绑定。
+/// Category totals used by the annual report data model.
+class CategoryTotal {
+  final int? id;
+  final String name;
+  final String? icon;
+  final double total;
+  final double percentage;
+
+  const CategoryTotal({
+    this.id,
+    required this.name,
+    this.icon,
+    required this.total,
+    required this.percentage,
+  });
+}
+
 class AnnualReportPage extends ConsumerStatefulWidget {
   final int? initialYear;
   const AnnualReportPage({super.key, this.initialYear});
@@ -351,3 +370,4 @@ class _AnnualReportPageState extends ConsumerState<AnnualReportPage> {
                   })),
         ])));
   }
+}

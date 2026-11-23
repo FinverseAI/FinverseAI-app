@@ -312,10 +312,10 @@
   "@searchBatchModeWithCount": {
     "placeholders": {
       "selected": {
-        "type": "int"
+        "type": "Object"
       },
       "total": {
-        "type": "int"
+        "type": "Object"
       }
     }
   },
@@ -326,7 +326,7 @@
   "@searchSelectedCount": {
     "placeholders": {
       "count": {
-        "type": "int"
+        "type": "Object"
       }
     }
   },
@@ -346,7 +346,7 @@
   "@searchBatchSetNoteMessage": {
     "placeholders": {
       "count": {
-        "type": "int"
+        "type": "Object"
       }
     }
   },
@@ -363,7 +363,7 @@
   "@searchBatchDeleteFailed": {
     "placeholders": {
       "error": {
-        "type": "String"
+        "type": "Object"
       }
     }
   },
@@ -371,7 +371,7 @@
   "@searchBatchSetNoteSuccess": {
     "placeholders": {
       "count": {
-        "type": "int"
+        "type": "Object"
       }
     }
   },
@@ -379,7 +379,7 @@
   "@searchBatchSetNoteFailed": {
     "placeholders": {
       "error": {
-        "type": "String"
+        "type": "Object"
       }
     }
   },
@@ -387,7 +387,7 @@
   "@searchBatchChangeCategorySuccess": {
     "placeholders": {
       "count": {
-        "type": "int"
+        "type": "Object"
       }
     }
   },
@@ -395,7 +395,7 @@
   "@searchBatchChangeCategoryFailed": {
     "placeholders": {
       "error": {
-        "type": "String"
+        "type": "Object"
       }
     }
   },
@@ -461,7 +461,7 @@
   "@ledgersClearMessage": {
     "placeholders": {
       "name": {
-        "type": "String"
+        "type": "Object"
       }
     }
   },
@@ -472,7 +472,7 @@
   "@ledgersDeleteLocalMessage": {
     "placeholders": {
       "name": {
-        "type": "String"
+        "type": "Object"
       }
     }
   },
@@ -935,7 +935,7 @@
   "@categoryShareSuccess": {
     "placeholders": {
       "path": {
-        "type": "String"
+        "type": "Object"
       }
     }
   },
@@ -3618,14 +3618,18 @@
   "recalcForeignTxDone": "已重算 {count} 笔外币交易的折算值",
   "@recalcForeignTxDone": {
     "placeholders": {
-      "count": {}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "txCurrencyPickerTitle": "选择币种",
   "recalcSyncCountHint": "将重算并同步 {count} 笔交易",
   "@recalcSyncCountHint": {
     "placeholders": {
-      "count": {}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "exportCsvHeaderCurrency": "币种",

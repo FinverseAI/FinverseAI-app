@@ -446,7 +446,6 @@ mixin _AccountsOverviewBindings on ConsumerState<AccountsPage> {
                 : BeeTokens.textTertiary(context),
           ),
         ),
-      ),
     );
     showAccountConversionDetailSheet(
       context,

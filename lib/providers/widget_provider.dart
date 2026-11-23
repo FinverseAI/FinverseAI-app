@@ -61,10 +61,6 @@ Future<void> updateAppWidget(WidgetRef ref, BuildContext context) async {
       consumptionRhythmIncreaseLabel: l10n.widgetConsumptionRhythmIncrease,
       consumptionRhythmDecreaseLabel: l10n.widgetConsumptionRhythmDecrease,
       consumptionRhythmEmptyLabel: l10n.widgetConsumptionRhythmEmpty,
-      beeTrailTitleLabel: l10n.widgetBeeTrailTitle,
-      beeTrailStreakSuffix: l10n.widgetBeeTrailStreakSuffix,
-      beeTrailCompletionLabel: l10n.widgetBeeTrailCompletion,
-      beeTrailEmptyLabel: l10n.widgetBeeTrailEmpty,
     );
   } catch (e) {
     // Silently fail to avoid disrupting the app

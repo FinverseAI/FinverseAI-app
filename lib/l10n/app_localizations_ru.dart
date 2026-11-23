@@ -1,5 +1,5 @@
+// ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -95,37 +95,43 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentSuggestionHealthTitle => 'Финансовое здоровье';
 
   @override
-  String get agentSuggestionHealthPrompt => 'Проанализируй доходы, расходы, разницу между ними и долю сбережений за этот месяц. Покажи расходы по месяцам за последние полгода. По результатам запросов оцени финансовое состояние и предложи рекомендации. Если данных недостаточно, объясни ограничения.';
+  String get agentSuggestionHealthPrompt =>
+      'Проанализируй доходы, расходы, разницу между ними и долю сбережений за этот месяц. Покажи расходы по месяцам за последние полгода. По результатам запросов оцени финансовое состояние и предложи рекомендации. Если данных недостаточно, объясни ограничения.';
 
   @override
   String get agentSuggestionSummaryTitle => 'Расходы за месяц';
 
   @override
-  String get agentSuggestionSummaryPrompt => 'Подведи итоги расходов за этот месяц, разбери основные категории верхнего уровня и их доли. Предложи способы сэкономить. Опирайся на фактические результаты запросов и укажи, если каких-то данных не хватает.';
+  String get agentSuggestionSummaryPrompt =>
+      'Подведи итоги расходов за этот месяц, разбери основные категории верхнего уровня и их доли. Предложи способы сэкономить. Опирайся на фактические результаты запросов и укажи, если каких-то данных не хватает.';
 
   @override
   String get agentSuggestionAnalysisTitle => 'Анализ категорий';
 
   @override
-  String get agentSuggestionAnalysisPrompt => 'Проанализируй расходы за этот месяц по категориям верхнего уровня и их доли. Предложи, что можно улучшить. Не считай расходы необоснованными только из-за их доли. Если данных не хватает, объясни ограничения.';
+  String get agentSuggestionAnalysisPrompt =>
+      'Проанализируй расходы за этот месяц по категориям верхнего уровня и их доли. Предложи, что можно улучшить. Не считай расходы необоснованными только из-за их доли. Если данных не хватает, объясни ограничения.';
 
   @override
   String get agentSuggestionBudgetTitle => 'Планирование бюджета';
 
   @override
-  String get agentSuggestionBudgetPrompt => 'С учётом доходов, расходов и разницы между ними за этот месяц, долей расходов по категориям верхнего уровня и динамики расходов за последние полгода предложи бюджеты по категориям на следующий месяц. Дай только рекомендации: не создавай и не меняй бюджеты. Если данных не хватает, объясни ограничения.';
+  String get agentSuggestionBudgetPrompt =>
+      'С учётом доходов, расходов и разницы между ними за этот месяц, долей расходов по категориям верхнего уровня и динамики расходов за последние полгода предложи бюджеты по категориям на следующий месяц. Дай только рекомендации: не создавай и не меняй бюджеты. Если данных не хватает, объясни ограничения.';
 
   @override
   String get agentSuggestionAnomalyTitle => 'Проверка расходов';
 
   @override
-  String get agentSuggestionAnomalyPrompt => 'Изучи подробности транзакций и сводку доходов и расходов за последние 30 дней. Отметь крупные или повторные транзакции, которые стоит проверить, и объясни почему. Это предварительная проверка только тех транзакций, которые вернул запрос, а не поиск аномалий по всем транзакциям. Не называй обычные покупки аномальными.';
+  String get agentSuggestionAnomalyPrompt =>
+      'Изучи подробности транзакций и сводку доходов и расходов за последние 30 дней. Отметь крупные или повторные транзакции, которые стоит проверить, и объясни почему. Это предварительная проверка только тех транзакций, которые вернул запрос, а не поиск аномалий по всем транзакциям. Не называй обычные покупки аномальными.';
 
   @override
   String get agentSuggestionSavingTitle => 'Советы по экономии';
 
   @override
-  String get agentSuggestionSavingPrompt => 'Проанализируй доли расходов за этот месяц по категориям верхнего уровня и динамику расходов за последние полгода. Дай от трёх до пяти практических советов по экономии на основе результатов запросов. Не делай предположений о личных обстоятельствах. Если данных не хватает, объясни ограничения.';
+  String get agentSuggestionSavingPrompt =>
+      'Проанализируй доли расходов за этот месяц по категориям верхнего уровня и динамику расходов за последние полгода. Дай от трёх до пяти практических советов по экономии на основе результатов запросов. Не делай предположений о личных обстоятельствах. Если данных не хватает, объясни ограничения.';
 
   @override
   String get agentFollowUpTitle => 'Узнать больше';
@@ -184,7 +190,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiConsentTitle => 'Перед включением функций ИИ';
 
   @override
-  String get aiConsentBody => 'Для работы функций ИИ данные отправляются стороннему поставщику ИИ, выбранному в настройках:\n\n• Кому: по умолчанию — Zhipu GLM (open.bigmodel.cn, оператор — Zhipu). Если вы настроили другой сервис ИИ, данные отправляются выбранному вами поставщику.\n• Какие данные: изображения чеков, аудиозаписи и текст, которые вы используете для распознавания или чата, а также названия категорий и счетов и соответствующие транзакции, необходимые для распознавания или анализа.\n• Зачем: только для распознавания транзакций, ведения учёта и чатов, которые вы начинаете. BeeCount не собирает и не хранит эти данные.\n\nСторонний поставщик обрабатывает данные согласно своей политике конфиденциальности. Включая функции ИИ, вы соглашаетесь на передачу данных на этих условиях.';
+  String get aiConsentBody =>
+      'Для работы функций ИИ данные отправляются стороннему поставщику ИИ, выбранному в настройках:\n\n• Кому: по умолчанию — Zhipu GLM (open.bigmodel.cn, оператор — Zhipu). Если вы настроили другой сервис ИИ, данные отправляются выбранному вами поставщику.\n• Какие данные: изображения чеков, аудиозаписи и текст, которые вы используете для распознавания или чата, а также названия категорий и счетов и соответствующие транзакции, необходимые для распознавания или анализа.\n• Зачем: только для распознавания транзакций, ведения учёта и чатов, которые вы начинаете. BeeCount не собирает и не хранит эти данные.\n\nСторонний поставщик обрабатывает данные согласно своей политике конфиденциальности. Включая функции ИИ, вы соглашаетесь на передачу данных на этих условиях.';
 
   @override
   String get aiConsentAgree => 'Согласиться и включить';
@@ -294,7 +301,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get voiceRecordingSuccess => 'Транзакция добавлена голосом';
 
   @override
-  String get voiceMicPermissionRestricted => 'Политика управления устройством ограничивает доступ к микрофону';
+  String get voiceMicPermissionRestricted =>
+      'Политика управления устройством ограничивает доступ к микрофону';
 
   @override
   String get voiceRecordingNoLedger => 'Ведомость не найдена';
@@ -303,13 +311,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get voiceRecordingNoInfo => 'Не удалось распознать данные транзакции';
 
   @override
-  String get voiceRecordingPermissionDenied => 'Для записи нужен доступ к микрофону';
+  String get voiceRecordingPermissionDenied =>
+      'Для записи нужен доступ к микрофону';
 
   @override
   String get voiceRecordingPermissionDeniedTitle => 'Нужен доступ к микрофону';
 
   @override
-  String get voiceRecordingPermissionDeniedMessage => 'Для голосового ввода нужен микрофон. Разрешите BeeCount доступ к микрофону в настройках системы.';
+  String get voiceRecordingPermissionDeniedMessage =>
+      'Для голосового ввода нужен микрофон. Разрешите BeeCount доступ к микрофону в настройках системы.';
 
   @override
   String voiceRecordingStartFailed(String error) {
@@ -338,7 +348,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get voiceRecordingHoldToTalk => 'Удерживайте и говорите';
 
   @override
-  String get voiceRecordingReleaseToFinish => 'Отпустите, чтобы завершить запись';
+  String get voiceRecordingReleaseToFinish =>
+      'Отпустите, чтобы завершить запись';
 
   @override
   String get voiceRecordingTooShort => 'Запись слишком короткая';
@@ -347,7 +358,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get voiceRecordingResultLabel => 'Результат распознавания:';
 
   @override
-  String get voiceRecordingAutoHintSpoken => 'Закончив говорить, сделайте паузу для распознавания';
+  String get voiceRecordingAutoHintSpoken =>
+      'Закончив говорить, сделайте паузу для распознавания';
 
   @override
   String get voiceRecordingAutoHintWaiting => 'Начните говорить...';
@@ -359,13 +371,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get voiceTriggerModeAuto => 'Завершение по паузе';
 
   @override
-  String get voiceTriggerModeAutoDesc => 'Запись завершается после паузы — удобно для коротких фраз';
+  String get voiceTriggerModeAutoDesc =>
+      'Запись завершается после паузы — удобно для коротких фраз';
 
   @override
   String get voiceTriggerModeHold => 'Удерживать для записи';
 
   @override
-  String get voiceTriggerModeHoldDesc => 'Удерживайте кнопку для записи и отпустите, чтобы завершить — удобно для длинных фраз';
+  String get voiceTriggerModeHoldDesc =>
+      'Удерживайте кнопку для записи и отпустите, чтобы завершить — удобно для длинных фраз';
 
   @override
   String get smartBillingVoiceSilenceTimeout => 'Длительность паузы';
@@ -470,10 +484,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get homeNoRecordsSubtext => 'Нажмите на плюс внизу, чтобы добавить транзакцию';
+  String get homeNoRecordsSubtext =>
+      'Нажмите на плюс внизу, чтобы добавить транзакцию';
 
   @override
-  String get homeLastMonthReportSubtitle => 'Посмотрите отчёт о расходах за прошлый месяц и поделитесь им';
+  String get homeLastMonthReportSubtitle =>
+      'Посмотрите отчёт о расходах за прошлый месяц и поделитесь им';
 
   @override
   String get homeLastMonthReportView => 'Посмотреть';
@@ -499,13 +515,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get widgetConsumptionRhythmStable => 'Расходы равномерны';
 
   @override
-  String get widgetConsumptionRhythmIncrease => 'Быстрее, чем на прошлой неделе';
+  String get widgetConsumptionRhythmIncrease =>
+      'Быстрее, чем на прошлой неделе';
 
   @override
-  String get widgetConsumptionRhythmDecrease => 'Равномернее, чем на прошлой неделе';
+  String get widgetConsumptionRhythmDecrease =>
+      'Равномернее, чем на прошлой неделе';
 
   @override
-  String get widgetConsumptionRhythmEmpty => 'За последние 30 дней расходов не было';
+  String get widgetConsumptionRhythmEmpty =>
+      'За последние 30 дней расходов не было';
 
   @override
   String get widgetBeeTrailTitle => 'Серия дней учёта';
@@ -517,7 +536,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get widgetBeeTrailCompletion => 'Регулярность учёта за 28 дней';
 
   @override
-  String get widgetBeeTrailEmpty => 'Добавьте транзакцию, чтобы зажечь первую ячейку';
+  String get widgetBeeTrailEmpty =>
+      'Добавьте транзакцию, чтобы зажечь первую ячейку';
 
   @override
   String get widgetTodayIncome => 'Доходы сегодня';
@@ -632,7 +652,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get searchBatchSetNoteHint => 'Введите заметку (оставьте поле пустым, чтобы удалить заметки)';
+  String get searchBatchSetNoteHint =>
+      'Введите заметку (оставьте поле пустым, чтобы удалить заметки)';
 
   @override
   String searchBatchDeleteSuccess(int count) {
@@ -713,10 +734,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get searchClearFilter => 'Сбросить фильтр';
 
   @override
-  String get searchBatchCategoryTransferError => 'Нельзя изменить категорию: среди выбранных транзакций есть переводы';
+  String get searchBatchCategoryTransferError =>
+      'Нельзя изменить категорию: среди выбранных транзакций есть переводы';
 
   @override
-  String get searchBatchCategoryTypeError => 'Выберите транзакции одного типа: только доходы или только расходы';
+  String get searchBatchCategoryTypeError =>
+      'Выберите транзакции одного типа: только доходы или только расходы';
 
   @override
   String get searchDateStart => 'Начало';
@@ -740,10 +763,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get analyticsTotalAmount => 'Всего';
 
   @override
-  String get analyticsNoDataSubtext => 'Листайте влево или вправо, чтобы сменить период, или нажмите кнопку, чтобы переключиться между доходами и расходами';
+  String get analyticsNoDataSubtext =>
+      'Листайте влево или вправо, чтобы сменить период, или нажмите кнопку, чтобы переключиться между доходами и расходами';
 
   @override
-  String get analyticsSwipeHint => 'Листайте влево или вправо, чтобы сменить период';
+  String get analyticsSwipeHint =>
+      'Листайте влево или вправо, чтобы сменить период';
 
   @override
   String analyticsSwitchTo(String type) {
@@ -751,7 +776,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get analyticsTipHeader => 'Подсказка: вверху можно выбрать период «Месяц», «Год» или «Всё»';
+  String get analyticsTipHeader =>
+      'Подсказка: вверху можно выбрать период «Месяц», «Год» или «Всё»';
 
   @override
   String get analyticsSwipeToSwitch => 'Листайте для переключения';
@@ -772,13 +798,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get splashSecurityTitle => 'Открытый код и защита данных';
 
   @override
-  String get splashSecurityFeature1 => '• Данные хранятся на устройстве, и только вы ими управляете';
+  String get splashSecurityFeature1 =>
+      '• Данные хранятся на устройстве, и только вы ими управляете';
 
   @override
   String get splashSecurityFeature2 => '• Открытый код можно проверить';
 
   @override
-  String get splashSecurityFeature3 => '• При желании данные можно синхронизировать между устройствами';
+  String get splashSecurityFeature3 =>
+      '• При желании данные можно синхронизировать между устройствами';
 
   @override
   String get splashPreparingRecords => 'Готовим ваши транзакции';
@@ -787,7 +815,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get splashSecuritySummary => 'Локальные данные · Открытый код';
 
   @override
-  String get splashSecurityCaption => 'Синхронизация с облаком — по желанию. Вы сами решаете, где хранить данные.';
+  String get splashSecurityCaption =>
+      'Синхронизация с облаком — по желанию. Вы сами решаете, где хранить данные.';
 
   @override
   String get splashSecurityLocalTitle => 'Локальное хранение';
@@ -799,7 +828,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get splashSecuritySyncTitle => 'Синхронизация по желанию';
 
   @override
-  String get splashSecurityFootnote => 'Для начала аккаунт не нужен. Синхронизацию с облаком можно включить по желанию.';
+  String get splashSecurityFootnote =>
+      'Для начала аккаунт не нужен. Синхронизацию с облаком можно включить по желанию.';
 
   @override
   String get splashInitializing => 'Подготовка данных...';
@@ -831,7 +861,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ledgersDeleteConfirm => 'Удалить ведомость';
 
   @override
-  String get ledgersDeleteMessage => 'Удалить эту ведомость и все её транзакции? Это действие нельзя отменить.\\nЕсли в облаке есть резервная копия, она тоже будет удалена.';
+  String get ledgersDeleteMessage =>
+      'Удалить эту ведомость и все её транзакции? Это действие нельзя отменить.\\nЕсли в облаке есть резервная копия, она тоже будет удалена.';
 
   @override
   String get ledgersDeleted => 'Удалено';
@@ -872,7 +903,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ledgersMonthStartDay => 'Начало месяца';
 
   @override
-  String get ledgersMonthStartDayHint => 'Для статистики и бюджетов месяц начинается в выбранный день (с 1-го по 28-е)';
+  String get ledgersMonthStartDayHint =>
+      'Для статистики и бюджетов месяц начинается в выбранный день (с 1-го по 28-е)';
 
   @override
   String get ledgersMonthStartDayNatural => '1-е (календарный месяц)';
@@ -1046,7 +1078,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryGenerateDefaultHierarchical => 'С подкатегориями';
 
   @override
-  String get categoryGenerateDefaultHint => 'Существующие категории сохранятся. Стандартные категории с такими же названиями будут пропущены.';
+  String get categoryGenerateDefaultHint =>
+      'Существующие категории сохранятся. Стандартные категории с такими же названиями будут пропущены.';
 
   @override
   String categoryGenerateDefaultSuccess(int count) {
@@ -1062,10 +1095,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get categoryGenerateDefaultNoChanges => 'Стандартные категории уже есть';
+  String get categoryGenerateDefaultNoChanges =>
+      'Стандартные категории уже есть';
 
   @override
-  String get categoryGenerateDefaultFailed => 'Не удалось создать стандартные категории. Попробуйте ещё раз.';
+  String get categoryGenerateDefaultFailed =>
+      'Не удалось создать стандартные категории. Попробуйте ещё раз.';
 
   @override
   String get categoryNew => 'Новая категория';
@@ -1083,7 +1118,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryDefault => 'Категория по умолчанию';
 
   @override
-  String get categoryReorderTip => 'Перетащите категорию за значок справа, чтобы изменить порядок';
+  String get categoryReorderTip =>
+      'Перетащите категорию за значок справа, чтобы изменить порядок';
 
   @override
   String categoryLoadFailed(String error) {
@@ -1168,7 +1204,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get importCategoryMapping => 'Сопоставление категорий';
 
   @override
-  String get importNoDataParsed => 'Не удалось прочитать данные. Вернитесь на предыдущий экран и проверьте содержимое CSV или разделитель.';
+  String get importNoDataParsed =>
+      'Не удалось прочитать данные. Вернитесь на предыдущий экран и проверьте содержимое CSV или разделитель.';
 
   @override
   String get importFieldDate => 'Дата';
@@ -1200,7 +1237,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get importCategoryNotSelected => 'Категория не выбрана';
 
   @override
-  String get importCategoryMappingDescription => 'Сопоставьте каждую категорию из файла с категорией в приложении:';
+  String get importCategoryMappingDescription =>
+      'Сопоставьте каждую категорию из файла с категорией в приложении:';
 
   @override
   String get importKeepOriginalName => 'Сохранить исходное название';
@@ -1217,7 +1255,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get importCompleteTitle => 'Импорт завершён';
 
   @override
-  String get importSelectCategoryFirst => 'Сначала выберите столбец «Категория»';
+  String get importSelectCategoryFirst =>
+      'Сначала выберите столбец «Категория»';
 
   @override
   String get importNextStep => 'Далее';
@@ -1235,7 +1274,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get importInProgress => 'Идёт импорт';
 
   @override
-  String importProgressDetail(Object done, Object fail, Object ok, Object total) {
+  String importProgressDetail(
+      Object done, Object fail, Object ok, Object total) {
     return 'Обработано: $done из $total, успешно — $ok, с ошибками — $fail';
   }
 
@@ -1351,7 +1391,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get headerSkinTitle => 'Скин';
 
   @override
-  String get headerSkinSubtitle => 'Накладывается на шапку и использует цвет темы';
+  String get headerSkinSubtitle =>
+      'Накладывается на шапку и использует цвет темы';
 
   @override
   String get headerSkinGroupBasic => 'Базовые';
@@ -1484,7 +1525,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get annualReportEntrySubtitle => 'Создайте годовой отчёт, которым можно поделиться';
+  String get annualReportEntrySubtitle =>
+      'Создайте годовой отчёт, которым можно поделиться';
 
   @override
   String annualReportNoData(int year) {
@@ -1573,7 +1615,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get annualReportAchievementSaver => 'Бережливость';
 
   @override
-  String get annualReportAchievementSaverDesc => 'Доходы за год превысили расходы';
+  String get annualReportAchievementSaverDesc =>
+      'Доходы за год превысили расходы';
 
   @override
   String get annualReportAchievementDetail => 'Внимание к деталям';
@@ -1637,10 +1680,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharePosterFeature5 => 'Несколько ведомостей · Тёмная тема';
 
   @override
-  String get sharePosterFeature6 => 'Синхронизация в своём облаке · Бесплатно навсегда';
+  String get sharePosterFeature6 =>
+      'Синхронизация в своём облаке · Бесплатно навсегда';
 
   @override
-  String get sharePosterScanText => 'Отсканируйте код, чтобы открыть страницу проекта';
+  String get sharePosterScanText =>
+      'Отсканируйте код, чтобы открыть страницу проекта';
 
   @override
   String get appPromoTagOpenSource => 'Открытый код';
@@ -1701,7 +1746,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharePosterSaveSuccess => 'Сохранено в галерею';
 
   @override
-  String get shareGuidanceCopyText => 'Ведите учёт расходов в BeeCount — открытый код, бесплатно и без рекламы! 🐝 Скачать: https://github.com/TNT-Likely/BeeCount';
+  String get shareGuidanceCopyText =>
+      'Ведите учёт расходов в BeeCount — открытый код, бесплатно и без рекламы! 🐝 Скачать: https://github.com/TNT-Likely/BeeCount';
 
   @override
   String get shareGuidanceCopied => 'Текст скопирован';
@@ -1710,13 +1756,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharePosterSaveFailed => 'Не удалось сохранить';
 
   @override
-  String get sharePosterPermissionDenied => 'Нет доступа к галерее. Разрешите его в настройках';
+  String get sharePosterPermissionDenied =>
+      'Нет доступа к галерее. Разрешите его в настройках';
 
   @override
   String get sharePosterGenerating => 'Создаём постер...';
 
   @override
-  String get sharePosterGenerateFailed => 'Не удалось создать постер. Попробуйте ещё раз';
+  String get sharePosterGenerateFailed =>
+      'Не удалось создать постер. Попробуйте ещё раз';
 
   @override
   String get sharePosterNoLedger => 'Сначала выберите ведомость';
@@ -1725,7 +1773,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharePosterYearTitle => 'Мой годовой отчёт по учёту';
 
   @override
-  String get sharePosterYearSubtitle => 'Цифры помогают понять прошлое и спланировать будущее';
+  String get sharePosterYearSubtitle =>
+      'Цифры помогают понять прошлое и спланировать будущее';
 
   @override
   String get sharePosterMonthTitle => 'Отчёт по транзакциям за месяц';
@@ -1785,7 +1834,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharePosterDecreaseRate => 'Снижение';
 
   @override
-  String get sharePosterSavedMoneyTitle => 'Поздравляем! Вы потратили меньше, чем в прошлом месяце';
+  String get sharePosterSavedMoneyTitle =>
+      'Поздравляем! Вы потратили меньше, чем в прошлом месяце';
 
   @override
   String get sharePosterLedgerName => 'Название ведомости';
@@ -1875,13 +1925,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineSyncLocalNewerSimple => 'На устройстве есть изменения';
 
   @override
-  String get mineSyncCloudNewer => 'В облаке есть изменения (скачайте для синхронизации)';
+  String get mineSyncCloudNewer =>
+      'В облаке есть изменения (скачайте для синхронизации)';
 
   @override
   String get mineSyncCloudNewerSimple => 'В облаке есть изменения';
 
   @override
-  String get mineSyncDifferent => 'Данные на устройстве и в облаке различаются. Скачайте их для сравнения';
+  String get mineSyncDifferent =>
+      'Данные на устройстве и в облаке различаются. Скачайте их для сравнения';
 
   @override
   String get mineSyncError => 'Не удалось получить статус';
@@ -1926,7 +1978,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineUploadNeedLogin => 'Нужно войти в аккаунт';
 
   @override
-  String get mineUploadNeedCloudService => 'Доступно только при использовании облачного сервиса';
+  String get mineUploadNeedCloudService =>
+      'Доступно только при использовании облачного сервиса';
 
   @override
   String get mineUploadInProgress => 'Загрузка в облако...';
@@ -1941,13 +1994,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineUploadSuccess => 'Загружено в облако';
 
   @override
-  String get mineUploadSuccessMessage => 'Текущая ведомость синхронизирована с облаком';
+  String get mineUploadSuccessMessage =>
+      'Текущая ведомость синхронизирована с облаком';
 
   @override
   String get mineDownloadTitle => 'Скачать и синхронизировать';
 
   @override
-  String get mineDownloadNeedCloudService => 'Доступно только при использовании облачного сервиса';
+  String get mineDownloadNeedCloudService =>
+      'Доступно только при использовании облачного сервиса';
 
   @override
   String get mineDownloadComplete => 'Синхронизация завершена';
@@ -1982,7 +2037,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineLogoutConfirmTitle => 'Выход из аккаунта';
 
   @override
-  String get mineLogoutConfirmMessage => 'Выйти из аккаунта?\nПосле выхода облачная синхронизация будет недоступна.';
+  String get mineLogoutConfirmMessage =>
+      'Выйти из аккаунта?\nПосле выхода облачная синхронизация будет недоступна.';
 
   @override
   String get mineLogoutButton => 'Выйти';
@@ -1991,16 +2047,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineAutoSyncTitle => 'Автосинхронизация ведомости';
 
   @override
-  String get mineAutoSyncSubtitle => 'Загружать данные в облако после добавления транзакции';
+  String get mineAutoSyncSubtitle =>
+      'Загружать данные в облако после добавления транзакции';
 
   @override
-  String get mineAutoSyncNeedLogin => 'Чтобы включить синхронизацию, войдите в аккаунт';
+  String get mineAutoSyncNeedLogin =>
+      'Чтобы включить синхронизацию, войдите в аккаунт';
 
   @override
   String get mineImportProgressTitle => 'Импорт в фоновом режиме...';
 
   @override
-  String mineImportProgressSubtitle(Object done, Object fail, Object ok, Object total) {
+  String mineImportProgressSubtitle(
+      Object done, Object fail, Object ok, Object total) {
     return 'Прогресс: $done/$total, успешно: $ok, ошибок: $fail';
   }
 
@@ -2017,19 +2076,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineCategoryMigration => 'Перенос категорий';
 
   @override
-  String get mineCategoryMigrationSubtitle => 'Перенести данные из одних категорий в другие';
+  String get mineCategoryMigrationSubtitle =>
+      'Перенести данные из одних категорий в другие';
 
   @override
   String get mineRecurringTransactions => 'Повторяющиеся транзакции';
 
   @override
-  String get mineRecurringTransactionsSubtitle => 'Управлять повторяющимися транзакциями';
+  String get mineRecurringTransactionsSubtitle =>
+      'Управлять повторяющимися транзакциями';
 
   @override
   String get mineReminderSettings => 'Напоминания об учёте';
 
   @override
-  String get mineReminderSettingsSubtitle => 'Настроить ежедневные напоминания об учёте';
+  String get mineReminderSettingsSubtitle =>
+      'Настроить ежедневные напоминания об учёте';
 
   @override
   String get minePersonalize => 'Внешний вид';
@@ -2038,7 +2100,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineDisplayScale => 'Масштаб интерфейса';
 
   @override
-  String get mineDisplayScaleSubtitle => 'Изменить размер текста и элементов интерфейса';
+  String get mineDisplayScaleSubtitle =>
+      'Изменить размер текста и элементов интерфейса';
 
   @override
   String get mineCheckUpdate => 'Проверить обновления';
@@ -2053,7 +2116,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineFeedback => 'Обратная связь';
 
   @override
-  String get mineFeedbackSubtitle => 'Сообщить о проблеме или предложить улучшение';
+  String get mineFeedbackSubtitle =>
+      'Сообщить о проблеме или предложить улучшение';
 
   @override
   String get mineHelp => 'Справка';
@@ -2062,13 +2126,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get helpCenterOpenInBrowser => 'Открыть в браузере';
 
   @override
-  String get helpCenterLoadFailed => 'Не удалось загрузить. Проверьте подключение к сети.';
+  String get helpCenterLoadFailed =>
+      'Не удалось загрузить. Проверьте подключение к сети.';
 
   @override
   String get helpCenterRetry => 'Повторить';
 
   @override
-  String get mineHelpSubtitle => 'Открыть документацию и ответы на частые вопросы';
+  String get mineHelpSubtitle =>
+      'Открыть документацию и ответы на частые вопросы';
 
   @override
   String get mineSupportAuthor => 'Поставить звезду ⭐️';
@@ -2082,7 +2148,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get githubStarGuideTitle => 'Как поставить звезду проекту';
 
   @override
-  String get githubStarGuideContent => 'Откройте GitHub кнопкой ниже, затем нажмите на кнопку, отмеченную на изображении';
+  String get githubStarGuideContent =>
+      'Откройте GitHub кнопкой ниже, затем нажмите на кнопку, отмеченную на изображении';
 
   @override
   String get githubStarGuideButton => 'Открыть GitHub';
@@ -2106,7 +2173,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryMigrationDescription => 'Как перенести транзакции';
 
   @override
-  String get categoryMigrationDescriptionContent => '• Перенесите все транзакции из одной категории в другую\n• После переноса все данные этих транзакций будут доступны в новой категории\n• Отменить перенос нельзя, поэтому внимательно проверьте выбор';
+  String get categoryMigrationDescriptionContent =>
+      '• Перенесите все транзакции из одной категории в другую\n• После переноса все данные этих транзакций будут доступны в новой категории\n• Отменить перенос нельзя, поэтому внимательно проверьте выбор';
 
   @override
   String get categoryMigrationTypeLabel => 'Выбрать тип';
@@ -2124,7 +2192,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryMigrationToHint => 'Выберите категорию назначения';
 
   @override
-  String get categoryMigrationToHintFirst => 'Сначала выберите исходную категорию';
+  String get categoryMigrationToHintFirst =>
+      'Сначала выберите исходную категорию';
 
   @override
   String get categoryMigrationStartButton => 'Начать перенос';
@@ -2133,7 +2202,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryMigrationCannotTitle => 'Перенос невозможен';
 
   @override
-  String get categoryMigrationCannotMessage => 'Не удалось перенести транзакции. Проверьте состояние выбранных категорий.';
+  String get categoryMigrationCannotMessage =>
+      'Не удалось перенести транзакции. Проверьте состояние выбранных категорий.';
 
   @override
   String get categoryExpenseType => 'Категория расходов';
@@ -2154,7 +2224,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryNameRequired => 'Введите название категории';
 
   @override
-  String get categoryNameTooLong => 'Название категории должно быть не длиннее 10 символов';
+  String get categoryNameTooLong =>
+      'Название категории должно быть не длиннее 10 символов';
 
   @override
   String get categoryNameDuplicate => 'Категория с таким названием уже есть';
@@ -2166,10 +2237,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryCustomIconTitle => 'Свой значок';
 
   @override
-  String get categoryCustomIconTapToSelect => 'Нажмите, чтобы выбрать изображение';
+  String get categoryCustomIconTapToSelect =>
+      'Нажмите, чтобы выбрать изображение';
 
   @override
-  String get categoryCustomIconTapToChange => 'Нажмите, чтобы заменить изображение';
+  String get categoryCustomIconTapToChange =>
+      'Нажмите, чтобы заменить изображение';
 
   @override
   String get categoryCustomIconError => 'Не удалось выбрать изображение';
@@ -2187,7 +2260,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryDeleteTitle => 'Удалить категорию';
 
   @override
-  String get categoryDeleteSubtitle => 'После удаления восстановить категорию не получится';
+  String get categoryDeleteSubtitle =>
+      'После удаления восстановить категорию не получится';
 
   @override
   String get categorySaveError => 'Не удалось сохранить';
@@ -2298,13 +2372,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryImportModeMerge => 'Объединить';
 
   @override
-  String get categoryImportModeMergeDesc => 'Сохранить существующие категории и добавить новые';
+  String get categoryImportModeMergeDesc =>
+      'Сохранить существующие категории и добавить новые';
 
   @override
   String get categoryImportModeOverwrite => 'Заменить';
 
   @override
-  String get categoryImportModeOverwriteDesc => 'Удалить неиспользуемые категории, затем выполнить импорт';
+  String get categoryImportModeOverwriteDesc =>
+      'Удалить неиспользуемые категории, затем выполнить импорт';
 
   @override
   String get categoryImportSuccess => 'Импорт завершён';
@@ -2340,10 +2416,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categorySubCategoryTitle => 'Подкатегория';
 
   @override
-  String get categorySubCategoryDescriptionEnabled => 'У этой категории есть родительская категория';
+  String get categorySubCategoryDescriptionEnabled =>
+      'У этой категории есть родительская категория';
 
   @override
-  String get categorySubCategoryDescriptionDisabled => 'Это самостоятельная категория верхнего уровня';
+  String get categorySubCategoryDescriptionDisabled =>
+      'Это самостоятельная категория верхнего уровня';
 
   @override
   String get categoryParentCategoryTitle => 'Родительская категория';
@@ -2366,91 +2444,115 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryParentRequiredTitle => 'Ошибка';
 
   @override
-  String get categoryExpenseList => 'Питание-Транспорт-Покупки-Развлечения-Дом-Семья-Связь-Коммуналка-Жильё-Медицина-Образование-Питомцы-Спорт-Электроника-Путешествия-Алкоголь-Малыш-Красота-Ремонт-Общение-Учёба-Автомобиль-Такси-Метро-Доставка-Квартплата-Парковка-Донаты-Подарки-Налоги-Напитки-Одежда-Перекусы-Конверты-Фрукты-Игры-Книги-Партнёр-Отделка-Хозтовары-Лотереи-Акции-Соцстрах-Курьер-Работа';
+  String get categoryExpenseList =>
+      'Питание-Транспорт-Покупки-Развлечения-Дом-Семья-Связь-Коммуналка-Жильё-Медицина-Образование-Питомцы-Спорт-Электроника-Путешествия-Алкоголь-Малыш-Красота-Ремонт-Общение-Учёба-Автомобиль-Такси-Метро-Доставка-Квартплата-Парковка-Донаты-Подарки-Налоги-Напитки-Одежда-Перекусы-Конверты-Фрукты-Игры-Книги-Партнёр-Отделка-Хозтовары-Лотереи-Акции-Соцстрах-Курьер-Работа';
 
   @override
-  String get categoryIncomeList => 'Зарплата-Сбережения-Конверты-Премии-Возмещение-Подработка-Подарки-Проценты-Возврат-Инвестиции-Перепродажа-Соцвыплаты-Возврат налогов-Жилфонд';
+  String get categoryIncomeList =>
+      'Зарплата-Сбережения-Конверты-Премии-Возмещение-Подработка-Подарки-Проценты-Возврат-Инвестиции-Перепродажа-Соцвыплаты-Возврат налогов-Жилфонд';
 
   @override
-  String get categoryExpenseDining => 'Питание-Завтрак-Обед-Ужин-Meituan-Ele.me-JD-Рестораны-Еда';
+  String get categoryExpenseDining =>
+      'Питание-Завтрак-Обед-Ужин-Meituan-Ele.me-JD-Рестораны-Еда';
 
   @override
-  String get categoryExpenseSnacks => 'Перекусы-Печенье-Чипсы-Конфеты-Шоколад-Орехи';
+  String get categoryExpenseSnacks =>
+      'Перекусы-Печенье-Чипсы-Конфеты-Шоколад-Орехи';
 
   @override
-  String get categoryExpenseFruit => 'Фрукты-Яблоки-Бананы-Апельсины-Виноград-Арбузы-Прочие';
+  String get categoryExpenseFruit =>
+      'Фрукты-Яблоки-Бананы-Апельсины-Виноград-Арбузы-Прочие';
 
   @override
-  String get categoryExpenseBeverage => 'Напитки-Молочный чай-Кофе-Сок-Газировка-Минералка';
+  String get categoryExpenseBeverage =>
+      'Напитки-Молочный чай-Кофе-Сок-Газировка-Минералка';
 
   @override
   String get categoryExpensePastry => 'Выпечка-Торты-Хлеб-Десерты-Печенье';
 
   @override
-  String get categoryExpenseCooking => 'Продукты-Овощи-Мясо-Рыба, морепр.-Приправы-Крупы, масло';
+  String get categoryExpenseCooking =>
+      'Продукты-Овощи-Мясо-Рыба, морепр.-Приправы-Крупы, масло';
 
   @override
-  String get categoryExpenseShopping => 'Покупки-Одежда-Обувь, шапки-Сумки-Аксессуары-Хозтовары';
+  String get categoryExpenseShopping =>
+      'Покупки-Одежда-Обувь, шапки-Сумки-Аксессуары-Хозтовары';
 
   @override
-  String get categoryExpensePets => 'Питомцы-Корм-Зоотовары-Ветеринария-Груминг';
+  String get categoryExpensePets =>
+      'Питомцы-Корм-Зоотовары-Ветеринария-Груминг';
 
   @override
-  String get categoryExpenseTransport => 'Транспорт-Метро-Автобус-Такси-Такси онлайн-Парковка-Топливо';
+  String get categoryExpenseTransport =>
+      'Транспорт-Метро-Автобус-Такси-Такси онлайн-Парковка-Топливо';
 
   @override
-  String get categoryExpenseCar => 'Автомобиль-ТО-Ремонт-Страховка-Автомойка-Штрафы';
+  String get categoryExpenseCar =>
+      'Автомобиль-ТО-Ремонт-Страховка-Автомойка-Штрафы';
 
   @override
-  String get categoryExpenseClothing => 'Одежда-Верх-Брюки-Юбки-Обувь-Аксессуары';
+  String get categoryExpenseClothing =>
+      'Одежда-Верх-Брюки-Юбки-Обувь-Аксессуары';
 
   @override
-  String get categoryExpenseDailyGoods => 'Хозтовары-Гигиена-Бумага-Для уборки-Для кухни';
+  String get categoryExpenseDailyGoods =>
+      'Хозтовары-Гигиена-Бумага-Для уборки-Для кухни';
 
   @override
-  String get categoryExpenseEducation => 'Образование-Учёба-Курсы-Книги-Канцтовары-Для офиса';
+  String get categoryExpenseEducation =>
+      'Образование-Учёба-Курсы-Книги-Канцтовары-Для офиса';
 
   @override
   String get categoryExpenseInvestLoss => 'Убытки-Акции-Фонды-Прочие';
 
   @override
-  String get categoryExpenseEntertainment => 'Развлечения-Кино-Караоке-Аттракционы-Бары-Прочие';
+  String get categoryExpenseEntertainment =>
+      'Развлечения-Кино-Караоке-Аттракционы-Бары-Прочие';
 
   @override
   String get categoryExpenseGame => 'Игры-Пополнение-Снаряжение-Подписки';
 
   @override
-  String get categoryExpenseHealthProducts => 'Здоровье-Витамины-Здоровая еда-БАДы';
+  String get categoryExpenseHealthProducts =>
+      'Здоровье-Витамины-Здоровая еда-БАДы';
 
   @override
-  String get categoryExpenseSubscription => 'Подписки-Видео-Музыка-Облако-Прочие';
+  String get categoryExpenseSubscription =>
+      'Подписки-Видео-Музыка-Облако-Прочие';
 
   @override
-  String get categoryExpenseSports => 'Спорт-Спортзал-Экипировка-Занятия-На природе';
+  String get categoryExpenseSports =>
+      'Спорт-Спортзал-Экипировка-Занятия-На природе';
 
   @override
-  String get categoryExpenseHousing => 'Жильё-Аренда-Квартплата-Ипотека-Отделка';
+  String get categoryExpenseHousing =>
+      'Жильё-Аренда-Квартплата-Ипотека-Отделка';
 
   @override
   String get categoryExpenseHome => 'Дом-Мебель-Техника-Декор-Постельное';
 
   @override
-  String get categoryExpenseBeauty => 'Красота-Уход за кожей-Косметика-Салон-Маникюр';
+  String get categoryExpenseBeauty =>
+      'Красота-Уход за кожей-Косметика-Салон-Маникюр';
 
   @override
-  String get categoryIncomeSalary => 'Зарплата-Оклад-За результат-За год-Сверхурочные';
+  String get categoryIncomeSalary =>
+      'Зарплата-Оклад-За результат-За год-Сверхурочные';
 
   @override
-  String get categoryIncomeInvestment => 'Сбережения-Фонды-Дивиденды-Финпродукты-Прочие';
+  String get categoryIncomeInvestment =>
+      'Сбережения-Фонды-Дивиденды-Финпродукты-Прочие';
 
   @override
-  String get categoryIncomeRedPacket => 'Конверты-На праздник-На ДР-Ответный дар';
+  String get categoryIncomeRedPacket =>
+      'Конверты-На праздник-На ДР-Ответный дар';
 
   @override
   String get categoryIncomeBonus => 'Премии-За год-За квартал-За проект-Прочие';
 
   @override
-  String get categoryIncomeReimbursement => 'Возмещение-Командировки-Питание-Прочее';
+  String get categoryIncomeReimbursement =>
+      'Возмещение-Командировки-Питание-Прочее';
 
   @override
   String get categoryIncomePartTime => 'Подработка-Вторая работа-Доп. доход';
@@ -2471,10 +2573,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryIncomeSecondHand => 'Продажа б/у-Свои вещи-Товары б/у';
 
   @override
-  String get categoryIncomeSocialBenefit => 'Соцвыплаты-Безработица-Декретные-Прочие';
+  String get categoryIncomeSocialBenefit =>
+      'Соцвыплаты-Безработица-Декретные-Прочие';
 
   @override
-  String get categoryIncomeTaxRefund => 'Возврат налогов-Возврат НДФЛ-Прочие возвраты';
+  String get categoryIncomeTaxRefund =>
+      'Возврат налогов-Возврат НДФЛ-Прочие возвраты';
 
   @override
   String get categoryIncomeProvidentFund => 'Жилфонд-Снятие-Проценты';
@@ -2543,25 +2647,29 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appearanceAmountFormatFull => 'Полная сумма';
 
   @override
-  String get appearanceAmountFormatFullDesc => 'Показать сумму полностью, например 123 456,78';
+  String get appearanceAmountFormatFullDesc =>
+      'Показать сумму полностью, например 123 456,78';
 
   @override
   String get appearanceAmountFormatCompact => 'Сокращённый';
 
   @override
-  String get appearanceAmountFormatCompactDesc => 'Сокращать крупные суммы, например 12,3 тыс. (только для баланса счёта)';
+  String get appearanceAmountFormatCompactDesc =>
+      'Сокращать крупные суммы, например 12,3 тыс. (только для баланса счёта)';
 
   @override
   String get appearanceSkinAnimation => 'Анимация скина';
 
   @override
-  String get appearanceSkinAnimationDesc => 'Если отключить анимацию, скин станет статичным, а приложение будет расходовать меньше заряда';
+  String get appearanceSkinAnimationDesc =>
+      'Если отключить анимацию, скин станет статичным, а приложение будет расходовать меньше заряда';
 
   @override
   String get appearanceShowTransactionTime => 'Показывать время транзакций';
 
   @override
-  String get appearanceShowTransactionTimeDesc => 'В списке видно время транзакции, при редактировании его можно изменить';
+  String get appearanceShowTransactionTimeDesc =>
+      'В списке видно время транзакции, при редактировании его можно изменить';
 
   @override
   String get appearanceNoteDisplay => 'Отображение заметок';
@@ -2570,13 +2678,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appearanceNoteDisplayCategory => 'Сначала категория';
 
   @override
-  String get appearanceNoteDisplayCategoryDesc => 'Категория, затем заметка в скобках';
+  String get appearanceNoteDisplayCategoryDesc =>
+      'Категория, затем заметка в скобках';
 
   @override
   String get appearanceNoteDisplayNote => 'Сначала заметка';
 
   @override
-  String get appearanceNoteDisplayNoteDesc => 'Заметка, если она есть, иначе категория';
+  String get appearanceNoteDisplayNoteDesc =>
+      'Заметка, если она есть, иначе категория';
 
   @override
   String get appearanceNoteHistory => 'История заметок';
@@ -2606,7 +2716,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appearanceNoteHistoryLimitHint => 'Введите число от 1 до 100';
 
   @override
-  String get appearanceNoteHistoryLimitInvalid => 'Введите целое число от 1 до 100';
+  String get appearanceNoteHistoryLimitInvalid =>
+      'Введите целое число от 1 до 100';
 
   @override
   String get appearanceColorScheme => 'Цвета доходов и расходов';
@@ -2618,10 +2729,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appearanceColorSchemeOff => 'Красный — расходы · зелёный — доходы';
 
   @override
-  String get appearanceColorSchemeOnDesc => 'Доходы показаны красным, расходы — зелёным';
+  String get appearanceColorSchemeOnDesc =>
+      'Доходы показаны красным, расходы — зелёным';
 
   @override
-  String get appearanceColorSchemeOffDesc => 'Расходы показаны красным, доходы — зелёным';
+  String get appearanceColorSchemeOffDesc =>
+      'Расходы показаны красным, доходы — зелёным';
 
   @override
   String fontSettingsCurrentScale(Object scale) {
@@ -2632,7 +2745,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fontSettingsPreview => 'Предпросмотр';
 
   @override
-  String get fontSettingsPreviewText => 'Сегодня на обед ушло 23,50 — добавим транзакцию;\nВ этом месяце — 45 дней учёта и 320 транзакций;\nГлавное — не бросать!';
+  String get fontSettingsPreviewText =>
+      'Сегодня на обед ушло 23,50 — добавим транзакцию;\nВ этом месяце — 45 дней учёта и 320 транзакций;\nГлавное — не бросать!';
 
   @override
   String fontSettingsCurrentLevel(Object level, Object scale) {
@@ -2646,7 +2760,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fontSettingsCustomAdjust => 'Свой масштаб';
 
   @override
-  String get fontSettingsDescription => 'При масштабе 1,0× приложение выглядит одинаково на разных устройствах: их различия учитываются автоматически. Меняйте масштаб, чтобы подобрать удобный размер.';
+  String get fontSettingsDescription =>
+      'При масштабе 1,0× приложение выглядит одинаково на разных устройствах: их различия учитываются автоматически. Меняйте масштаб, чтобы подобрать удобный размер.';
 
   @override
   String get fontSettingsExtraSmall => 'Минимальный';
@@ -2727,7 +2842,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fontSettingsNo => 'Нет';
 
   @override
-  String get fontSettingsScaleExample => 'Размер рамки и отступы автоматически подстраиваются под устройство';
+  String get fontSettingsScaleExample =>
+      'Размер рамки и отступы автоматически подстраиваются под устройство';
 
   @override
   String get fontSettingsPreciseAdjust => 'Точная настройка';
@@ -2742,16 +2858,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reminderTitle => 'Напоминание об учёте';
 
   @override
-  String get reminderSubtitle => 'Настройте время ежедневного напоминания об учёте';
+  String get reminderSubtitle =>
+      'Настройте время ежедневного напоминания об учёте';
 
   @override
   String get reminderDailyTitle => 'Ежедневное напоминание об учёте';
 
   @override
-  String get reminderDailySubtitle => 'Если включить, приложение будет напоминать об учёте в указанное время';
+  String get reminderDailySubtitle =>
+      'Если включить, приложение будет напоминать об учёте в указанное время';
 
   @override
-  String get reminderDailyBody => 'Не забудьте внести сегодняшние доходы и расходы 💰';
+  String get reminderDailyBody =>
+      'Не забудьте внести сегодняшние доходы и расходы 💰';
 
   @override
   String get reminderTimeTitle => 'Время напоминания';
@@ -2769,7 +2888,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reminderTestTitle => 'Тестовое уведомление';
 
   @override
-  String get reminderTestBody => 'Это тестовое уведомление. Нажмите, чтобы проверить, что произойдёт';
+  String get reminderTestBody =>
+      'Это тестовое уведомление. Нажмите, чтобы проверить, что произойдёт';
 
   @override
   String get reminderCheckBattery => 'Проверить оптимизацию батареи';
@@ -2793,13 +2913,16 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get reminderBatteryIgnored => 'Оптимизация батареи для приложения: отключена ✅';
+  String get reminderBatteryIgnored =>
+      'Оптимизация батареи для приложения: отключена ✅';
 
   @override
-  String get reminderBatteryNotIgnored => 'Оптимизация батареи для приложения: включена ⚠️';
+  String get reminderBatteryNotIgnored =>
+      'Оптимизация батареи для приложения: включена ⚠️';
 
   @override
-  String get reminderBatteryAdvice => 'Чтобы уведомления приходили вовремя, отключите оптимизацию батареи для приложения';
+  String get reminderBatteryAdvice =>
+      'Чтобы уведомления приходили вовремя, отключите оптимизацию батареи для приложения';
 
   @override
   String get reminderCheckChannel => 'Проверить настройки канала уведомлений';
@@ -2831,16 +2954,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reminderChannelVibrationOff => 'Вибрация: выкл.';
 
   @override
-  String get reminderChannelDndBypass => 'Уведомления в режиме «Не беспокоить»: разрешены';
+  String get reminderChannelDndBypass =>
+      'Уведомления в режиме «Не беспокоить»: разрешены';
 
   @override
-  String get reminderChannelDndNoBypass => 'Уведомления в режиме «Не беспокоить»: запрещены';
+  String get reminderChannelDndNoBypass =>
+      'Уведомления в режиме «Не беспокоить»: запрещены';
 
   @override
   String get reminderChannelAdvice => '⚠️ Рекомендуемые настройки:';
 
   @override
-  String get reminderChannelAdviceImportance => '• Важность: срочная или высокая';
+  String get reminderChannelAdviceImportance =>
+      '• Важность: срочная или высокая';
 
   @override
   String get reminderChannelAdviceSound => '• Включите звук и вибрацию';
@@ -2849,7 +2975,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reminderChannelAdviceBanner => '• Разрешите баннеры уведомлений';
 
   @override
-  String get reminderChannelAdviceXiaomi => '• На телефонах Xiaomi настройте каждый канал отдельно';
+  String get reminderChannelAdviceXiaomi =>
+      '• На телефонах Xiaomi настройте каждый канал отдельно';
 
   @override
   String get reminderChannelGood => '✅ Канал уведомлений настроен правильно';
@@ -2858,16 +2985,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reminderOpenAppSettings => 'Открыть настройки приложения';
 
   @override
-  String get reminderAppSettingsMessage => 'Разрешите уведомления и отключите оптимизацию батареи в настройках';
+  String get reminderAppSettingsMessage =>
+      'Разрешите уведомления и отключите оптимизацию батареи в настройках';
 
   @override
-  String get reminderDescription => 'Если включить напоминание об учёте, система будет каждый день в заданное время напоминать вам о необходимости внести доходы и расходы.';
+  String get reminderDescription =>
+      'Если включить напоминание об учёте, система будет каждый день в заданное время напоминать вам о необходимости внести доходы и расходы.';
 
   @override
-  String get reminderIOSInstructions => '🍎 Настройки уведомлений iOS:\n• Настройки > Уведомления > BeeCount\n• Включите «Допуск уведомлений»\n• Выберите стиль уведомлений: баннеры или предупреждения\n• Включите звук и вибрацию\n\n⚠️ Важно:\n• Локальные уведомления iOS зависят от работы приложения\n• Не смахивайте карточку приложения в списке открытых приложений\n• Уведомления работают и в открытом приложении, и в фоновом режиме\n• При принудительном закрытии приложения уведомления перестанут приходить\n\n💡 Советы:\n• Чтобы свернуть приложение, перейдите на экран «Домой»\n• iOS автоматически управляет фоновыми приложениями\n• Оставьте приложение в фоновом режиме, чтобы получать напоминания';
+  String get reminderIOSInstructions =>
+      '🍎 Настройки уведомлений iOS:\n• Настройки > Уведомления > BeeCount\n• Включите «Допуск уведомлений»\n• Выберите стиль уведомлений: баннеры или предупреждения\n• Включите звук и вибрацию\n\n⚠️ Важно:\n• Локальные уведомления iOS зависят от работы приложения\n• Не смахивайте карточку приложения в списке открытых приложений\n• Уведомления работают и в открытом приложении, и в фоновом режиме\n• При принудительном закрытии приложения уведомления перестанут приходить\n\n💡 Советы:\n• Чтобы свернуть приложение, перейдите на экран «Домой»\n• iOS автоматически управляет фоновыми приложениями\n• Оставьте приложение в фоновом режиме, чтобы получать напоминания';
 
   @override
-  String get reminderAndroidInstructions => 'Если уведомления не приходят, проверьте настройки:\n• Разрешите приложению отправлять уведомления\n• Отключите оптимизацию батареи и энергосбережение для приложения\n• Разрешите работу в фоновом режиме и автозапуск\n• На Android 12 и новее разрешите приложению устанавливать точные будильники\n\n📱 Дополнительные настройки для телефонов Xiaomi:\n• Настройки > Управление приложениями > BeeCount > Управление уведомлениями\n• Выберите канал «Напоминание об учёте»\n• Установите важность «Срочная» или «Высокая»\n• Включите «Баннеры уведомлений», «Звук» и «Вибрацию»\n• Безопасность > Управление приложениями > Разрешения > Автозапуск\n\n🔒 Как закрепить приложение в фоновом режиме:\n• Найдите BeeCount в списке недавних приложений\n• Потяните карточку приложения вниз, чтобы появился значок замка\n• Нажмите на замок, чтобы приложение не закрывалось при очистке';
+  String get reminderAndroidInstructions =>
+      'Если уведомления не приходят, проверьте настройки:\n• Разрешите приложению отправлять уведомления\n• Отключите оптимизацию батареи и энергосбережение для приложения\n• Разрешите работу в фоновом режиме и автозапуск\n• На Android 12 и новее разрешите приложению устанавливать точные будильники\n\n📱 Дополнительные настройки для телефонов Xiaomi:\n• Настройки > Управление приложениями > BeeCount > Управление уведомлениями\n• Выберите канал «Напоминание об учёте»\n• Установите важность «Срочная» или «Высокая»\n• Включите «Баннеры уведомлений», «Звук» и «Вибрацию»\n• Безопасность > Управление приложениями > Разрешения > Автозапуск\n\n🔒 Как закрепить приложение в фоновом режиме:\n• Найдите BeeCount в списке недавних приложений\n• Потяните карточку приложения вниз, чтобы появился значок замка\n• Нажмите на замок, чтобы приложение не закрывалось при очистке';
 
   @override
   String get categoryDetailLoadFailed => 'Не удалось загрузить';
@@ -2903,7 +3034,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryDetailNoTransactions => 'Нет транзакций';
 
   @override
-  String get categoryDetailNoTransactionsSubtext => 'В этой категории пока нет транзакций';
+  String get categoryDetailNoTransactionsSubtext =>
+      'В этой категории пока нет транзакций';
 
   @override
   String get categoryDetailDeleteFailed => 'Не удалось удалить';
@@ -2912,7 +3044,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryMigrationConfirmTitle => 'Подтверждение переноса';
 
   @override
-  String categoryMigrationConfirmMessage(Object count, Object fromName, Object toName) {
+  String categoryMigrationConfirmMessage(
+      Object count, Object fromName, Object toName) {
     return 'Перенести транзакции из категории «$fromName» в категорию «$toName»? Количество: $count.\n\nОтменить перенос нельзя!';
   }
 
@@ -2923,7 +3056,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryMigrationCompleteTitle => 'Перенос завершён';
 
   @override
-  String categoryMigrationCompleteMessage(Object count, Object fromName, Object toName) {
+  String categoryMigrationCompleteMessage(
+      Object count, Object fromName, Object toName) {
     return 'Транзакции перенесены из категории «$fromName» в категорию «$toName». Количество: $count.';
   }
 
@@ -2955,7 +3089,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mineCheckUpdateDetecting => 'Проверка обновлений...';
 
   @override
-  String get mineCheckUpdateSubtitleDetecting => 'Проверяем, доступна ли новая версия';
+  String get mineCheckUpdateSubtitleDetecting =>
+      'Проверяем, доступна ли новая версия';
 
   @override
   String get mineUpdateDownloadTitle => 'Загрузка обновления';
@@ -2985,7 +3120,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudMultiDeviceWarningTitle => 'Работа на нескольких устройствах';
 
   @override
-  String get cloudMultiDeviceWarningMessage => 'Перед сменой устройства отправьте данные в облако. На новом устройстве скачайте их, прежде чем вести учёт. Не редактируйте одну ведомость на двух устройствах одновременно. Подробнее →';
+  String get cloudMultiDeviceWarningMessage =>
+      'Перед сменой устройства отправьте данные в облако. На новом устройстве скачайте их, прежде чем вести учёт. Не редактируйте одну ведомость на двух устройствах одновременно. Подробнее →';
 
   @override
   String get cloudWebdavUrlLabel => 'URL сервера WebDAV';
@@ -3039,19 +3175,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudS3PortLabel => 'Порт (необязательно)';
 
   @override
-  String get cloudS3PortHint => 'Оставьте поле пустым, чтобы использовать порт по умолчанию';
+  String get cloudS3PortHint =>
+      'Оставьте поле пустым, чтобы использовать порт по умолчанию';
 
   @override
   String get cloudSupabaseBucketLabel => 'Имя бакета';
 
   @override
-  String get cloudSupabaseBucketHint => 'Оставьте поле пустым, чтобы использовать beecount-backups';
+  String get cloudSupabaseBucketHint =>
+      'Оставьте поле пустым, чтобы использовать beecount-backups';
 
   @override
   String get authRememberAccount => 'Запомнить данные входа';
 
   @override
-  String get authRememberAccountHint => 'Подставить данные при следующем входе (только Supabase)';
+  String get authRememberAccountHint =>
+      'Подставить данные при следующем входе (только Supabase)';
 
   @override
   String get cloudConfigSaved => 'Настройки сохранены';
@@ -3084,34 +3223,41 @@ class AppLocalizationsRu extends AppLocalizations {
   String get authViewRegisterGuide => 'Узнать, как зарегистрироваться';
 
   @override
-  String get authErrorInvalidCredentials => 'Неверный адрес эл. почты или пароль.';
+  String get authErrorInvalidCredentials =>
+      'Неверный адрес эл. почты или пароль.';
 
   @override
-  String get authErrorEmailNotConfirmed => 'Адрес эл. почты не подтверждён. Перед входом подтвердите его по ссылке в письме.';
+  String get authErrorEmailNotConfirmed =>
+      'Адрес эл. почты не подтверждён. Перед входом подтвердите его по ссылке в письме.';
 
   @override
   String get authErrorRateLimit => 'Слишком много попыток. Попробуйте позже.';
 
   @override
-  String get authErrorNetworkIssue => 'Ошибка сети. Проверьте подключение и попробуйте ещё раз.';
+  String get authErrorNetworkIssue =>
+      'Ошибка сети. Проверьте подключение и попробуйте ещё раз.';
 
   @override
   String get authErrorLoginFailed => 'Не удалось войти. Попробуйте позже.';
 
   @override
-  String get authErrorEmailInvalid => 'Некорректный адрес эл. почты. Проверьте, нет ли опечаток.';
+  String get authErrorEmailInvalid =>
+      'Некорректный адрес эл. почты. Проверьте, нет ли опечаток.';
 
   @override
-  String get authErrorWeakPassword => 'Пароль слишком простой. Используйте буквы и цифры, не менее 6 символов.';
+  String get authErrorWeakPassword =>
+      'Пароль слишком простой. Используйте буквы и цифры, не менее 6 символов.';
 
   @override
-  String get importSelectCsvFile => 'Выберите файл для импорта (поддерживаются CSV/TSV/XLSX)';
+  String get importSelectCsvFile =>
+      'Выберите файл для импорта (поддерживаются CSV/TSV/XLSX)';
 
   @override
   String get exportTitle => 'Экспорт';
 
   @override
-  String get exportDescription => 'Можно экспортировать:\n• Транзакции (доходы, расходы и переводы)\n• Категории\n• Счета\n\nНажмите кнопку ниже, чтобы выбрать место сохранения и экспортировать текущую ведомость в CSV.';
+  String get exportDescription =>
+      'Можно экспортировать:\n• Транзакции (доходы, расходы и переводы)\n• Категории\n• Счета\n\nНажмите кнопку ниже, чтобы выбрать место сохранения и экспортировать текущую ведомость в CSV.';
 
   @override
   String get exportButtonIOS => 'Экспортировать и поделиться';
@@ -3342,7 +3488,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get updateDownloadBackgroundHint => 'Можно свернуть приложение: скачивание продолжится';
+  String get updateDownloadBackgroundHint =>
+      'Можно свернуть приложение: скачивание продолжится';
 
   @override
   String get updateCancelButton => 'Отмена';
@@ -3390,7 +3537,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateCannotOpenLink => 'Не удалось открыть ссылку';
 
   @override
-  String get updateManualVisit => 'Откройте ссылку в браузере:\\nhttps://github.com/TNT-Likely/BeeCount/releases';
+  String get updateManualVisit =>
+      'Откройте ссылку в браузере:\\nhttps://github.com/TNT-Likely/BeeCount/releases';
 
   @override
   String get updateNoLocalApkTitle => 'Пакет обновления не найден';
@@ -3399,13 +3547,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateInstallPackageTitle => 'Установить пакет обновления';
 
   @override
-  String get updateMultiplePackagesTitle => 'Найдено несколько пакетов обновления';
+  String get updateMultiplePackagesTitle =>
+      'Найдено несколько пакетов обновления';
 
   @override
   String get updateSearchFailedTitle => 'Ошибка поиска';
 
   @override
-  String get updateFoundCachedPackageTitle => 'Найден скачанный пакет обновления';
+  String get updateFoundCachedPackageTitle =>
+      'Найден скачанный пакет обновления';
 
   @override
   String get updateIgnoreButton => 'Игнорировать';
@@ -3414,7 +3564,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateInstallFailedTitle => 'Не удалось установить';
 
   @override
-  String get updateInstallFailedMessage => 'Не удалось запустить установщик APK. Проверьте разрешения на доступ к файлу.';
+  String get updateInstallFailedMessage =>
+      'Не удалось запустить установщик APK. Проверьте разрешения на доступ к файлу.';
 
   @override
   String get updateErrorTitle => 'Ошибка';
@@ -3444,13 +3595,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateDownloadCompleted => 'Скачивание завершено';
 
   @override
-  String get updateDownloadCompletedManual => 'Скачивание завершено. Обновление можно установить вручную';
+  String get updateDownloadCompletedManual =>
+      'Скачивание завершено. Обновление можно установить вручную';
 
   @override
-  String get updateDownloadCompletedDialog => 'Скачивание завершено, но окно установки не открылось. Установите обновление вручную';
+  String get updateDownloadCompletedDialog =>
+      'Скачивание завершено, но окно установки не открылось. Установите обновление вручную';
 
   @override
-  String get updateDownloadCompletedContext => 'Скачивание завершено. Установите обновление вручную';
+  String get updateDownloadCompletedContext =>
+      'Скачивание завершено. Установите обновление вручную';
 
   @override
   String get updateDownloadFailedGeneric => 'Не удалось скачать';
@@ -3475,10 +3629,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get updateNoLocalApkFoundMessage => 'Скачанный пакет обновления не найден.\\n\\nСначала скачайте новую версию через пункт «Проверить обновления».';
+  String get updateNoLocalApkFoundMessage =>
+      'Скачанный пакет обновления не найден.\\n\\nСначала скачайте новую версию через пункт «Проверить обновления».';
 
   @override
-  String updateInstallPackageFoundMessage(String fileName, String fileSize, String time) {
+  String updateInstallPackageFoundMessage(
+      String fileName, String fileSize, String time) {
     return 'Найден пакет обновления:\\n\\nИмя файла: $fileName\\nРазмер: $fileSize МБ\\nВремя скачивания: $time\\n\\nУстановить сейчас?';
   }
 
@@ -3520,7 +3676,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateCachedVersionTitle => 'Найдено скачанное обновление';
 
   @override
-  String get updateCachedVersionMessage => 'Найден ранее скачанный установочный пакет... Нажмите \\\"ОК\\\", чтобы установить его сейчас, или \\\"Отмена\\\", чтобы закрыть окно...';
+  String get updateCachedVersionMessage =>
+      'Найден ранее скачанный установочный пакет... Нажмите \\\"ОК\\\", чтобы установить его сейчас, или \\\"Отмена\\\", чтобы закрыть окно...';
 
   @override
   String get updateConfirmDownload => 'Скачать и установить сейчас';
@@ -3529,13 +3686,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateDownloadCompleteTitle => 'Загрузка завершена';
 
   @override
-  String get updateInstallConfirmMessage => 'Новая версия скачана. Установить сейчас?';
+  String get updateInstallConfirmMessage =>
+      'Новая версия скачана. Установить сейчас?';
 
   @override
   String get updateMirrorSelectTitle => 'Источник загрузки';
 
   @override
-  String get updateMirrorSelectHint => 'Если загрузка идёт медленно, выберите более быстрое зеркало. Нажмите «Проверить», чтобы измерить задержку.';
+  String get updateMirrorSelectHint =>
+      'Если загрузка идёт медленно, выберите более быстрое зеркало. Нажмите «Проверить», чтобы измерить задержку.';
 
   @override
   String get updateMirrorTestButton => 'Проверить';
@@ -3557,19 +3716,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateMirrorSettingTitle => 'Ускорение загрузки';
 
   @override
-  String get updateNotificationPermissionGuideText => 'Уведомления о ходе загрузки отключены. Это не мешает скачиванию. Чтобы видеть ход загрузки:';
+  String get updateNotificationPermissionGuideText =>
+      'Уведомления о ходе загрузки отключены. Это не мешает скачиванию. Чтобы видеть ход загрузки:';
 
   @override
-  String get updateNotificationGuideStep1 => 'Откройте настройки системы > Управление приложениями';
+  String get updateNotificationGuideStep1 =>
+      'Откройте настройки системы > Управление приложениями';
 
   @override
-  String get updateNotificationGuideStep2 => 'Найдите приложение \\\"BeeCount\\\"';
+  String get updateNotificationGuideStep2 =>
+      'Найдите приложение \\\"BeeCount\\\"';
 
   @override
   String get updateNotificationGuideStep3 => 'Разрешите уведомления';
 
   @override
-  String get updateNotificationGuideInfo => 'Даже без уведомлений загрузка продолжится в фоновом режиме';
+  String get updateNotificationGuideInfo =>
+      'Даже без уведомлений загрузка продолжится в фоновом режиме';
 
   @override
   String get currencyCNY => 'Китайский юань';
@@ -3713,7 +3876,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get webdavConfiguredTitle => 'Облачный сервис WebDAV настроен';
 
   @override
-  String get webdavConfiguredMessage => 'WebDAV использует данные для входа, указанные при настройке. Входить отдельно не нужно.';
+  String get webdavConfiguredMessage =>
+      'WebDAV использует данные для входа, указанные при настройке. Входить отдельно не нужно.';
 
   @override
   String get recurringTransactionTitle => 'Повторяющиеся транзакции';
@@ -3755,13 +3919,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get recurringTransactionNoEndDate => 'Бессрочно';
 
   @override
-  String get recurringTransactionDeleteConfirm => 'Удалить эту повторяющуюся транзакцию?';
+  String get recurringTransactionDeleteConfirm =>
+      'Удалить эту повторяющуюся транзакцию?';
 
   @override
   String get recurringTransactionEmpty => 'Нет повторяющихся транзакций';
 
   @override
-  String get recurringTransactionEmptyHint => 'Чтобы добавить транзакцию, нажмите «+» в правом верхнем углу';
+  String get recurringTransactionEmptyHint =>
+      'Чтобы добавить транзакцию, нажмите «+» в правом верхнем углу';
 
   @override
   String recurringTransactionEveryNDays(int n) {
@@ -3819,7 +3985,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get recurringTransactionUsageTitle => 'Как это работает';
 
   @override
-  String get recurringTransactionUsageContent => 'При запуске приложения, возвращении в него или сохранении правила приложение автоматически добавляет транзакции, срок которых уже наступил. Нажмите на карточку, чтобы изменить правило и увидеть три ближайшие даты добавления транзакций.';
+  String get recurringTransactionUsageContent =>
+      'При запуске приложения, возвращении в него или сохранении правила приложение автоматически добавляет транзакции, срок которых уже наступил. Нажмите на карточку, чтобы изменить правило и увидеть три ближайшие даты добавления транзакций.';
 
   @override
   String get ledgerSelectTitle => 'Выбор ведомости';
@@ -3834,13 +4001,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get syncNotLoggedInMessage => 'Вход не выполнен';
 
   @override
-  String get syncCloudBackupCorruptedMessage => 'Не удалось прочитать резервную копию в облаке. Возможно, она повреждена из-за проблем с кодировкой в предыдущих версиях. Чтобы заменить копию, нажмите «Загрузить текущую ведомость в облако».';
+  String get syncCloudBackupCorruptedMessage =>
+      'Не удалось прочитать резервную копию в облаке. Возможно, она повреждена из-за проблем с кодировкой в предыдущих версиях. Чтобы заменить копию, нажмите «Загрузить текущую ведомость в облако».';
 
   @override
   String get syncNoCloudBackupMessage => 'Нет резервной копии в облаке';
 
   @override
-  String get syncAccessDeniedMessage => '403: доступ запрещён (проверьте политику RLS хранилища и путь)';
+  String get syncAccessDeniedMessage =>
+      '403: доступ запрещён (проверьте политику RLS хранилища и путь)';
 
   @override
   String get cloudTestConnection => 'Проверить подключение';
@@ -3849,19 +4018,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudLocalStorageTitle => 'Локальное хранилище';
 
   @override
-  String get cloudLocalStorageSubtitle => 'Данные хранятся только на этом устройстве';
+  String get cloudLocalStorageSubtitle =>
+      'Данные хранятся только на этом устройстве';
 
   @override
   String get cloudCustomSupabaseTitle => 'Свой Supabase';
 
   @override
-  String get cloudCustomSupabaseSubtitle => 'Настройте подключение к своему серверу Supabase';
+  String get cloudCustomSupabaseSubtitle =>
+      'Настройте подключение к своему серверу Supabase';
 
   @override
   String get cloudCustomWebdavTitle => 'Свой WebDAV';
 
   @override
-  String get cloudCustomWebdavSubtitle => 'Настройте подключение к Nutstore, Nextcloud или другому сервису';
+  String get cloudCustomWebdavSubtitle =>
+      'Настройте подключение к Nutstore, Nextcloud или другому сервису';
 
   @override
   String get cloudCustomS3Title => 'Хранилище S3';
@@ -3873,7 +4045,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudBeeCountCloudTitle => 'BeeCount Cloud';
 
   @override
-  String get cloudBeeCountCloudSubtitle => 'Свой сервер · синхронизация изменений · несколько устройств';
+  String get cloudBeeCountCloudSubtitle =>
+      'Свой сервер · синхронизация изменений · несколько устройств';
 
   @override
   String get cloudConfigureBeeCountCloudTitle => 'Настроить BeeCount Cloud';
@@ -3909,7 +4082,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudBeeCountCloudLoginFailed => 'Не удалось войти';
 
   @override
-  String get cloudBeeCountCloudSyncSubtitle => 'Синхронизация изменений · несколько устройств';
+  String get cloudBeeCountCloudSyncSubtitle =>
+      'Синхронизация изменений · несколько устройств';
 
   @override
   String get cloudBeeCountCloudConnected => 'Подключено';
@@ -3918,25 +4092,29 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudBeeCountCloudNotConnected => 'Не подключено';
 
   @override
-  String get cloudBeeCountCloudNotConnectedHint => 'Настройте облачный сервис и войдите в аккаунт';
+  String get cloudBeeCountCloudNotConnectedHint =>
+      'Настройте облачный сервис и войдите в аккаунт';
 
   @override
   String get cloudBeeCountCloudAutoSync => 'Синхронизация изменений';
 
   @override
-  String get cloudBeeCountCloudAutoSyncHint => 'Изменения автоматически отправляются в облако';
+  String get cloudBeeCountCloudAutoSyncHint =>
+      'Изменения автоматически отправляются в облако';
 
   @override
   String get cloudBeeCountCloudMultiDevice => 'Синхронизация устройств';
 
   @override
-  String get cloudBeeCountCloudMultiDeviceHint => 'Данные на всех устройствах остаются актуальными';
+  String get cloudBeeCountCloudMultiDeviceHint =>
+      'Данные на всех устройствах остаются актуальными';
 
   @override
   String get cloudBeeCountCloudAttachment => 'Синхронизация вложений';
 
   @override
-  String get cloudBeeCountCloudAttachmentHint => 'Фото чеков и другие вложения автоматически копируются в облако';
+  String get cloudBeeCountCloudAttachmentHint =>
+      'Фото чеков и другие вложения автоматически копируются в облако';
 
   @override
   String get cloudTabOffline => 'Офлайн';
@@ -3954,7 +4132,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudIcloudNotAvailableTitle => 'iCloud недоступен';
 
   @override
-  String get cloudIcloudNotAvailableMessage => 'Войдите в iCloud в настройках устройства и попробуйте снова';
+  String get cloudIcloudNotAvailableMessage =>
+      'Войдите в iCloud в настройках устройства и попробуйте снова';
 
   @override
   String get cloudIcloudHelpTitle => 'Инструкция по iCloud';
@@ -3963,7 +4142,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudIcloudHelpPrerequisites => 'Что потребуется';
 
   @override
-  String get cloudIcloudHelpPrereq1 => '1. На устройстве выполнен вход в Apple ID';
+  String get cloudIcloudHelpPrereq1 =>
+      '1. На устройстве выполнен вход в Apple ID';
 
   @override
   String get cloudIcloudHelpPrereq2 => '2. iCloud Drive включён';
@@ -3990,19 +4170,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudIcloudHelpFaqTitle => 'Частые вопросы';
 
   @override
-  String get cloudIcloudHelpFaq1 => 'Если iCloud недоступен, проверьте, включён ли iCloud Drive';
+  String get cloudIcloudHelpFaq1 =>
+      'Если iCloud недоступен, проверьте, включён ли iCloud Drive';
 
   @override
-  String get cloudIcloudHelpFaq2 => 'При первом запуске может потребоваться несколько секунд на подготовку';
+  String get cloudIcloudHelpFaq2 =>
+      'При первом запуске может потребоваться несколько секунд на подготовку';
 
   @override
-  String get cloudIcloudHelpFaq3 => 'Данные хранятся в вашем личном хранилище iCloud';
+  String get cloudIcloudHelpFaq3 =>
+      'Данные хранятся в вашем личном хранилище iCloud';
 
   @override
-  String get cloudIcloudHelpFaq4 => 'Устройства с одним Apple ID синхронизируются автоматически';
+  String get cloudIcloudHelpFaq4 =>
+      'Устройства с одним Apple ID синхронизируются автоматически';
 
   @override
-  String get cloudIcloudHelpNote => 'Синхронизация iCloud использует ваш Apple ID и не требует дополнительных настроек';
+  String get cloudIcloudHelpNote =>
+      'Синхронизация iCloud использует ваш Apple ID и не требует дополнительных настроек';
 
   @override
   String get cloudSupabaseHelpTitle => 'Настройка Supabase';
@@ -4011,13 +4196,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSupabaseHelpIntro => 'Что такое Supabase';
 
   @override
-  String get cloudSupabaseHelpIntro1 => 'Supabase — платформа с открытым кодом, которая предоставляет серверную часть как сервис';
+  String get cloudSupabaseHelpIntro1 =>
+      'Supabase — платформа с открытым кодом, которая предоставляет серверную часть как сервис';
 
   @override
-  String get cloudSupabaseHelpIntro2 => 'Для личного использования достаточно бесплатного тарифа';
+  String get cloudSupabaseHelpIntro2 =>
+      'Для личного использования достаточно бесплатного тарифа';
 
   @override
-  String get cloudSupabaseHelpIntro3 => 'Вы полностью контролируете свои данные';
+  String get cloudSupabaseHelpIntro3 =>
+      'Вы полностью контролируете свои данные';
 
   @override
   String get cloudSupabaseHelpSteps => 'Порядок настройки';
@@ -4026,13 +4214,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSupabaseHelpStep1 => '1. Создайте аккаунт на supabase.com';
 
   @override
-  String get cloudSupabaseHelpStep2 => '2. Создайте новый проект на бесплатном тарифе';
+  String get cloudSupabaseHelpStep2 =>
+      '2. Создайте новый проект на бесплатном тарифе';
 
   @override
   String get cloudSupabaseHelpStep3 => '3. Откройте «Project Settings» > «API»';
 
   @override
-  String get cloudSupabaseHelpStep4 => '4. Скопируйте «Project URL» и ключ anon';
+  String get cloudSupabaseHelpStep4 =>
+      '4. Скопируйте «Project URL» и ключ anon';
 
   @override
   String get cloudSupabaseHelpStep5 => '5. Вставьте их в настройки приложения';
@@ -4041,16 +4231,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSupabaseHelpFaq => 'Частые вопросы';
 
   @override
-  String get cloudSupabaseHelpFaq1 => 'Бесплатный тариф включает 500 МБ хранилища';
+  String get cloudSupabaseHelpFaq1 =>
+      'Бесплатный тариф включает 500 МБ хранилища';
 
   @override
   String get cloudSupabaseHelpFaq2 => 'Данные хранятся в зашифрованном виде';
 
   @override
-  String get cloudSupabaseHelpFaq3 => 'Поддерживается синхронизация между устройствами';
+  String get cloudSupabaseHelpFaq3 =>
+      'Поддерживается синхронизация между устройствами';
 
   @override
-  String get cloudSupabaseHelpNote => 'После настройки создайте аккаунт или войдите, чтобы пользоваться синхронизацией';
+  String get cloudSupabaseHelpNote =>
+      'После настройки создайте аккаунт или войдите, чтобы пользоваться синхронизацией';
 
   @override
   String get cloudDetailedTutorial => 'Подробная инструкция';
@@ -4062,10 +4255,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudWebdavHelpIntro => 'Что такое WebDAV';
 
   @override
-  String get cloudWebdavHelpIntro1 => 'WebDAV — протокол для работы с файлами по сети';
+  String get cloudWebdavHelpIntro1 =>
+      'WebDAV — протокол для работы с файлами по сети';
 
   @override
-  String get cloudWebdavHelpIntro2 => 'Его поддерживают многие облачные и сетевые хранилища (NAS)';
+  String get cloudWebdavHelpIntro2 =>
+      'Его поддерживают многие облачные и сетевые хранилища (NAS)';
 
   @override
   String get cloudWebdavHelpIntro3 => 'Данные хранятся на вашем сервере';
@@ -4074,7 +4269,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudWebdavHelpProviders => 'Поддерживаемые сервисы';
 
   @override
-  String get cloudWebdavHelpProvider1 => '- Nutstore (рекомендуется пользователям из Китая)';
+  String get cloudWebdavHelpProvider1 =>
+      '- Nutstore (рекомендуется пользователям из Китая)';
 
   @override
   String get cloudWebdavHelpProvider2 => '- Nextcloud / ownCloud';
@@ -4092,19 +4288,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudWebdavHelpStep1 => '1. Войдите в веб-версию Nutstore';
 
   @override
-  String get cloudWebdavHelpStep2 => '2. Нажмите на имя аккаунта и выберите «Account Info»';
+  String get cloudWebdavHelpStep2 =>
+      '2. Нажмите на имя аккаунта и выберите «Account Info»';
 
   @override
   String get cloudWebdavHelpStep3 => '3. Откройте вкладку «Security Options»';
 
   @override
-  String get cloudWebdavHelpStep4 => '4. Добавьте пароль приложения (для сторонних приложений)';
+  String get cloudWebdavHelpStep4 =>
+      '4. Добавьте пароль приложения (для сторонних приложений)';
 
   @override
-  String get cloudWebdavHelpStep5 => '5. Скопируйте адрес сервера, имя пользователя и пароль приложения';
+  String get cloudWebdavHelpStep5 =>
+      '5. Скопируйте адрес сервера, имя пользователя и пароль приложения';
 
   @override
-  String get cloudWebdavHelpNote => 'Используйте пароль приложения вместо пароля от аккаунта';
+  String get cloudWebdavHelpNote =>
+      'Используйте пароль приложения вместо пароля от аккаунта';
 
   @override
   String get cloudS3HelpTitle => 'Настройка хранилища S3';
@@ -4113,13 +4313,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudS3HelpIntro => 'Что такое S3';
 
   @override
-  String get cloudS3HelpIntro1 => 'S3 — стандартный протокол объектного хранилища';
+  String get cloudS3HelpIntro1 =>
+      'S3 — стандартный протокол объектного хранилища';
 
   @override
   String get cloudS3HelpIntro2 => 'Его поддерживают многие облачные сервисы';
 
   @override
-  String get cloudS3HelpIntro3 => 'Данные хранятся в выбранном вами облачном сервисе';
+  String get cloudS3HelpIntro3 =>
+      'Данные хранятся в выбранном вами облачном сервисе';
 
   @override
   String get cloudS3HelpProviders => 'Поддерживаемые сервисы';
@@ -4128,7 +4330,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudS3HelpProvider1 => '- AWS S3 (Amazon Web Services)';
 
   @override
-  String get cloudS3HelpProvider2 => '- Cloudflare R2 (10 ГБ в месяц бесплатно)';
+  String get cloudS3HelpProvider2 =>
+      '- Cloudflare R2 (10 ГБ в месяц бесплатно)';
 
   @override
   String get cloudS3HelpProvider3 => '- Backblaze B2 (10 ГБ бесплатно)';
@@ -4158,13 +4361,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudS3HelpStep3 => '3. Откройте «R2» > «Manage R2 API Tokens»';
 
   @override
-  String get cloudS3HelpStep4 => '4. Создайте токен API и скопируйте данные доступа';
+  String get cloudS3HelpStep4 =>
+      '4. Создайте токен API и скопируйте данные доступа';
 
   @override
-  String get cloudS3HelpStep5 => '5. Вставьте адрес сервиса, ключ доступа, секретный ключ и имя бакета';
+  String get cloudS3HelpStep5 =>
+      '5. Вставьте адрес сервиса, ключ доступа, секретный ключ и имя бакета';
 
   @override
-  String get cloudS3HelpNote => 'Рекомендуем Cloudflare R2: 10 ГБ бесплатного хранилища без платы за исходящий трафик';
+  String get cloudS3HelpNote =>
+      'Рекомендуем Cloudflare R2: 10 ГБ бесплатного хранилища без платы за исходящий трафик';
 
   @override
   String get cloudStatusNotTested => 'Не проверено';
@@ -4179,7 +4385,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudCannotOpenLink => 'Не удалось открыть ссылку';
 
   @override
-  String get cloudErrorAuthFailed => 'Не удалось пройти аутентификацию: неверный ключ API';
+  String get cloudErrorAuthFailed =>
+      'Не удалось пройти аутентификацию: неверный ключ API';
 
   @override
   String cloudErrorServerStatus(String code) {
@@ -4190,10 +4397,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudErrorWebdavNotSupported => 'Сервер не поддерживает WebDAV';
 
   @override
-  String get cloudErrorAuthFailedCredentials => 'Не удалось войти: неверное имя пользователя или пароль';
+  String get cloudErrorAuthFailedCredentials =>
+      'Не удалось войти: неверное имя пользователя или пароль';
 
   @override
-  String get cloudErrorAccessDenied => 'Доступ запрещён. Проверьте права доступа';
+  String get cloudErrorAccessDenied =>
+      'Доступ запрещён. Проверьте права доступа';
 
   @override
   String cloudErrorPathNotFound(String path) {
@@ -4224,13 +4433,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSwitchConfirmTitle => 'Сменить облачный сервис';
 
   @override
-  String get cloudSwitchConfirmMessage => 'При смене облачного сервиса будет выполнен выход из текущего аккаунта. Сменить сервис?';
+  String get cloudSwitchConfirmMessage =>
+      'При смене облачного сервиса будет выполнен выход из текущего аккаунта. Сменить сервис?';
 
   @override
   String get cloudSwitchFailedTitle => 'Не удалось сменить сервис';
 
   @override
-  String get cloudSwitchFailedConfigMissing => 'Сначала настройте этот облачный сервис';
+  String get cloudSwitchFailedConfigMissing =>
+      'Сначала настройте этот облачный сервис';
 
   @override
   String get cloudConfigInvalidTitle => 'Неверные настройки';
@@ -4259,19 +4470,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSupabaseAnonKeyHintLong => 'Вставьте ключ anon целиком';
 
   @override
-  String get cloudWebdavRemotePathHelp => 'Путь к папке на сервере, где будут храниться данные';
+  String get cloudWebdavRemotePathHelp =>
+      'Путь к папке на сервере, где будут храниться данные';
 
   @override
   String get cloudWebdavRemotePathLabel => 'Путь на сервере';
 
   @override
-  String get cloudWebdavRemotePathHelperText => 'Путь к папке на сервере, где будут храниться данные';
+  String get cloudWebdavRemotePathHelperText =>
+      'Путь к папке на сервере, где будут храниться данные';
 
   @override
   String get accountsTitle => 'Управление активами';
 
   @override
-  String get accountsEmptyMessage => 'Счетов пока нет. Чтобы добавить счёт, нажмите кнопку в правом верхнем углу';
+  String get accountsEmptyMessage =>
+      'Счетов пока нет. Чтобы добавить счёт, нажмите кнопку в правом верхнем углу';
 
   @override
   String get accountAddTooltip => 'Добавить счёт';
@@ -4289,25 +4503,29 @@ class AppLocalizationsRu extends AppLocalizations {
   String get accountBalanceAdjustmentTitle => 'Подтверждение изменения баланса';
 
   @override
-  String get accountBalanceAdjustmentChooseAction => 'Выберите, как сохранить изменение баланса';
+  String get accountBalanceAdjustmentChooseAction =>
+      'Выберите, как сохранить изменение баланса';
 
   @override
   String get accountBalanceAdjustmentOnly => 'Изменить только баланс';
 
   @override
-  String get accountBalanceAdjustmentOnlyMessage => 'Транзакция не будет создана. Динамика баланса за прошлые периоды пересчитается на основе нового баланса.';
+  String get accountBalanceAdjustmentOnlyMessage =>
+      'Транзакция не будет создана. Динамика баланса за прошлые периоды пересчитается на основе нового баланса.';
 
   @override
   String get accountBalanceAdjustmentCreate => 'Создать транзакцию';
 
   @override
-  String get accountBalanceAdjustmentCreateMessage => 'Будет создана обычная транзакция дохода или расхода в категории «Корректировка баланса». Она будет учтена в статистике доходов, расходов и бюджета.';
+  String get accountBalanceAdjustmentCreateMessage =>
+      'Будет создана обычная транзакция дохода или расхода в категории «Корректировка баланса». Она будет учтена в статистике доходов, расходов и бюджета.';
 
   @override
   String get accountBalanceAdjustmentConfirmOnly => 'Изменить только баланс';
 
   @override
-  String get accountBalanceAdjustmentConfirmCreate => 'Подтвердить и создать транзакцию';
+  String get accountBalanceAdjustmentConfirmCreate =>
+      'Подтвердить и создать транзакцию';
 
   @override
   String get accountBalanceCurrent => 'Текущий баланс';
@@ -4337,7 +4555,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get accountNameRequired => 'Введите название счёта';
 
   @override
-  String get accountNameDuplicate => 'Счёт с таким названием уже есть. Введите другое название';
+  String get accountNameDuplicate =>
+      'Счёт с таким названием уже есть. Введите другое название';
 
   @override
   String get accountTypeLabel => 'Тип счёта';
@@ -4364,7 +4583,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get accountInitialBalance => 'Начальный баланс';
 
   @override
-  String get accountInitialBalanceHint => 'Введите начальный баланс (необязательно)';
+  String get accountInitialBalanceHint =>
+      'Введите начальный баланс (необязательно)';
 
   @override
   String get accountDeleteWarningTitle => 'Подтверждение удаления';
@@ -4418,7 +4638,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get accountHideConfirmTitle => 'Скрыть этот счёт?';
 
   @override
-  String get accountHideConfirmBody => 'Этот счёт нельзя будет выбрать для новых транзакций. История и баланс сохранятся, а счёт можно восстановить в любой момент.';
+  String get accountHideConfirmBody =>
+      'Этот счёт нельзя будет выбрать для новых транзакций. История и баланс сохранятся, а счёт можно восстановить в любой момент.';
 
   @override
   String accountHideRecurringWarn(int count) {
@@ -4434,7 +4655,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get accountHideClearedDefault => 'Этот счёт больше не используется по умолчанию';
+  String get accountHideClearedDefault =>
+      'Этот счёт больше не используется по умолчанию';
 
   @override
   String get accountHiddenToast => 'Счёт скрыт';
@@ -4449,16 +4671,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateCorruptedFileTitle => 'Установочный пакет повреждён';
 
   @override
-  String get updateCorruptedFileMessage => 'Ранее скачанный установочный пакет неполный или повреждён. Удалить его и скачать заново?';
+  String get updateCorruptedFileMessage =>
+      'Ранее скачанный установочный пакет неполный или повреждён. Удалить его и скачать заново?';
 
   @override
   String get welcomeTitle => 'Добро пожаловать в BeeCount';
 
   @override
-  String get welcomeDescription => 'Приложение для учёта, которое бережно относится к вашим данным';
+  String get welcomeDescription =>
+      'Приложение для учёта, которое бережно относится к вашим данным';
 
   @override
-  String get welcomeCurrencyDescription => 'Выберите валюту, которой пользуетесь чаще всего. Её можно сменить в настройках в любое время';
+  String get welcomeCurrencyDescription =>
+      'Выберите валюту, которой пользуетесь чаще всего. Её можно сменить в настройках в любое время';
 
   @override
   String get welcomeCreateDefaultLedger => 'Создать основную ведомость';
@@ -4467,13 +4692,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomePrivacyTitle => 'Открытый код · Развитие с сообществом';
 
   @override
-  String get welcomePrivacyFeature1 => 'Код открыт на 100% и доступен для проверки сообществом';
+  String get welcomePrivacyFeature1 =>
+      'Код открыт на 100% и доступен для проверки сообществом';
 
   @override
-  String get welcomePrivacyFeature2 => 'Все данные хранятся на вашем устройстве';
+  String get welcomePrivacyFeature2 =>
+      'Все данные хранятся на вашем устройстве';
 
   @override
-  String get welcomeOpenSourceFeature1 => 'Активное сообщество разработчиков постоянно улучшает приложение';
+  String get welcomeOpenSourceFeature1 =>
+      'Активное сообщество разработчиков постоянно улучшает приложение';
 
   @override
   String get welcomeViewGitHub => 'Открыть репозиторий на GitHub';
@@ -4482,16 +4710,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomeCloudSyncTitle => 'Синхронизация по желанию';
 
   @override
-  String get welcomeCloudSyncDescription => 'Выберите удобный способ синхронизации — данные в BeeCount остаются под вашим контролем';
+  String get welcomeCloudSyncDescription =>
+      'Выберите удобный способ синхронизации — данные в BeeCount остаются под вашим контролем';
 
   @override
-  String get welcomeCloudSyncFeature1 => 'Можно пользоваться приложением офлайн, без облачного сервиса';
+  String get welcomeCloudSyncFeature1 =>
+      'Можно пользоваться приложением офлайн, без облачного сервиса';
 
   @override
-  String get welcomeCloudSyncFeature2 => 'BeeCount Cloud на своём сервере (синхронизация устройств в реальном времени и веб-интерфейс)';
+  String get welcomeCloudSyncFeature2 =>
+      'BeeCount Cloud на своём сервере (синхронизация устройств в реальном времени и веб-интерфейс)';
 
   @override
-  String get welcomeCloudSyncFeature3 => 'Или выберите iCloud / WebDAV / Supabase / S3';
+  String get welcomeCloudSyncFeature3 =>
+      'Или выберите iCloud / WebDAV / Supabase / S3';
 
   @override
   String get widgetManagement => 'Виджет на главном экране';
@@ -4503,31 +4735,37 @@ class AppLocalizationsRu extends AppLocalizations {
   String get widgetPreview => 'Предпросмотр виджета';
 
   @override
-  String get widgetPreviewDesc => 'Виджет показывает данные текущей ведомости и использует цвет темы приложения';
+  String get widgetPreviewDesc =>
+      'Виджет показывает данные текущей ведомости и использует цвет темы приложения';
 
   @override
   String get widgetGalleryTitle => 'Варианты виджетов';
 
   @override
-  String get widgetGalleryDesc => 'На примерах — тестовые данные. Сам виджет показывает данные текущей ведомости и использует цвет вашей темы.';
+  String get widgetGalleryDesc =>
+      'На примерах — тестовые данные. Сам виджет показывает данные текущей ведомости и использует цвет вашей темы.';
 
   @override
   String get widgetGalleryGlanceTitle => 'Обзор';
 
   @override
-  String get widgetGalleryGlanceDesc => 'Доходы и расходы за сегодня и за месяц';
+  String get widgetGalleryGlanceDesc =>
+      'Доходы и расходы за сегодня и за месяц';
 
   @override
-  String get widgetGalleryNetWorthDesc => 'Сумма активов и обязательств, динамика чистых активов';
+  String get widgetGalleryNetWorthDesc =>
+      'Сумма активов и обязательств, динамика чистых активов';
 
   @override
   String get widgetGalleryQuickAddTitle => 'Быстрый ввод';
 
   @override
-  String get widgetGalleryQuickAddDesc => 'Добавляйте транзакции в частые категории одним касанием';
+  String get widgetGalleryQuickAddDesc =>
+      'Добавляйте транзакции в частые категории одним касанием';
 
   @override
-  String get widgetGalleryBudgetDesc => 'Следите за тем, сколько бюджета уже потрачено';
+  String get widgetGalleryBudgetDesc =>
+      'Следите за тем, сколько бюджета уже потрачено';
 
   @override
   String get widgetGalleryRecentDesc => 'Просматривайте последние транзакции';
@@ -4539,13 +4777,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get widgetDashboardTitle => 'Обзор месяца';
 
   @override
-  String get widgetGalleryDashboardDesc => 'Доходы, расходы, динамика и недавние транзакции на одном экране';
+  String get widgetGalleryDashboardDesc =>
+      'Доходы, расходы, динамика и недавние транзакции на одном экране';
 
   @override
-  String get widgetGalleryConsumptionRhythmDesc => 'Темп расходов за последние 30 дней';
+  String get widgetGalleryConsumptionRhythmDesc =>
+      'Темп расходов за последние 30 дней';
 
   @override
-  String get widgetGalleryBeeTrailDesc => 'Отмечайте дни в сотах и постепенно привыкайте вести учёт ежедневно';
+  String get widgetGalleryBeeTrailDesc =>
+      'Отмечайте дни в сотах и постепенно привыкайте вести учёт ежедневно';
 
   @override
   String get widgetSizeSmall => 'Малый';
@@ -4560,7 +4801,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get howToAddWidget => 'Как добавить виджет';
 
   @override
-  String get iosWidgetStep1 => 'Нажмите и удерживайте свободное место на экране «Домой», чтобы перейти в режим правки';
+  String get iosWidgetStep1 =>
+      'Нажмите и удерживайте свободное место на экране «Домой», чтобы перейти в режим правки';
 
   @override
   String get iosWidgetStep2 => 'Нажмите «+» в левом верхнем углу';
@@ -4569,31 +4811,37 @@ class AppLocalizationsRu extends AppLocalizations {
   String get iosWidgetStep3 => 'Найдите и выберите «BeeCount»';
 
   @override
-  String get iosWidgetStep4 => 'Выберите виджет среднего размера и добавьте его на экран «Домой»';
+  String get iosWidgetStep4 =>
+      'Выберите виджет среднего размера и добавьте его на экран «Домой»';
 
   @override
-  String get androidWidgetStep1 => 'Нажмите и удерживайте свободное место на главном экране';
+  String get androidWidgetStep1 =>
+      'Нажмите и удерживайте свободное место на главном экране';
 
   @override
   String get androidWidgetStep2 => 'Выберите «Виджеты»';
 
   @override
-  String get androidWidgetStep3 => 'Найдите виджет «BeeCount», нажмите и удерживайте его';
+  String get androidWidgetStep3 =>
+      'Найдите виджет «BeeCount», нажмите и удерживайте его';
 
   @override
-  String get androidWidgetStep4 => 'Перетащите виджет в нужное место на главном экране';
+  String get androidWidgetStep4 =>
+      'Перетащите виджет в нужное место на главном экране';
 
   @override
   String get aboutWidget => 'О виджете';
 
   @override
-  String get widgetDescription => 'Виджет показывает доходы и расходы за сегодня и за месяц. Данные обновляются каждые 30 минут и сразу при открытии приложения.';
+  String get widgetDescription =>
+      'Виджет показывает доходы и расходы за сегодня и за месяц. Данные обновляются каждые 30 минут и сразу при открытии приложения.';
 
   @override
   String get widgetQuickEntryTitle => 'Быстрый ввод';
 
   @override
-  String get widgetQuickEntryDesc => 'Коснитесь левой части виджета, чтобы добавить расход, или правой, чтобы добавить доход. Быстрая команда с URL beecount://new?type=transfer позволяет сразу начать перевод.';
+  String get widgetQuickEntryDesc =>
+      'Коснитесь левой части виджета, чтобы добавить расход, или правой, чтобы добавить доход. Быстрая команда с URL beecount://new?type=transfer позволяет сразу начать перевод.';
 
   @override
   String get appName => 'BeeCount';
@@ -4617,7 +4865,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get autoScreenshotBilling => 'Автоучёт по скриншотам';
 
   @override
-  String get autoScreenshotBillingDesc => 'Автоматически распознаёт данные о платежах на скриншотах';
+  String get autoScreenshotBillingDesc =>
+      'Автоматически распознаёт данные о платежах на скриншотах';
 
   @override
   String get autoScreenshotBillingTitle => 'Автоучёт по скриншотам';
@@ -4626,7 +4875,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get featureDescription => 'Описание функции';
 
   @override
-  String get featureDescriptionContent => 'Сделайте скриншот экрана оплаты. Приложение распознает сумму и данные продавца и добавит расходную транзакцию.\n\n⚡ Распознавание: 2–3 секунды (на некоторых устройствах дольше)\n🤖 Автоподбор категории\n📝 Автозаполнение заметки\n\n⚠️ Важно:\n• Устройства сохраняют скриншоты с разной скоростью, поэтому задержка может составлять 5–10 секунд\n• Функция может не работать на некоторых устройствах из-за особенностей системы\n• Уже распознанные скриншоты пропускаются\n• Из-за ограничений Scoped Storage в Android 10 и новее приложение не может удалять системные скриншоты. Удаляйте их вручную';
+  String get featureDescriptionContent =>
+      'Сделайте скриншот экрана оплаты. Приложение распознает сумму и данные продавца и добавит расходную транзакцию.\n\n⚡ Распознавание: 2–3 секунды (на некоторых устройствах дольше)\n🤖 Автоподбор категории\n📝 Автозаполнение заметки\n\n⚠️ Важно:\n• Устройства сохраняют скриншоты с разной скоростью, поэтому задержка может составлять 5–10 секунд\n• Функция может не работать на некоторых устройствах из-за особенностей системы\n• Уже распознанные скриншоты пропускаются\n• Из-за ограничений Scoped Storage в Android 10 и новее приложение не может удалять системные скриншоты. Удаляйте их вручную';
 
   @override
   String get autoBilling => 'Автоучёт';
@@ -4638,7 +4888,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get disabled => 'Отключено';
 
   @override
-  String get photosPermissionRequired => 'Для отслеживания скриншотов нужен доступ к фото';
+  String get photosPermissionRequired =>
+      'Для отслеживания скриншотов нужен доступ к фото';
 
   @override
   String get enableSuccess => 'Автоучёт включён';
@@ -4653,13 +4904,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get autoBillingBatteryGuideTitle => 'Настройки оптимизации батареи';
 
   @override
-  String get autoBillingBatteryDesc => 'Для автоучёта приложение должно работать в фоновом режиме. Некоторые телефоны закрывают фоновые приложения при блокировке экрана, из-за чего автоучёт может не сработать. Чтобы этого избежать, отключите оптимизацию батареи для BeeCount.';
+  String get autoBillingBatteryDesc =>
+      'Для автоучёта приложение должно работать в фоновом режиме. Некоторые телефоны закрывают фоновые приложения при блокировке экрана, из-за чего автоучёт может не сработать. Чтобы этого избежать, отключите оптимизацию батареи для BeeCount.';
 
   @override
   String get autoBillingCheckBattery => 'Проверить оптимизацию батареи';
 
   @override
-  String get autoBillingBatteryWarning => '⚠️ Оптимизация батареи включена. Система может закрыть BeeCount, и автоучёт не сработает. Нажмите «Настройки» выше и отключите оптимизацию для BeeCount.';
+  String get autoBillingBatteryWarning =>
+      '⚠️ Оптимизация батареи включена. Система может закрыть BeeCount, и автоучёт не сработает. Нажмите «Настройки» выше и отключите оптимизацию для BeeCount.';
 
   @override
   String get enableFailed => 'Не удалось включить автоучёт';
@@ -4668,73 +4921,89 @@ class AppLocalizationsRu extends AppLocalizations {
   String get disableFailed => 'Не удалось отключить';
 
   @override
-  String get iosAutoFeatureDesc => 'Приложение «Команды» в iOS позволяет распознавать данные платежей на скриншотах и автоматически добавлять транзакции. После настройки распознавание будет запускаться при каждом новом скриншоте.';
+  String get iosAutoFeatureDesc =>
+      'Приложение «Команды» в iOS позволяет распознавать данные платежей на скриншотах и автоматически добавлять транзакции. После настройки распознавание будет запускаться при каждом новом скриншоте.';
 
   @override
   String get iosAutoShortcutConfigTitle => 'Порядок настройки:';
 
   @override
-  String get iosAutoShortcutStep1 => 'Откройте приложение «Команды» и нажмите «+» в правом верхнем углу, чтобы создать быструю команду';
+  String get iosAutoShortcutStep1 =>
+      'Откройте приложение «Команды» и нажмите «+» в правом верхнем углу, чтобы создать быструю команду';
 
   @override
-  String get iosAutoShortcutStep2 => 'Добавьте действие «Сделать снимок экрана»';
+  String get iosAutoShortcutStep2 =>
+      'Добавьте действие «Сделать снимок экрана»';
 
   @override
-  String get iosAutoShortcutStep3 => 'Найдите и добавьте действие «BeeCount — Автоучёт по скриншоту»';
+  String get iosAutoShortcutStep3 =>
+      'Найдите и добавьте действие «BeeCount — Автоучёт по скриншоту»';
 
   @override
-  String get iosAutoShortcutStep4 => 'В действии «BeeCount» укажите в качестве скриншота результат предыдущего шага «Сделать снимок экрана»';
+  String get iosAutoShortcutStep4 =>
+      'В действии «BeeCount» укажите в качестве скриншота результат предыдущего шага «Сделать снимок экрана»';
 
   @override
-  String get iosAutoShortcutStep5 => '(Необязательно) Откройте «Настройки» > «Универсальный доступ» > «Касание» > «Коснуться сзади» и назначьте эту команду';
+  String get iosAutoShortcutStep5 =>
+      '(Необязательно) Откройте «Настройки» > «Универсальный доступ» > «Касание» > «Коснуться сзади» и назначьте эту команду';
 
   @override
-  String get iosAutoShortcutStep6 => 'Готово! При оплате дважды коснитесь задней панели iPhone, чтобы быстро добавить транзакцию';
+  String get iosAutoShortcutStep6 =>
+      'Готово! При оплате дважды коснитесь задней панели iPhone, чтобы быстро добавить транзакцию';
 
   @override
-  String get iosAutoShortcutRecommendedTip => '✅ Рекомендуем назначить команду для функции «Коснуться сзади»: тогда при оплате достаточно дважды коснуться задней панели iPhone. Скриншот будет сделан и распознан автоматически.';
+  String get iosAutoShortcutRecommendedTip =>
+      '✅ Рекомендуем назначить команду для функции «Коснуться сзади»: тогда при оплате достаточно дважды коснуться задней панели iPhone. Скриншот будет сделан и распознан автоматически.';
 
   @override
-  String get iosAutoBackTapTitle => '💡 Запуск двойным касанием сзади (рекомендуется)';
+  String get iosAutoBackTapTitle =>
+      '💡 Запуск двойным касанием сзади (рекомендуется)';
 
   @override
-  String get iosAutoBackTapDesc => '«Настройки» > «Универсальный доступ» > «Касание» > «Коснуться сзади»\n• Выберите «Двойное касание» или «Тройное касание»\n• Выберите только что созданную быструю команду\n• После настройки при оплате дважды коснитесь задней панели iPhone: транзакция добавится автоматически, без ручного скриншота';
+  String get iosAutoBackTapDesc =>
+      '«Настройки» > «Универсальный доступ» > «Касание» > «Коснуться сзади»\n• Выберите «Двойное касание» или «Тройное касание»\n• Выберите только что созданную быструю команду\n• После настройки при оплате дважды коснитесь задней панели iPhone: транзакция добавится автоматически, без ручного скриншота';
 
   @override
   String get iosAutoTutorialTitle => 'Видеоинструкция';
 
   @override
-  String get iosAutoTutorialDesc => 'Посмотреть подробную видеоинструкцию по настройке';
+  String get iosAutoTutorialDesc =>
+      'Посмотреть подробную видеоинструкцию по настройке';
 
   @override
   String get iosAutoImportTitle => 'Быстрая команда в одно касание';
 
   @override
-  String get iosAutoImportDesc => 'Нажмите кнопку ниже, чтобы импортировать готовую команду «Скриншот → Автоучёт». Не нужно вручную добавлять действие «Сделать снимок экрана» и связывать параметры. После импорта рекомендуем назначить команду для функции «Коснуться сзади».';
+  String get iosAutoImportDesc =>
+      'Нажмите кнопку ниже, чтобы импортировать готовую команду «Скриншот → Автоучёт». Не нужно вручную добавлять действие «Сделать снимок экрана» и связывать параметры. После импорта рекомендуем назначить команду для функции «Коснуться сзади».';
 
   @override
   String get iosAutoImportButton => 'Получить команду';
 
   @override
-  String get iosAutoImportFailed => 'Не удалось открыть ссылку на быструю команду. Проверьте подключение и повторите попытку.';
+  String get iosAutoImportFailed =>
+      'Не удалось открыть ссылку на быструю команду. Проверьте подключение и повторите попытку.';
 
   @override
   String get iosAutoManualConfigTitle => 'Ручная настройка (для опытных)';
 
   @override
-  String get iosAutoManualConfigDesc => 'Если быстрый импорт недоступен, создайте команду вручную по этой инструкции.';
+  String get iosAutoManualConfigDesc =>
+      'Если быстрый импорт недоступен, создайте команду вручную по этой инструкции.';
 
   @override
   String get aiSettingsTitle => 'ИИ-ассистент';
 
   @override
-  String get aiSettingsSubtitle => 'Настройка моделей ИИ и способа распознавания';
+  String get aiSettingsSubtitle =>
+      'Настройка моделей ИИ и способа распознавания';
 
   @override
   String get aiEnableTitle => 'Включить ИИ-ассистент';
 
   @override
-  String get aiEnableSubtitle => 'ИИ распознаёт транзакции на скриншотах, определяет сумму, продавца и время и поддерживает диалог обычным языком';
+  String get aiEnableSubtitle =>
+      'ИИ распознаёт транзакции на скриншотах, определяет сумму, продавца и время и поддерживает диалог обычным языком';
 
   @override
   String get aiEnableToastOn => 'ИИ-ассистент включён';
@@ -4752,7 +5021,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiStrategyCloudFirst => 'Сначала в облаке';
 
   @override
-  String get aiStrategyCloudFirstDesc => 'Сначала использовать облачный API, а при сбое — локальную модель';
+  String get aiStrategyCloudFirstDesc =>
+      'Сначала использовать облачный API, а при сбое — локальную модель';
 
   @override
   String get aiStrategyLocalOnly => 'Только на устройстве';
@@ -4761,10 +5031,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiStrategyCloudOnly => 'Только в облаке';
 
   @override
-  String get aiStrategyCloudOnlyDesc => 'Использовать только облачный API, не скачивая модель';
+  String get aiStrategyCloudOnlyDesc =>
+      'Использовать только облачный API, не скачивая модель';
 
   @override
-  String get aiStrategyUnavailable => 'Локальная модель ещё обучается и скоро станет доступна';
+  String get aiStrategyUnavailable =>
+      'Локальная модель ещё обучается и скоро станет доступна';
 
   @override
   String aiStrategySwitched(String strategy) {
@@ -4790,7 +5062,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiCloudApiTestKey => 'Проверить подключение';
 
   @override
-  String get aiChatConfigWarning => 'Поставщик ИИ не настроен. Добавьте его в настройках и выберите для нужных функций';
+  String get aiChatConfigWarning =>
+      'Поставщик ИИ не настроен. Добавьте его в настройках и выберите для нужных функций';
 
   @override
   String get aiChatGoToSettings => 'Открыть настройки';
@@ -4799,64 +5072,78 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiOcrRecognizing => 'Распознаём транзакцию...';
 
   @override
-  String get aiOcrNoAmount => 'Не удалось распознать сумму. Добавьте транзакцию вручную';
+  String get aiOcrNoAmount =>
+      'Не удалось распознать сумму. Добавьте транзакцию вручную';
 
   @override
-  String get aiNotConfiguredHint => 'Сервис ИИ не настроен. Чтобы настроить его, откройте «Профиль → ИИ-ассистент».';
+  String get aiNotConfiguredHint =>
+      'Сервис ИИ не настроен. Чтобы настроить его, откройте «Профиль → ИИ-ассистент».';
 
   @override
-  String get aiOcrCheckLog => 'Не удалось распознать транзакцию. Подробности — в журнале.';
+  String get aiOcrCheckLog =>
+      'Не удалось распознать транзакцию. Подробности — в журнале.';
 
   @override
-  String get aiOcrNoBill => 'Не удалось распознать транзакцию. Убедитесь, что на изображении есть данные о платеже, и попробуйте ещё раз.';
+  String get aiOcrNoBill =>
+      'Не удалось распознать транзакцию. Убедитесь, что на изображении есть данные о платеже, и попробуйте ещё раз.';
 
   @override
-  String get aiNotConfiguredNotificationTitle => '❌ Не удалось распознать скриншот';
+  String get aiNotConfiguredNotificationTitle =>
+      '❌ Не удалось распознать скриншот';
 
   @override
-  String get aiNotConfiguredNotificationBody => 'Сервис ИИ не настроен. Нажмите, чтобы настроить.';
+  String get aiNotConfiguredNotificationBody =>
+      'Сервис ИИ не настроен. Нажмите, чтобы настроить.';
 
   @override
   String get autoBillingNotifyDetectedTitle => '✅ Скриншот обнаружен';
 
   @override
-  String get autoBillingNotifyWaitingFileBody => 'Ожидание сохранения скриншота...';
+  String get autoBillingNotifyWaitingFileBody =>
+      'Ожидание сохранения скриншота...';
 
   @override
-  String get autoBillingNotifyRecognizingScreenshotTitle => 'Распознавание скриншота...';
+  String get autoBillingNotifyRecognizingScreenshotTitle =>
+      'Распознавание скриншота...';
 
   @override
-  String get autoBillingNotifyVisionAnalyzingBody => 'Подождите, ИИ распознаёт данные о платеже на скриншоте';
+  String get autoBillingNotifyVisionAnalyzingBody =>
+      'Подождите, ИИ распознаёт данные о платеже на скриншоте';
 
   @override
   String get autoBillingNotifyRecognizingTextTitle => '⏳ Распознавание';
 
   @override
-  String get autoBillingNotifyTextAnalyzingBody => 'ИИ анализирует данные о платеже...';
+  String get autoBillingNotifyTextAnalyzingBody =>
+      'ИИ анализирует данные о платеже...';
 
   @override
   String get autoBillingNotifyRecognizeFailedTitle => '❌ Ошибка распознавания';
 
   @override
-  String get autoBillingNotifyRecognizeFailedBody => 'Не удалось извлечь данные о платеже из скриншота. Проверьте настройки ИИ или изображение.';
+  String get autoBillingNotifyRecognizeFailedBody =>
+      'Не удалось извлечь данные о платеже из скриншота. Проверьте настройки ИИ или изображение.';
 
   @override
   String get autoBillingNotifyNoBillTitle => 'Транзакция не распознана';
 
   @override
-  String get autoBillingNotifyNoBillBody => 'На скриншоте не найдено данных о транзакции — возможно, на нём нет платежа.';
+  String get autoBillingNotifyNoBillBody =>
+      'На скриншоте не найдено данных о транзакции — возможно, на нём нет платежа.';
 
   @override
   String get autoBillingNotifyFileUnavailableTitle => 'Ошибка распознавания';
 
   @override
-  String get autoBillingNotifyFileUnavailableBody => 'Файл скриншота недоступен';
+  String get autoBillingNotifyFileUnavailableBody =>
+      'Файл скриншота недоступен';
 
   @override
   String get autoBillingNotifyNoLedgerTitle => '❌ Ошибка автоучёта';
 
   @override
-  String get autoBillingNotifyNoLedgerBody => 'Нет ни одной ведомости. Сначала создайте ведомость.';
+  String get autoBillingNotifyNoLedgerBody =>
+      'Нет ни одной ведомости. Сначала создайте ведомость.';
 
   @override
   String get autoBillingNotifyNoAmountBody => 'Не удалось распознать сумму';
@@ -4865,7 +5152,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get autoBillingNotifyCreateFailedTitle => '❌ Транзакция не создана';
 
   @override
-  String get autoBillingNotifyCreateFailedBody => 'Не удалось создать транзакцию';
+  String get autoBillingNotifyCreateFailedBody =>
+      'Не удалось создать транзакцию';
 
   @override
   String get autoBillingNotifyProcessFailedTitle => '❌ Ошибка обработки';
@@ -4904,7 +5192,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get autoBillingNotifySuccessSingleBodyDefault => 'Транзакция добавлена автоматически';
+  String get autoBillingNotifySuccessSingleBodyDefault =>
+      'Транзакция добавлена автоматически';
 
   @override
   String get aiOcrNoLedger => 'Ведомость не найдена';
@@ -4915,10 +5204,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aiPromptVarCurrencies => 'Основная валюта ведомости + используемые счета в иностранных валютах';
+  String get aiPromptVarCurrencies =>
+      'Основная валюта ведомости + используемые счета в иностранных валютах';
 
   @override
-  String get aiPromptVarBillGuard => 'Фильтр изображений без данных о платеже (добавляется только при распознавании скриншотов и автоматическом учёте)';
+  String get aiPromptVarBillGuard =>
+      'Фильтр изображений без данных о платеже (добавляется только при распознавании скриншотов и автоматическом учёте)';
 
   @override
   String aiPromptMissingVarsHint(String vars) {
@@ -4958,70 +5249,83 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSyncPageTitle => 'Облачная синхронизация';
 
   @override
-  String get cloudSyncPageSubtitle => 'Загрузка данных ведомости в облако и скачивание вручную';
+  String get cloudSyncPageSubtitle =>
+      'Загрузка данных ведомости в облако и скачивание вручную';
 
   @override
   String get cloudTutorialTitle => 'Начало работы';
 
   @override
-  String get cloudTutorialIntro => 'BeeCount Cloud — сервер синхронизации для совместной работы на нескольких устройствах в реальном времени. Его можно развернуть у себя. Вот как начать:';
+  String get cloudTutorialIntro =>
+      'BeeCount Cloud — сервер синхронизации для совместной работы на нескольких устройствах в реальном времени. Его можно развернуть у себя. Вот как начать:';
 
   @override
   String get cloudTutorialStep1Title => 'Шаг 1. Развернуть или выбрать сервер';
 
   @override
-  String get cloudTutorialStep1Desc => 'Разверните сервер одной командой Docker (см. инструкцию по Docker в README на GitHub). Или подключитесь к серверу BeeCount Cloud, который уже настроили ваши друзья или команда.';
+  String get cloudTutorialStep1Desc =>
+      'Разверните сервер одной командой Docker (см. инструкцию по Docker в README на GitHub). Или подключитесь к серверу BeeCount Cloud, который уже настроили ваши друзья или команда.';
 
   @override
   String get cloudTutorialStep2Title => 'Шаг 2. Получить аккаунт';
 
   @override
-  String get cloudTutorialStep2Desc => 'В BeeCount Cloud нет самостоятельной регистрации, чтобы предотвратить злоупотребления на общедоступных серверах. Если вы развернули свой сервер, при первом запуске Docker в журнале появятся сгенерированные адрес эл. почты и пароль администратора. Войдите с ними. Если вы подключаетесь к чужому серверу, попросите администратора создать для вас аккаунт в разделе «Пользователи» веб-интерфейса.';
+  String get cloudTutorialStep2Desc =>
+      'В BeeCount Cloud нет самостоятельной регистрации, чтобы предотвратить злоупотребления на общедоступных серверах. Если вы развернули свой сервер, при первом запуске Docker в журнале появятся сгенерированные адрес эл. почты и пароль администратора. Войдите с ними. Если вы подключаетесь к чужому серверу, попросите администратора создать для вас аккаунт в разделе «Пользователи» веб-интерфейса.';
 
   @override
   String get cloudTutorialStep3Title => 'Шаг 3. Войти и включить синхронизацию';
 
   @override
-  String get cloudTutorialStep3Desc => 'В приложении выберите BeeCount Cloud, введите URL сервера и данные аккаунта из шага 2, затем войдите. При первом входе в облако загрузятся все данные ваших локальных ведомостей. Дальнейшие изменения будут отправляться в реальном времени.';
+  String get cloudTutorialStep3Desc =>
+      'В приложении выберите BeeCount Cloud, введите URL сервера и данные аккаунта из шага 2, затем войдите. При первом входе в облако загрузятся все данные ваших локальных ведомостей. Дальнейшие изменения будут отправляться в реальном времени.';
 
   @override
   String get cloudTutorialStep4Title => 'Шаг 4. Войти с других устройств';
 
   @override
-  String get cloudTutorialStep4Desc => 'Войдите в тот же аккаунт на телефоне, планшете или в браузере. Данные сразу станут доступны, а изменения появятся на других устройствах за несколько секунд.';
+  String get cloudTutorialStep4Desc =>
+      'Войдите в тот же аккаунт на телефоне, планшете или в браузере. Данные сразу станут доступны, а изменения появятся на других устройствах за несколько секунд.';
 
   @override
   String get cloudTutorialTipTitle => 'Совет';
 
   @override
-  String get cloudTutorialTipDesc => 'Откройте URL сервера в браузере, чтобы перейти в веб-интерфейс. После входа вы сможете управлять ведомостями и участниками, а также просматривать журналы.';
+  String get cloudTutorialTipDesc =>
+      'Откройте URL сервера в браузере, чтобы перейти в веб-интерфейс. После входа вы сможете управлять ведомостями и участниками, а также просматривать журналы.';
 
   @override
   String get cloudTutorialFeaturesTitle => 'Возможности';
 
   @override
-  String get cloudTutorialFeature1 => '📱 Мгновенная синхронизация: два телефона и веб-версия в одном аккаунте, данные обновляются меньше чем за секунду';
+  String get cloudTutorialFeature1 =>
+      '📱 Мгновенная синхронизация: два телефона и веб-версия в одном аккаунте, данные обновляются меньше чем за секунду';
 
   @override
-  String get cloudTutorialFeature2 => '🌐 Веб-интерфейс в комплекте: один образ Docker содержит сервер и веб-интерфейс, доступный в браузере';
+  String get cloudTutorialFeature2 =>
+      '🌐 Веб-интерфейс в комплекте: один образ Docker содержит сервер и веб-интерфейс, доступный в браузере';
 
   @override
-  String get cloudTutorialFeature3 => '👥 Несколько пользователей: на одном сервере могут зарегистрироваться несколько человек, их данные полностью изолированы друг от друга';
+  String get cloudTutorialFeature3 =>
+      '👥 Несколько пользователей: на одном сервере могут зарегистрироваться несколько человек, их данные полностью изолированы друг от друга';
 
   @override
-  String get cloudTutorialFeature4 => '🤝 Совместные ведомости: пригласите близких или коллег вести одну ведомость, изменения синхронизируются за считаные секунды';
+  String get cloudTutorialFeature4 =>
+      '🤝 Совместные ведомости: пригласите близких или коллег вести одну ведомость, изменения синхронизируются за считаные секунды';
 
   @override
   String get cloudTutorialGotIt => 'Понятно';
 
   @override
-  String get cloudSyncHint => 'При скачивании приложение автоматически сравнивает данные и показывает изменения по отдельности. Синхронизация не мгновенная — не редактируйте одну ведомость на нескольких устройствах одновременно. Синхронизируются данные ведомости, включая связанные счета, категории и теги, но не вложения.';
+  String get cloudSyncHint =>
+      'При скачивании приложение автоматически сравнивает данные и показывает изменения по отдельности. Синхронизация не мгновенная — не редактируйте одну ведомость на нескольких устройствах одновременно. Синхронизируются данные ведомости, включая связанные счета, категории и теги, но не вложения.';
 
   @override
   String get cloudSyncNow => 'Синхронизировать';
 
   @override
-  String get cloudSyncNowHint => 'Отправить изменения с устройства и получить обновления из облака';
+  String get cloudSyncNowHint =>
+      'Отправить изменения с устройства и получить обновления из облака';
 
   @override
   String get cloudSyncInProgress => 'Синхронизация...';
@@ -5032,7 +5336,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get cloudAutoSyncHint => 'Синхронизировать с облаком после каждого изменения';
+  String get cloudAutoSyncHint =>
+      'Синхронизировать с облаком после каждого изменения';
 
   @override
   String get dataManagement => 'Управление данными';
@@ -5044,16 +5349,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dataManagementPageTitle => 'Управление данными';
 
   @override
-  String get dataManagementPageSubtitle => 'Управляйте транзакциями и категориями';
+  String get dataManagementPageSubtitle =>
+      'Управляйте транзакциями и категориями';
 
   @override
-  String get dataManagementAttachmentHint => 'При восстановлении сначала импортируйте пакет вложений, а затем загрузите данные ведомости из CSV или синхронизируйте их с облаком. Так вложения будут правильно привязаны.';
+  String get dataManagementAttachmentHint =>
+      'При восстановлении сначала импортируйте пакет вложений, а затем загрузите данные ведомости из CSV или синхронизируйте их с облаком. Так вложения будут правильно привязаны.';
 
   @override
   String get smartBilling => 'Умный учёт';
 
   @override
-  String get smartBillingDesc => 'ИИ-ассистент, распознавание и автоматический учёт';
+  String get smartBillingDesc =>
+      'ИИ-ассистент, распознавание и автоматический учёт';
 
   @override
   String get smartBillingPageTitle => 'Умный учёт';
@@ -5062,70 +5370,85 @@ class AppLocalizationsRu extends AppLocalizations {
   String get smartBillingPageSubtitle => 'ИИ и автоматизация учёта';
 
   @override
-  String get smartBillingGuideHint => 'Удерживайте кнопку «+» внизу по центру главной страницы, чтобы быстро открыть эти функции';
+  String get smartBillingGuideHint =>
+      'Удерживайте кнопку «+» внизу по центру главной страницы, чтобы быстро открыть эти функции';
 
   @override
   String get smartBillingImageBilling => 'Ввод по изображению';
 
   @override
-  String get smartBillingImageBillingDesc => 'Выберите скриншот платежа из галереи для распознавания';
+  String get smartBillingImageBillingDesc =>
+      'Выберите скриншот платежа из галереи для распознавания';
 
   @override
-  String get smartBillingImageBillingGuide => 'На главной странице удерживайте кнопку «+» внизу по центру и выберите «Галерея». Сначала настройте сервис в разделе «Профиль → Настройки ИИ». Модель распознает сумму, продавца, время и другие данные на скриншоте.';
+  String get smartBillingImageBillingGuide =>
+      'На главной странице удерживайте кнопку «+» внизу по центру и выберите «Галерея». Сначала настройте сервис в разделе «Профиль → Настройки ИИ». Модель распознает сумму, продавца, время и другие данные на скриншоте.';
 
   @override
-  String get smartBillingVisionAIRequired => 'Для распознавания изображений нужен ИИ-сервис с поддержкой этой функции. Настройте его в разделе «Профиль → Настройки ИИ».';
+  String get smartBillingVisionAIRequired =>
+      'Для распознавания изображений нужен ИИ-сервис с поддержкой этой функции. Настройте его в разделе «Профиль → Настройки ИИ».';
 
   @override
   String get smartBillingCameraBilling => 'Ввод по фото';
 
   @override
-  String get smartBillingCameraBillingDesc => 'Сфотографируйте данные платежа для распознавания';
+  String get smartBillingCameraBillingDesc =>
+      'Сфотографируйте данные платежа для распознавания';
 
   @override
-  String get smartBillingCameraBillingGuide => 'На главной странице удерживайте кнопку «+» внизу по центру и выберите «Камера». Сначала настройте сервис в разделе «Профиль → Настройки ИИ». Модель распознает сумму, продавца, время и другие данные на фото.';
+  String get smartBillingCameraBillingGuide =>
+      'На главной странице удерживайте кнопку «+» внизу по центру и выберите «Камера». Сначала настройте сервис в разделе «Профиль → Настройки ИИ». Модель распознает сумму, продавца, время и другие данные на фото.';
 
   @override
   String get smartBillingVoiceBilling => 'Голосовой ввод';
 
   @override
-  String get smartBillingVoiceBillingDesc => 'Быстрое добавление транзакций голосом';
+  String get smartBillingVoiceBillingDesc =>
+      'Быстрое добавление транзакций голосом';
 
   @override
-  String get smartBillingVoiceBillingGuide => 'На главной странице удерживайте кнопку «+» внизу по центру и выберите «Голос». ИИ преобразует речь в текст и извлечёт из него данные транзакции.';
+  String get smartBillingVoiceBillingGuide =>
+      'На главной странице удерживайте кнопку «+» внизу по центру и выберите «Голос». ИИ преобразует речь в текст и извлечёт из него данные транзакции.';
 
   @override
-  String get smartBillingAIRequired => 'Для голосового ввода нужен ИИ-сервис распознавания речи. Настройте его в разделе «Профиль → Настройки ИИ».';
+  String get smartBillingAIRequired =>
+      'Для голосового ввода нужен ИИ-сервис распознавания речи. Настройте его в разделе «Профиль → Настройки ИИ».';
 
   @override
   String get smartBillingAutoTags => 'Автоподбор тегов';
 
   @override
-  String get smartBillingAutoTagsDesc => 'Автоматически подбирать часто используемые теги по категории';
+  String get smartBillingAutoTagsDesc =>
+      'Автоматически подбирать часто используемые теги по категории';
 
   @override
   String get smartBillingAutoAttachment => 'Автовложения';
 
   @override
-  String get smartBillingAutoAttachmentDesc => 'Автоматически прикреплять исходное изображение при вводе по изображению или фото';
+  String get smartBillingAutoAttachmentDesc =>
+      'Автоматически прикреплять исходное изображение при вводе по изображению или фото';
 
   @override
   String get autoScreenshotBillingIosTitle => 'Автоучёт';
 
   @override
-  String get autoScreenshotBillingIosDesc => 'Автоматическое распознавание платежей через быстрые команды';
+  String get autoScreenshotBillingIosDesc =>
+      'Автоматическое распознавание платежей через быстрые команды';
 
   @override
   String get shareBilling => 'Учёт по скриншоту';
 
   @override
-  String get shareBillingDesc => 'Поделитесь скриншотом оплаты из Alipay или WeChat, чтобы добавить транзакцию';
+  String get shareBillingDesc =>
+      'Поделитесь скриншотом оплаты из Alipay или WeChat, чтобы добавить транзакцию';
 
   @override
-  String get shareBillingGuide => 'Откройте скриншот оплаты в Alipay, WeChat, галерее или другом приложении, нажмите «Поделиться» и выберите BeeCount. Приложение распознает сумму, продавца и время и добавит транзакцию. Сохранять скриншот заранее не нужно.';
+  String get shareBillingGuide =>
+      'Откройте скриншот оплаты в Alipay, WeChat, галерее или другом приложении, нажмите «Поделиться» и выберите BeeCount. Приложение распознает сумму, продавца и время и добавит транзакцию. Сохранять скриншот заранее не нужно.';
 
   @override
-  String get shareBillingActionHint => 'После отправки скриншот распознаётся в фоновом режиме — открывать BeeCount не нужно';
+  String get shareBillingActionHint =>
+      'После отправки скриншот распознаётся в фоновом режиме — открывать BeeCount не нужно';
 
   @override
   String get automation => 'Автоматизация';
@@ -5137,19 +5460,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get automationPageTitle => 'Автоматизация';
 
   @override
-  String get automationPageSubtitle => 'Настройте повторяющиеся транзакции и напоминания';
+  String get automationPageSubtitle =>
+      'Настройте повторяющиеся транзакции и напоминания';
 
   @override
   String get appearanceSettings => 'Персонализация';
 
   @override
-  String get appearanceSettingsDesc => 'Тема, шрифт, язык, блокировка приложения и т. д.';
+  String get appearanceSettingsDesc =>
+      'Тема, шрифт, язык, блокировка приложения и т. д.';
 
   @override
   String get appearanceSettingsPageTitle => 'Персонализация';
 
   @override
-  String get appearanceSettingsPageSubtitle => 'Оформление, отображение, безопасность и другие настройки приложения';
+  String get appearanceSettingsPageSubtitle =>
+      'Оформление, отображение, безопасность и другие настройки приложения';
 
   @override
   String get about => 'О приложении';
@@ -5197,7 +5523,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aboutDeveloperStoryTitle => 'От разработчика';
 
   @override
-  String get aboutDeveloperStory => 'Я начал записывать расходы в 2015 году, когда был стажёром, и веду учёт уже больше десяти лет. Меня беспокоили реклама, платный доступ, риск утечки данных и закрытия приложений. Поэтому я решил сделать своё — сначала это был небольшой инструмент для меня и моей семьи.\n\nВ сентябре 2025 года вышла первая версия BeeCount. Честно говоря, я не знал, будет ли им кто-нибудь пользоваться. Но постепенно стали приходить отзывы: кто-то наконец нашёл простое приложение для учёта финансов, кто-то предложил отличную идею, а кто-то просто поставил пять звёзд. Каждый отзыв напоминал мне, что проект стоит развивать дальше.\n\nВ BeeCount нет рекламы и подписок, а исходный код полностью открыт. Все ваши данные остаются на устройстве и не загружаются ни на один сторонний сервер. Но выпуск и поддержка приложения требуют расходов: аккаунты разработчика, серверы и другие затраты сейчас покрываются пожертвованиями сообщества. Адаптацией к новым версиям ОС, исправлением ошибок и разработкой новых функций я занимаюсь в свободное от основной работы время.\n\nЕсли BeeCount вам помогает, поставьте оценку, расскажите о приложении или поддержите его пожертвованием. Это поможет небольшому проекту развиваться. Спасибо за ваше доверие.';
+  String get aboutDeveloperStory =>
+      'Я начал записывать расходы в 2015 году, когда был стажёром, и веду учёт уже больше десяти лет. Меня беспокоили реклама, платный доступ, риск утечки данных и закрытия приложений. Поэтому я решил сделать своё — сначала это был небольшой инструмент для меня и моей семьи.\n\nВ сентябре 2025 года вышла первая версия BeeCount. Честно говоря, я не знал, будет ли им кто-нибудь пользоваться. Но постепенно стали приходить отзывы: кто-то наконец нашёл простое приложение для учёта финансов, кто-то предложил отличную идею, а кто-то просто поставил пять звёзд. Каждый отзыв напоминал мне, что проект стоит развивать дальше.\n\nВ BeeCount нет рекламы и подписок, а исходный код полностью открыт. Все ваши данные остаются на устройстве и не загружаются ни на один сторонний сервер. Но выпуск и поддержка приложения требуют расходов: аккаунты разработчика, серверы и другие затраты сейчас покрываются пожертвованиями сообщества. Адаптацией к новым версиям ОС, исправлением ошибок и разработкой новых функций я занимаюсь в свободное от основной работы время.\n\nЕсли BeeCount вам помогает, поставьте оценку, расскажите о приложении или поддержите его пожертвованием. Это поможет небольшому проекту развиваться. Спасибо за ваше доверие.';
 
   @override
   String get aboutRelatedProducts => 'Другие продукты';
@@ -5209,7 +5536,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aboutBeeAssetsSubtitle => 'Весь портфель активов наглядно';
 
   @override
-  String get aboutBeeAssetsIntro => 'BeeCount помогает вести повседневный учёт, а BeeAssets наглядно показывает состав портфеля: динамику чистых активов по всем счетам, разбивку по недвижимости, инвестициям и криптоактивам, доходность, сроки владения и долю каждого вида активов.';
+  String get aboutBeeAssetsIntro =>
+      'BeeCount помогает вести повседневный учёт, а BeeAssets наглядно показывает состав портфеля: динамику чистых активов по всем счетам, разбивку по недвижимости, инвестициям и криптоактивам, доходность, сроки владения и долю каждого вида активов.';
 
   @override
   String get aboutBeeDNS => 'BeeDNS';
@@ -5218,13 +5546,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aboutBeeDNSSubtitle => 'Простое управление DNS';
 
   @override
-  String get aboutBeeDNSIntro => 'Ваши домены распределены между Cloudflare и Aliyun? В BeeDNS можно массово редактировать записи, переключать A/AAAA, переносить настройки DNS и управлять поддоменами — без переключения между панелями провайдеров.';
+  String get aboutBeeDNSIntro =>
+      'Ваши домены распределены между Cloudflare и Aliyun? В BeeDNS можно массово редактировать записи, переключать A/AAAA, переносить настройки DNS и управлять поддоменами — без переключения между панелями провайдеров.';
 
   @override
   String get productPromoAndroidTitle => 'Запросить доступ к бете';
 
   @override
-  String get productPromoAndroidMessage => 'Приложение пока проходит закрытое тестирование в Google Play — доступ только по приглашению.\n\nКак подать заявку: напишите нам, указав адрес почты аккаунта Google (обязательно) и кратко описав, как вы планируете пользоваться приложением (необязательно). Мы ответим в течение 1–3 дней и добавим вас в список участников бета-тестирования.';
+  String get productPromoAndroidMessage =>
+      'Приложение пока проходит закрытое тестирование в Google Play — доступ только по приглашению.\n\nКак подать заявку: напишите нам, указав адрес почты аккаунта Google (обязательно) и кратко описав, как вы планируете пользоваться приложением (необязательно). Мы ответим в течение 1–3 дней и добавим вас в список участников бета-тестирования.';
 
   @override
   String get productPromoOpenStore => 'Открыть в App Store';
@@ -5236,13 +5566,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get productPromoLearnMore => 'Pro';
 
   @override
-  String get productPromoEmailLabel => 'Почта для заявок (нажмите, чтобы скопировать)';
+  String get productPromoEmailLabel =>
+      'Почта для заявок (нажмите, чтобы скопировать)';
 
   @override
   String get productPromoCopiedToast => 'Адрес скопирован в буфер обмена';
 
   @override
-  String get productPromoMailUnavailable => 'Почтовое приложение не найдено. Адрес скопирован — вставьте его в любом почтовом приложении и отправьте письмо.';
+  String get productPromoMailUnavailable =>
+      'Почтовое приложение не найдено. Адрес скопирован — вставьте его в любом почтовом приложении и отправьте письмо.';
 
   @override
   String get productPromoEmailButton => 'Отправить письмо';
@@ -5297,7 +5629,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get logCenterClearConfirmTitle => 'Очистка журналов';
 
   @override
-  String get logCenterClearConfirmMessage => 'Очистить все журналы? Это действие нельзя отменить.';
+  String get logCenterClearConfirmMessage =>
+      'Очистить все журналы? Это действие нельзя отменить.';
 
   @override
   String get logCenterCleared => 'Журналы очищены';
@@ -5309,13 +5642,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get configImportExportTitle => 'Импорт и экспорт настроек';
 
   @override
-  String get configImportExportSubtitle => 'Резервное копирование и восстановление настроек';
+  String get configImportExportSubtitle =>
+      'Резервное копирование и восстановление настроек';
 
   @override
   String get configImportExportInfoTitle => 'Описание';
 
   @override
-  String get configImportExportInfoMessage => 'Здесь можно экспортировать и импортировать настройки приложения, в том числе параметры облачных сервисов и ИИ. Файл настроек в формате YAML удобно просматривать и редактировать.\n\n⚠️ В файлах настроек есть конфиденциальные данные, например ключи API и пароли. Храните их в безопасном месте.';
+  String get configImportExportInfoMessage =>
+      'Здесь можно экспортировать и импортировать настройки приложения, в том числе параметры облачных сервисов и ИИ. Файл настроек в формате YAML удобно просматривать и редактировать.\n\n⚠️ В файлах настроек есть конфиденциальные данные, например ключи API и пароли. Храните их в безопасном месте.';
 
   @override
   String get configExportTitle => 'Экспортировать настройки';
@@ -5354,7 +5689,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get configImportRestartTitle => 'Требуется перезапуск';
 
   @override
-  String get configImportRestartMessage => 'Настройки импортированы. Часть настроек вступит в силу после перезапуска приложения.';
+  String get configImportRestartMessage =>
+      'Настройки импортированы. Часть настроек вступит в силу после перезапуска приложения.';
 
   @override
   String get configImportExportIncludesTitle => 'Что входит в файл';
@@ -5392,10 +5728,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get configIncludeAI => 'Настройки распознавания с ИИ';
 
   @override
-  String get configIncludeAISubtitle => 'Поставщики, назначение моделей для задач, параметры моделей и т. д.';
+  String get configIncludeAISubtitle =>
+      'Поставщики, назначение моделей для задач, параметры моделей и т. д.';
 
   @override
-  String get configIncludeAppSettings => 'Настройки приложения (язык, оформление, напоминания, основной счёт и др.)';
+  String get configIncludeAppSettings =>
+      'Настройки приложения (язык, оформление, напоминания, основной счёт и др.)';
 
   @override
   String get configIncludeRecurringTransactions => 'Повторяющиеся транзакции';
@@ -5416,7 +5754,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get configIncludeOtherSettings => 'Другие настройки';
 
   @override
-  String get configIncludeOtherSettingsSubtitle => 'Настройки облачного сервиса, ИИ, приложения и др.';
+  String get configIncludeOtherSettingsSubtitle =>
+      'Настройки облачного сервиса, ИИ, приложения и др.';
 
   @override
   String get configExportSelectTitle => 'Что экспортировать';
@@ -5437,7 +5776,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ledgersConflictTitle => 'Конфликт синхронизации';
 
   @override
-  String get ledgersConflictMessage => 'Данные ведомости на устройстве и в облаке различаются. Выберите действие:';
+  String get ledgersConflictMessage =>
+      'Данные ведомости на устройстве и в облаке различаются. Выберите действие:';
 
   @override
   String ledgersConflictLocalInfo(int count) {
@@ -5488,7 +5828,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storageManagementTitle => 'Управление хранилищем';
 
   @override
-  String get storageManagementSubtitle => 'Очистите кеш, чтобы освободить место';
+  String get storageManagementSubtitle =>
+      'Очистите кеш, чтобы освободить место';
 
   @override
   String get storageAIModels => 'Модели ИИ';
@@ -5503,7 +5844,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storageFiles => 'файлов';
 
   @override
-  String get storageHint => 'Нажмите на пункт, чтобы удалить соответствующие файлы кеша';
+  String get storageHint =>
+      'Нажмите на пункт, чтобы удалить соответствующие файлы кеша';
 
   @override
   String get storageClearConfirmTitle => 'Подтверждение очистки';
@@ -5531,7 +5873,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get accountTotalBalance => 'Чистые активы';
 
   @override
-  String get accountCurrencyLocked => 'Нельзя изменить валюту счёта, по которому уже есть транзакции';
+  String get accountCurrencyLocked =>
+      'Нельзя изменить валюту счёта, по которому уже есть транзакции';
 
   @override
   String get accountDefaultIncomeTitle => 'Счёт для доходов по умолчанию';
@@ -5570,7 +5913,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transferUpdateSuccess => 'Перевод обновлён';
 
   @override
-  String get transferDifferentCurrencyError => 'Перевод возможен только между счетами в одной валюте';
+  String get transferDifferentCurrencyError =>
+      'Перевод возможен только между счетами в одной валюте';
 
   @override
   String get transferToPrefix => 'Куда:';
@@ -5582,7 +5926,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomeCategoryModeTitle => 'Структура категорий';
 
   @override
-  String get welcomeCategoryModeDescription => 'Выберите, как вам удобнее организовать категории';
+  String get welcomeCategoryModeDescription =>
+      'Выберите, как вам удобнее организовать категории';
 
   @override
   String get welcomeCategoryModeFlatTitle => 'Без подкатегорий';
@@ -5591,43 +5936,53 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomeCategoryModeFlatDescription => 'Просто и быстро';
 
   @override
-  String get welcomeCategoryModeFlatFeature1 => 'Один уровень категорий — легко разобраться';
+  String get welcomeCategoryModeFlatFeature1 =>
+      'Один уровень категорий — легко разобраться';
 
   @override
-  String get welcomeCategoryModeFlatFeature2 => 'Подходит, если не нужно много категорий';
+  String get welcomeCategoryModeFlatFeature2 =>
+      'Подходит, если не нужно много категорий';
 
   @override
-  String get welcomeCategoryModeFlatFeature3 => 'Быстрый выбор категорий при добавлении транзакций';
+  String get welcomeCategoryModeFlatFeature3 =>
+      'Быстрый выбор категорий при добавлении транзакций';
 
   @override
   String get welcomeCategoryModeHierarchicalTitle => 'С подкатегориями';
 
   @override
-  String get welcomeCategoryModeHierarchicalDescription => 'Более подробный учёт';
+  String get welcomeCategoryModeHierarchicalDescription =>
+      'Более подробный учёт';
 
   @override
-  String get welcomeCategoryModeHierarchicalFeature1 => 'Поддержка родительских категорий и подкатегорий';
+  String get welcomeCategoryModeHierarchicalFeature1 =>
+      'Поддержка родительских категорий и подкатегорий';
 
   @override
-  String get welcomeCategoryModeHierarchicalFeature2 => 'Более точная группировка транзакций';
+  String get welcomeCategoryModeHierarchicalFeature2 =>
+      'Более точная группировка транзакций';
 
   @override
-  String get welcomeCategoryModeHierarchicalFeature3 => 'Подходит для детального учёта';
+  String get welcomeCategoryModeHierarchicalFeature3 =>
+      'Подходит для детального учёта';
 
   @override
   String get welcomeCategoryModeNoneTitle => 'Без категорий';
 
   @override
-  String get welcomeCategoryModeNoneDescription => 'Добавляйте только те категории, которые нужны вам';
+  String get welcomeCategoryModeNoneDescription =>
+      'Добавляйте только те категории, которые нужны вам';
 
   @override
   String get welcomeCategoryModeNoneFeature1 => 'Нет готового набора категорий';
 
   @override
-  String get welcomeCategoryModeNoneFeature2 => 'Создавайте категории под свои задачи';
+  String get welcomeCategoryModeNoneFeature2 =>
+      'Создавайте категории под свои задачи';
 
   @override
-  String get welcomeCategoryModeNoneFeature3 => 'Подходит, если у вас своя система категорий';
+  String get welcomeCategoryModeNoneFeature3 =>
+      'Подходит, если у вас своя система категорий';
 
   @override
   String get welcomeExistingUserTitle => 'Уже пользовались BeeCount?';
@@ -5653,7 +6008,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomeImportAttachmentTitle => 'Импорт вложений';
 
   @override
-  String get welcomeImportAttachmentDesc => 'Импортировать также файлы вложений?';
+  String get welcomeImportAttachmentDesc =>
+      'Импортировать также файлы вложений?';
 
   @override
   String get welcomeImportAttachmentButton => 'Выбрать файл вложений';
@@ -5678,7 +6034,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get iosVersionWarningTitle => 'Требуется iOS 16.0 или новее';
 
   @override
-  String get iosVersionWarningDesc => 'Автоучёт по скриншотам использует фреймворк App Intents, который появился в iOS 16. На вашем устройстве установлена более ранняя версия iOS, и эта функция недоступна.\n\nЧтобы пользоваться функцией, обновите iOS до версии 16 или новее.';
+  String get iosVersionWarningDesc =>
+      'Автоучёт по скриншотам использует фреймворк App Intents, который появился в iOS 16. На вашем устройстве установлена более ранняя версия iOS, и эта функция недоступна.\n\nЧтобы пользоваться функцией, обновите iOS до версии 16 или новее.';
 
   @override
   String get aiChatTitle => 'ИИ-ассистент';
@@ -5690,7 +6047,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiChatClearHistoryDialogTitle => 'Очистка истории чата';
 
   @override
-  String get aiChatClearHistoryDialogContent => 'Удалить все сообщения чата? Отменить это действие нельзя.';
+  String get aiChatClearHistoryDialogContent =>
+      'Удалить все сообщения чата? Отменить это действие нельзя.';
 
   @override
   String get aiChatInputHint => 'Например: кофе стоил \$35';
@@ -5702,13 +6060,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentSuggestionOverviewTitle => 'Доходы и расходы за месяц';
 
   @override
-  String get agentSuggestionOverviewPrompt => 'Подведи итоги за этот месяц: доходы, расходы и разница между ними.';
+  String get agentSuggestionOverviewPrompt =>
+      'Подведи итоги за этот месяц: доходы, расходы и разница между ними.';
 
   @override
   String get agentSuggestionCategoryTitle => 'Доли по категориям';
 
   @override
-  String get agentSuggestionCategoryPrompt => 'Как распределились расходы за этот месяц по категориям верхнего уровня?';
+  String get agentSuggestionCategoryPrompt =>
+      'Как распределились расходы за этот месяц по категориям верхнего уровня?';
 
   @override
   String get aiQuickCommandsOpen => 'Показать запросы';
@@ -5723,7 +6083,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiChatEmptyStartTitle => 'Добавьте транзакцию или задайте вопрос';
 
   @override
-  String get aiChatEmptyStartDescription => 'Я отвечаю на основе данных этой ведомости и при необходимости запрашиваю разрешение.';
+  String get aiChatEmptyStartDescription =>
+      'Я отвечаю на основе данных этой ведомости и при необходимости запрашиваю разрешение.';
 
   @override
   String get aiChatEmptyMonthExpense => 'Расходы за этот месяц';
@@ -5745,13 +6106,15 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aiChatEmptyQuestionExample => 'Спросите: на что у меня ушло больше всего денег в этом месяце?';
+  String get aiChatEmptyQuestionExample =>
+      'Спросите: на что у меня ушло больше всего денег в этом месяце?';
 
   @override
   String get aiChatEmptyFirstTransactionTitle => 'Первая транзакция за сегодня';
 
   @override
-  String get aiChatEmptyFirstTransactionDescription => 'Укажите сумму и назначение, а я помогу добавить транзакцию.';
+  String get aiChatEmptyFirstTransactionDescription =>
+      'Укажите сумму и назначение, а я помогу добавить транзакцию.';
 
   @override
   String get aiChatEmptyFirstTransactionExample => 'Например: обед стоил 28';
@@ -5795,16 +6158,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiChatSendFailed => 'Не удалось отправить';
 
   @override
-  String get agentRunFailed => 'Сервис ИИ временно недоступен. Попробуйте ещё раз позже.';
+  String get agentRunFailed =>
+      'Сервис ИИ временно недоступен. Попробуйте ещё раз позже.';
 
   @override
-  String get agentNativeToolsUnsupported => 'Эта модель может отвечать в чате, но не поддерживает встроенный вызов инструментов для чтения и изменения данных ведомости. Чтобы проверить или сменить модель, откройте «Настройки > Настройки ИИ > Управление провайдерами».';
+  String get agentNativeToolsUnsupported =>
+      'Эта модель может отвечать в чате, но не поддерживает встроенный вызов инструментов для чтения и изменения данных ведомости. Чтобы проверить или сменить модель, откройте «Настройки > Настройки ИИ > Управление провайдерами».';
 
   @override
-  String get agentTurnTimedOut => 'Не удалось дождаться ответа ИИ. Попробуйте ещё раз чуть позже.';
+  String get agentTurnTimedOut =>
+      'Не удалось дождаться ответа ИИ. Попробуйте ещё раз чуть позже.';
 
   @override
-  String get agentRecordIncomplete => 'Не хватает данных о транзакции. Укажите сумму и назначение, затем попробуйте ещё раз.';
+  String get agentRecordIncomplete =>
+      'Не хватает данных о транзакции. Укажите сумму и назначение, затем попробуйте ещё раз.';
 
   @override
   String agentRecordCreated(int count) {
@@ -5820,7 +6187,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get agentStepsExceeded => 'Для этого запроса понадобилось слишком много шагов. Упростите запрос и попробуйте ещё раз.';
+  String get agentStepsExceeded =>
+      'Для этого запроса понадобилось слишком много шагов. Упростите запрос и попробуйте ещё раз.';
 
   @override
   String agentExecutingTool(Object tool) {
@@ -5850,7 +6218,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentToolBudgetStatus => 'проверить бюджет';
 
   @override
-  String get agentToolRecurringTransactions => 'посмотреть повторяющиеся транзакции';
+  String get agentToolRecurringTransactions =>
+      'посмотреть повторяющиеся транзакции';
 
   @override
   String get agentToolRecordTransaction => 'добавить транзакцию';
@@ -5865,22 +6234,26 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentPermissionsTitle => 'Разрешения ИИ-ассистента';
 
   @override
-  String get agentPermissionsIntro => 'Выберите, что может делать ИИ-ассистент. Одни инструменты только читают данные, другие запрашивают разрешение перед изменением данных.';
+  String get agentPermissionsIntro =>
+      'Выберите, что может делать ИИ-ассистент. Одни инструменты только читают данные, другие запрашивают разрешение перед изменением данных.';
 
   @override
   String get agentPermissionsReadOnlySection => 'Только чтение';
 
   @override
-  String get agentPermissionsReadOnlySectionDescription => 'Просмотр данных ведомости без изменений.';
+  String get agentPermissionsReadOnlySectionDescription =>
+      'Просмотр данных ведомости без изменений.';
 
   @override
   String get agentPermissionsWriteSection => 'Изменение данных';
 
   @override
-  String get agentPermissionsWriteSectionDescription => 'Эти инструменты могут менять данные ведомости или локальной памяти. Рекомендуем каждый раз запрашивать разрешение.';
+  String get agentPermissionsWriteSectionDescription =>
+      'Эти инструменты могут менять данные ведомости или локальной памяти. Рекомендуем каждый раз запрашивать разрешение.';
 
   @override
-  String get agentPermissionsDefaultsActive => 'Для всех инструментов действуют разрешения по умолчанию';
+  String get agentPermissionsDefaultsActive =>
+      'Для всех инструментов действуют разрешения по умолчанию';
 
   @override
   String agentPermissionsModifiedCount(int count) {
@@ -5899,10 +6272,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentPermissionsRestoreDefaults => 'Сбросить настройки';
 
   @override
-  String get agentPermissionsRestoreTitle => 'Восстановить разрешения по умолчанию?';
+  String get agentPermissionsRestoreTitle =>
+      'Восстановить разрешения по умолчанию?';
 
   @override
-  String get agentPermissionsRestoreDescription => 'Это отменит все настройки «Всегда разрешать» и восстановит разрешения по умолчанию для каждого инструмента.';
+  String get agentPermissionsRestoreDescription =>
+      'Это отменит все настройки «Всегда разрешать» и восстановит разрешения по умолчанию для каждого инструмента.';
 
   @override
   String get agentPermissionsRestoreConfirm => 'Восстановить';
@@ -5917,37 +6292,48 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentPermissionWaiting => 'Ожидание вашего разрешения';
 
   @override
-  String get agentPermissionWriteFailed => 'Не удалось сохранить настройки разрешений. Попробуйте ещё раз.';
+  String get agentPermissionWriteFailed =>
+      'Не удалось сохранить настройки разрешений. Попробуйте ещё раз.';
 
   @override
-  String get agentAuthorizationPersistenceFailed => 'Не удалось сохранить разрешение, но для этой операции ваш выбор будет учтён.';
+  String get agentAuthorizationPersistenceFailed =>
+      'Не удалось сохранить разрешение, но для этой операции ваш выбор будет учтён.';
 
   @override
-  String get agentToolQueryTransactionsDescription => 'Найти транзакции в текущей ведомости за выбранный период.';
+  String get agentToolQueryTransactionsDescription =>
+      'Найти транзакции в текущей ведомости за выбранный период.';
 
   @override
-  String get agentToolSpendingSummaryDescription => 'Подвести итоги расходов в текущей ведомости за выбранный период.';
+  String get agentToolSpendingSummaryDescription =>
+      'Подвести итоги расходов в текущей ведомости за выбранный период.';
 
   @override
-  String get agentToolTransactionSummaryDescription => 'Подвести итоги по транзакциям в текущей ведомости, сгруппировав их по типу, категории, тегу, счёту или периоду.';
+  String get agentToolTransactionSummaryDescription =>
+      'Подвести итоги по транзакциям в текущей ведомости, сгруппировав их по типу, категории, тегу, счёту или периоду.';
 
   @override
-  String get agentToolBudgetStatusDescription => 'Проверить состояние бюджета текущей ведомости.';
+  String get agentToolBudgetStatusDescription =>
+      'Проверить состояние бюджета текущей ведомости.';
 
   @override
-  String get agentToolRecurringTransactionsDescription => 'Посмотреть активные повторяющиеся транзакции в текущей ведомости.';
+  String get agentToolRecurringTransactionsDescription =>
+      'Посмотреть активные повторяющиеся транзакции в текущей ведомости.';
 
   @override
-  String get agentToolRecordTransactionDescription => 'Добавить транзакцию на основе текста вашего сообщения.';
+  String get agentToolRecordTransactionDescription =>
+      'Добавить транзакцию на основе текста вашего сообщения.';
 
   @override
-  String get agentToolSaveMemoryDescription => 'Сохранить информацию, которую вы попросили ассистента запомнить.';
+  String get agentToolSaveMemoryDescription =>
+      'Сохранить информацию, которую вы попросили ассистента запомнить.';
 
   @override
-  String get agentToolForgetMemoryDescription => 'Удалить запись из локальной памяти ассистента.';
+  String get agentToolForgetMemoryDescription =>
+      'Удалить запись из локальной памяти ассистента.';
 
   @override
-  String get agentToolUnknownDescription => 'Запустить локальный инструмент ИИ-ассистента.';
+  String get agentToolUnknownDescription =>
+      'Запустить локальный инструмент ИИ-ассистента.';
 
   @override
   String get agentAuthorizationTitle => 'Разрешить действие ассистента?';
@@ -5964,7 +6350,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentAuthorizationParameters => 'Данные для этой операции';
 
   @override
-  String get agentAuthorizationNoParameters => 'Нет параметров для отображения.';
+  String get agentAuthorizationNoParameters =>
+      'Нет параметров для отображения.';
 
   @override
   String get agentAuthorizationSourceText => 'Исходный текст транзакции';
@@ -6063,10 +6450,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get donationDescription => 'Описание';
 
   @override
-  String get donationDescriptionDetail => 'Спасибо, что пользуетесь BeeCount! Если приложение вам помогает, можете угостить разработчика кофе. Ваша поддержка вдохновляет меня улучшать приложение.';
+  String get donationDescriptionDetail =>
+      'Спасибо, что пользуетесь BeeCount! Если приложение вам помогает, можете угостить разработчика кофе. Ваша поддержка вдохновляет меня улучшать приложение.';
 
   @override
-  String get donationNoFeatures => 'Пожертвования не открывают дополнительных функций. Все функции остаются бесплатными.';
+  String get donationNoFeatures =>
+      'Пожертвования не открывают дополнительных функций. Все функции остаются бесплатными.';
 
   @override
   String get donationNoProducts => 'Нет доступных товаров';
@@ -6080,58 +6469,71 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aiQuickCommandFinancialHealthTitle => 'Оценка финансового положения';
+  String get aiQuickCommandFinancialHealthTitle =>
+      'Оценка финансового положения';
 
   @override
-  String get aiQuickCommandFinancialHealthDesc => 'Анализ баланса доходов и расходов и доли сбережений';
+  String get aiQuickCommandFinancialHealthDesc =>
+      'Анализ баланса доходов и расходов и доли сбережений';
 
   @override
-  String get aiQuickCommandFinancialHealthPrompt => 'Оцените моё финансовое положение по этим данным:\n\n[monthlyStats]\n\n[recentTrends]\n\nПроанализируйте баланс доходов и расходов, долю сбережений и динамику расходов. Дайте рекомендации. Ответьте на русском языке.';
+  String get aiQuickCommandFinancialHealthPrompt =>
+      'Оцените моё финансовое положение по этим данным:\n\n[monthlyStats]\n\n[recentTrends]\n\nПроанализируйте баланс доходов и расходов, долю сбережений и динамику расходов. Дайте рекомендации. Ответьте на русском языке.';
 
   @override
   String get aiQuickCommandMonthlyExpenseTitle => 'Расходы за месяц';
 
   @override
-  String get aiQuickCommandMonthlyExpenseDesc => 'Анализ расходов за месяц и рекомендации';
+  String get aiQuickCommandMonthlyExpenseDesc =>
+      'Анализ расходов за месяц и рекомендации';
 
   @override
-  String get aiQuickCommandMonthlyExpensePrompt => 'Подведите итоги моих расходов за этот месяц по этим данным:\n\n[monthlyStats]\n\n[categoryStats]\n\nУкажите, на какие категории приходится самая большая доля расходов, и предложите способы сократить расходы. Ответьте на русском языке.';
+  String get aiQuickCommandMonthlyExpensePrompt =>
+      'Подведите итоги моих расходов за этот месяц по этим данным:\n\n[monthlyStats]\n\n[categoryStats]\n\nУкажите, на какие категории приходится самая большая доля расходов, и предложите способы сократить расходы. Ответьте на русском языке.';
 
   @override
   String get aiQuickCommandCategoryAnalysisTitle => 'Расходы по категориям';
 
   @override
-  String get aiQuickCommandCategoryAnalysisDesc => 'Доли расходов по категориям и их динамика';
+  String get aiQuickCommandCategoryAnalysisDesc =>
+      'Доли расходов по категориям и их динамика';
 
   @override
-  String get aiQuickCommandCategoryAnalysisPrompt => 'Проанализируйте распределение моих расходов по категориям на основе этих данных:\n\n[categoryStats]\n\nУкажите, по каким категориям доля расходов может быть слишком высокой, и предложите, как её снизить. Ответьте на русском языке.';
+  String get aiQuickCommandCategoryAnalysisPrompt =>
+      'Проанализируйте распределение моих расходов по категориям на основе этих данных:\n\n[categoryStats]\n\nУкажите, по каким категориям доля расходов может быть слишком высокой, и предложите, как её снизить. Ответьте на русском языке.';
 
   @override
   String get aiQuickCommandBudgetPlanningTitle => 'Планирование бюджета';
 
   @override
-  String get aiQuickCommandBudgetPlanningDesc => 'Рекомендации по бюджету на основе прошлых данных';
+  String get aiQuickCommandBudgetPlanningDesc =>
+      'Рекомендации по бюджету на основе прошлых данных';
 
   @override
-  String get aiQuickCommandBudgetPlanningPrompt => 'Помогите мне спланировать бюджет на следующий месяц по этим данным:\n\n[monthlyStats]\n\n[recentTrends]\n\nДля каждой категории предложите конкретную сумму и объясните, как уложиться в бюджет. Ответьте на русском языке.';
+  String get aiQuickCommandBudgetPlanningPrompt =>
+      'Помогите мне спланировать бюджет на следующий месяц по этим данным:\n\n[monthlyStats]\n\n[recentTrends]\n\nДля каждой категории предложите конкретную сумму и объясните, как уложиться в бюджет. Ответьте на русском языке.';
 
   @override
   String get aiQuickCommandAbnormalExpenseTitle => 'Необычные расходы';
 
   @override
-  String get aiQuickCommandAbnormalExpenseDesc => 'Поиск крупных или необычных расходов';
+  String get aiQuickCommandAbnormalExpenseDesc =>
+      'Поиск крупных или необычных расходов';
 
   @override
-  String get aiQuickCommandAbnormalExpensePrompt => 'Проверьте, есть ли у меня необычные расходы, по этим данным:\n\n[recentTransactions]\n\n[monthlyStats]\n\nУкажите расходы, которые заметно выше обычных, и объясните возможные причины. Ответьте на русском языке.';
+  String get aiQuickCommandAbnormalExpensePrompt =>
+      'Проверьте, есть ли у меня необычные расходы, по этим данным:\n\n[recentTransactions]\n\n[monthlyStats]\n\nУкажите расходы, которые заметно выше обычных, и объясните возможные причины. Ответьте на русском языке.';
 
   @override
   String get aiQuickCommandSavingTipsTitle => 'Советы по экономии';
 
   @override
-  String get aiQuickCommandSavingTipsDesc => 'Советы по экономии с учётом ваших привычек';
+  String get aiQuickCommandSavingTipsDesc =>
+      'Советы по экономии с учётом ваших привычек';
 
   @override
-  String get aiQuickCommandSavingTipsPrompt => 'Предложите способы сэкономить на основе этих данных:\n\n[categoryStats]\n\n[recentTrends]\n\nДайте 3–5 конкретных и практичных советов. Ответьте на русском языке.';
+  String get aiQuickCommandSavingTipsPrompt =>
+      'Предложите способы сэкономить на основе этих данных:\n\n[categoryStats]\n\n[recentTrends]\n\nДайте 3–5 конкретных и практичных советов. Ответьте на русском языке.';
 
   @override
   String get billCardUnknownLedger => 'Неизвестная ведомость';
@@ -6140,25 +6542,29 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiPromptEditTitle => 'Редактор подсказки';
 
   @override
-  String get aiPromptEditSubtitle => 'Настройка подсказки ИИ для распознавания транзакций';
+  String get aiPromptEditSubtitle =>
+      'Настройка подсказки ИИ для распознавания транзакций';
 
   @override
   String get aiPromptAdvancedSettings => 'Расширенные настройки';
 
   @override
-  String get aiAdvancedSettingsDesc => 'Выбор модели, режим выполнения, локальная модель и подсказка';
+  String get aiAdvancedSettingsDesc =>
+      'Выбор модели, режим выполнения, локальная модель и подсказка';
 
   @override
   String get aiPromptEditEntry => 'Редактор подсказки';
 
   @override
-  String get aiPromptEditEntryDesc => 'Подсказку ИИ для распознавания транзакций можно настроить и отправить другим пользователям';
+  String get aiPromptEditEntryDesc =>
+      'Подсказку ИИ для распознавания транзакций можно настроить и отправить другим пользователям';
 
   @override
   String get aiPromptVariables => 'Переменные';
 
   @override
-  String get aiPromptVariablesHint => 'Нажмите, чтобы увидеть доступные переменные';
+  String get aiPromptVariablesHint =>
+      'Нажмите, чтобы увидеть доступные переменные';
 
   @override
   String get aiPromptContent => 'Текст подсказки';
@@ -6185,7 +6591,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiPromptResetConfirmTitle => 'Восстановление исходной подсказки';
 
   @override
-  String get aiPromptResetConfirmMessage => 'Восстановить исходную подсказку? Ваши изменения будут потеряны.';
+  String get aiPromptResetConfirmMessage =>
+      'Восстановить исходную подсказку? Ваши изменения будут потеряны.';
 
   @override
   String get aiPromptPasted => 'Вставлено';
@@ -6194,13 +6601,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiPromptPreviewTitle => 'Предпросмотр подсказки';
 
   @override
-  String get aiPromptPreviewNote => 'Здесь вместо переменных показаны примеры. При выполнении будут использованы реальные данные.';
+  String get aiPromptPreviewNote =>
+      'Здесь вместо переменных показаны примеры. При выполнении будут использованы реальные данные.';
 
   @override
-  String get aiPromptVarInputSource => 'Описание источника данных, например «Из приведённого ниже текста о платеже»';
+  String get aiPromptVarInputSource =>
+      'Описание источника данных, например «Из приведённого ниже текста о платеже»';
 
   @override
-  String get aiPromptVarCurrentTime => 'Текущие дата и время, например «2025-01-15 14:30»';
+  String get aiPromptVarCurrentTime =>
+      'Текущие дата и время, например «2025-01-15 14:30»';
 
   @override
   String get aiPromptVarCurrentDate => 'Текущая дата, например «2025-01-15»';
@@ -6212,7 +6622,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiPromptVarCategories => 'Список категорий расходов и доходов';
 
   @override
-  String get aiPromptVarAccounts => 'Список счетов пользователя (может быть пустым)';
+  String get aiPromptVarAccounts =>
+      'Список счетов пользователя (может быть пустым)';
 
   @override
   String get aiModelTitle => 'Модель анализа текста';
@@ -6232,7 +6643,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aiCustomBaseUrlHelper => 'URL стандартного API для чата, например https://api.example.com/v1';
+  String get aiCustomBaseUrlHelper =>
+      'URL стандартного API для чата, например https://api.example.com/v1';
 
   @override
   String get aiTextModelTitle => 'Текстовая модель';
@@ -6256,7 +6668,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tagManageGenerateDefault => 'Добавить готовые теги';
 
   @override
-  String get tagManageGenerateDefaultConfirm => 'Добавить готовые теги? Существующие теги с такими же названиями не изменятся.';
+  String get tagManageGenerateDefaultConfirm =>
+      'Добавить готовые теги? Существующие теги с такими же названиями не изменятся.';
 
   @override
   String get tagManageGenerateDefaultSuccess => 'Готовые теги добавлены';
@@ -6309,7 +6722,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tagSelectCreateNew => 'Создать тег';
 
   @override
-  String get tagSelectOwnerManaged => 'Тегами совместной ведомости управляет её владелец';
+  String get tagSelectOwnerManaged =>
+      'Тегами совместной ведомости управляет её владелец';
 
   @override
   String get tagSelectRecentlyUsed => 'Недавние';
@@ -6341,7 +6755,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tagDetailNoTransactions => 'Связанных транзакций нет';
 
   @override
-  String get tagDetailNoTransactionsHint => 'Здесь появятся транзакции с этим тегом';
+  String get tagDetailNoTransactionsHint =>
+      'Здесь появятся транзакции с этим тегом';
 
   @override
   String get tagNotFound => 'Тег не найден';
@@ -6451,13 +6866,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tagImportModeMerge => 'Объединить';
 
   @override
-  String get tagImportModeMergeDesc => 'Сохранить существующие теги и добавить новые';
+  String get tagImportModeMergeDesc =>
+      'Сохранить существующие теги и добавить новые';
 
   @override
   String get tagImportModeOverwrite => 'Заменить';
 
   @override
-  String get tagImportModeOverwriteDesc => 'Удалить неиспользуемые теги перед импортом';
+  String get tagImportModeOverwriteDesc =>
+      'Удалить неиспользуемые теги перед импортом';
 
   @override
   String get tagImportSuccess => 'Импорт завершён';
@@ -6639,7 +7056,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String attachmentExportProgressDetail(int attachmentCount, int iconCount, int current, int total) {
+  String attachmentExportProgressDetail(
+      int attachmentCount, int iconCount, int current, int total) {
     return 'Экспорт: вложений — $attachmentCount, значков — $iconCount ($current/$total)';
   }
 
@@ -6658,7 +7076,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get attachmentImportConflictSkip => 'Пропустить существующие вложения';
 
   @override
-  String get attachmentImportConflictOverwrite => 'Перезаписать существующие вложения';
+  String get attachmentImportConflictOverwrite =>
+      'Перезаписать существующие вложения';
 
   @override
   String attachmentImportProgress(int current, int total) {
@@ -6666,7 +7085,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String attachmentImportResult(int imported, int skipped, int overwritten, int failed) {
+  String attachmentImportResult(
+      int imported, int skipped, int overwritten, int failed) {
     return 'Импортировано: $imported, пропущено: $skipped, перезаписано: $overwritten, ошибок: $failed';
   }
 
@@ -6718,13 +7138,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shortcutsGuide => 'Быстрые команды';
 
   @override
-  String get shortcutsGuideDesc => 'Быстрый доступ к голосовому вводу, распознаванию снимков и другим способам ввода';
+  String get shortcutsGuideDesc =>
+      'Быстрый доступ к голосовому вводу, распознаванию снимков и другим способам ввода';
 
   @override
   String get shortcutsIntroTitle => 'Быстрый ввод';
 
   @override
-  String get shortcutsIntroDesc => 'Быстрые команды позволяют запускать голосовой ввод, распознавание снимков и другие функции с главного экрана, не открывая приложение.';
+  String get shortcutsIntroDesc =>
+      'Быстрые команды позволяют запускать голосовой ввод, распознавание снимков и другие функции с главного экрана, не открывая приложение.';
 
   @override
   String get availableShortcuts => 'Доступные быстрые команды';
@@ -6739,13 +7161,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shortcutImage => 'Ввод по изображению';
 
   @override
-  String get shortcutImageDesc => 'Распознавайте транзакции по изображениям из галереи';
+  String get shortcutImageDesc =>
+      'Распознавайте транзакции по изображениям из галереи';
 
   @override
   String get shortcutCamera => 'Ввод по снимку';
 
   @override
-  String get shortcutCameraDesc => 'Сделайте снимок для распознавания транзакций';
+  String get shortcutCameraDesc =>
+      'Сделайте снимок для распознавания транзакций';
 
   @override
   String get shortcutNewExpense => 'Добавить расход';
@@ -6763,7 +7187,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shortcutNewTransfer => 'Добавить перевод';
 
   @override
-  String get shortcutNewTransferDesc => 'Сразу открыть форму добавления перевода';
+  String get shortcutNewTransferDesc =>
+      'Сразу открыть форму добавления перевода';
 
   @override
   String get shortcutUrlCopied => 'URL скопирован в буфер обмена';
@@ -6775,34 +7200,41 @@ class AppLocalizationsRu extends AppLocalizations {
   String get iosShortcutStep1 => 'Откройте приложение «Команды»';
 
   @override
-  String get iosShortcutStep2 => 'Нажмите «+» в правом верхнем углу, чтобы создать быструю команду';
+  String get iosShortcutStep2 =>
+      'Нажмите «+» в правом верхнем углу, чтобы создать быструю команду';
 
   @override
   String get iosShortcutStep3 => 'Добавьте действие «Открыть URL»';
 
   @override
-  String get iosShortcutStep4 => 'Вставьте скопированный URL (например, beecount://voice)';
+  String get iosShortcutStep4 =>
+      'Вставьте скопированный URL (например, beecount://voice)';
 
   @override
-  String get iosShortcutStep5 => 'Сохраните команду и добавьте её на экран «Домой»';
+  String get iosShortcutStep5 =>
+      'Сохраните команду и добавьте её на экран «Домой»';
 
   @override
-  String get androidShortcutStep1 => 'Скачайте приложение для создания ярлыков (например, Shortcut Maker)';
+  String get androidShortcutStep1 =>
+      'Скачайте приложение для создания ярлыков (например, Shortcut Maker)';
 
   @override
   String get androidShortcutStep2 => 'Выберите «URL Shortcut» (ярлык URL)';
 
   @override
-  String get androidShortcutStep3 => 'Вставьте скопированный URL (например, beecount://voice)';
+  String get androidShortcutStep3 =>
+      'Вставьте скопированный URL (например, beecount://voice)';
 
   @override
-  String get androidShortcutStep4 => 'Задайте значок и название, затем добавьте ярлык на главный экран';
+  String get androidShortcutStep4 =>
+      'Задайте значок и название, затем добавьте ярлык на главный экран';
 
   @override
   String get shortcutsTip => 'Советы';
 
   @override
-  String get shortcutsTipDesc => 'Для быстрых команд нужны функции ИИ. Убедитесь, что распознавание включено и ключ API настроен.';
+  String get shortcutsTipDesc =>
+      'Для быстрых команд нужны функции ИИ. Убедитесь, что распознавание включено и ключ API настроен.';
 
   @override
   String get shortcutOpenShortcutsApp => 'Открыть «Быстрые команды»';
@@ -6811,7 +7243,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shortcutAutoAdd => 'API для автодобавления';
 
   @override
-  String get shortcutAutoAddDesc => 'Автоматически добавляйте транзакции через параметры URL. Подходит для быстрых команд и других средств автоматизации.';
+  String get shortcutAutoAddDesc =>
+      'Автоматически добавляйте транзакции через параметры URL. Подходит для быстрых команд и других средств автоматизации.';
 
   @override
   String get shortcutAutoAddExample => 'Пример URL:';
@@ -6826,13 +7259,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shortcutParamType => 'Тип: expense / income / transfer';
 
   @override
-  String get shortcutParamCategory => 'Название категории (должно совпадать с существующим)';
+  String get shortcutParamCategory =>
+      'Название категории (должно совпадать с существующим)';
 
   @override
   String get shortcutParamNote => 'Заметка';
 
   @override
-  String get shortcutParamAccount => 'Название счёта (должно совпадать с существующим)';
+  String get shortcutParamAccount =>
+      'Название счёта (должно совпадать с существующим)';
 
   @override
   String get shortcutParamTags => 'Теги (через запятую)';
@@ -6865,7 +7300,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get calendarAddTransaction => 'Добавить на выбранный день';
 
   @override
-  String get calendarAddTransactionTooltip => 'Добавить транзакцию на выбранный день';
+  String get calendarAddTransactionTooltip =>
+      'Добавить транзакцию на выбранный день';
 
   @override
   String get commonUncategorized => 'Без категории';
@@ -6930,7 +7366,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiProviderModels => 'Настройка моделей';
 
   @override
-  String get aiProviderModelsHint => 'Если для функции не указана модель, она не сможет использовать этого поставщика';
+  String get aiProviderModelsHint =>
+      'Если для функции не указана модель, она не сможет использовать этого поставщика';
 
   @override
   String get aiCapabilityText => 'Текст';
@@ -6945,19 +7382,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiCapabilitySelectTitle => 'Поставщики для функций ИИ';
 
   @override
-  String get aiCapabilitySelectSubtitle => 'Выберите поставщика для каждой функции ИИ';
+  String get aiCapabilitySelectSubtitle =>
+      'Выберите поставщика для каждой функции ИИ';
 
   @override
   String get aiCapabilityTextChat => 'Текстовый чат';
 
   @override
-  String get aiCapabilityTextChatDesc => 'Для чата с ИИ и извлечения данных о транзакциях из текста';
+  String get aiCapabilityTextChatDesc =>
+      'Для чата с ИИ и извлечения данных о транзакциях из текста';
 
   @override
   String get aiCapabilityImageUnderstand => 'Анализ изображений';
 
   @override
-  String get aiCapabilityImageUnderstandDesc => 'Для распознавания транзакций на изображениях';
+  String get aiCapabilityImageUnderstandDesc =>
+      'Для распознавания транзакций на изображениях';
 
   @override
   String get aiCapabilitySpeechToText => 'Распознавание речи';
@@ -6984,7 +7424,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiProviderTestAllRetry => 'Повторить проверку';
 
   @override
-  String get aiModelInputHelper => 'Оставьте поле пустым, чтобы использовать модель по умолчанию';
+  String get aiModelInputHelper =>
+      'Оставьте поле пустым, чтобы использовать модель по умолчанию';
 
   @override
   String get syncPreviewTitle => 'Предпросмотр синхронизации';
@@ -7033,13 +7474,16 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get syncPreviewEmpty => 'Данные на устройстве и в облаке совпадают, синхронизация не нужна';
+  String get syncPreviewEmpty =>
+      'Данные на устройстве и в облаке совпадают, синхронизация не нужна';
 
   @override
-  String get syncPreviewOldFormat => 'Устаревший формат данных в облаке. Требуется полная замена';
+  String get syncPreviewOldFormat =>
+      'Устаревший формат данных в облаке. Требуется полная замена';
 
   @override
-  String get syncPreviewOldFormatMessage => 'В облачных данных нет идентификаторов синхронизации. Все данные текущей ведомости на устройстве будут удалены и заново загружены из облака.';
+  String get syncPreviewOldFormatMessage =>
+      'В облачных данных нет идентификаторов синхронизации. Все данные текущей ведомости на устройстве будут удалены и заново загружены из облака.';
 
   @override
   String syncPreviewApplied(int count) {
@@ -7064,61 +7508,76 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cloudSyncGuideHowItWorks => 'Как это работает';
 
   @override
-  String get cloudSyncGuideHowItem1 => 'Отправка: все данные текущей ведомости загружаются в облако и заменяют предыдущие';
+  String get cloudSyncGuideHowItem1 =>
+      'Отправка: все данные текущей ведомости загружаются в облако и заменяют предыдущие';
 
   @override
-  String get cloudSyncGuideHowItem2 => 'Скачивание: приложение сравнивает данные из облака с данными на устройстве и показывает каждое изменение отдельно. Вы выбираете, какие изменения применить';
+  String get cloudSyncGuideHowItem2 =>
+      'Скачивание: приложение сравнивает данные из облака с данными на устройстве и показывает каждое изменение отдельно. Вы выбираете, какие изменения применить';
 
   @override
-  String get cloudSyncGuideHowItem3 => 'В облаке хранится только последняя отправленная копия, без истории версий';
+  String get cloudSyncGuideHowItem3 =>
+      'В облаке хранится только последняя отправленная копия, без истории версий';
 
   @override
   String get cloudSyncGuideCorrect => 'Рекомендации';
 
   @override
-  String get cloudSyncGuideCorrectItem1 => 'Вносите изменения на одном устройстве за раз и отправляйте их в облако, когда закончите';
+  String get cloudSyncGuideCorrectItem1 =>
+      'Вносите изменения на одном устройстве за раз и отправляйте их в облако, когда закончите';
 
   @override
-  String get cloudSyncGuideCorrectItem2 => 'Прежде чем вносить изменения на другом устройстве, скачайте на него данные из облака';
+  String get cloudSyncGuideCorrectItem2 =>
+      'Прежде чем вносить изменения на другом устройстве, скачайте на него данные из облака';
 
   @override
-  String get cloudSyncGuideCorrectItem3 => 'Внимательно проверьте каждое изменение, прежде чем применять его';
+  String get cloudSyncGuideCorrectItem3 =>
+      'Внимательно проверьте каждое изменение, прежде чем применять его';
 
   @override
-  String get cloudSyncGuideCorrectItem4 => 'Придерживайтесь порядка: внести изменения → отправить → сменить устройство → скачать → внести изменения';
+  String get cloudSyncGuideCorrectItem4 =>
+      'Придерживайтесь порядка: внести изменения → отправить → сменить устройство → скачать → внести изменения';
 
   @override
   String get cloudSyncGuideWrong => 'Чего избегать';
 
   @override
-  String get cloudSyncGuideWrongItem1 => 'Не редактируйте одну ведомость одновременно на двух устройствах: данные, отправленные позже, перезапишут те, что отправлены раньше';
+  String get cloudSyncGuideWrongItem1 =>
+      'Не редактируйте одну ведомость одновременно на двух устройствах: данные, отправленные позже, перезапишут те, что отправлены раньше';
 
   @override
-  String get cloudSyncGuideWrongItem2 => 'Не скачивайте данные сразу после отправки: облачному сервису может потребоваться от нескольких секунд до нескольких минут на синхронизацию';
+  String get cloudSyncGuideWrongItem2 =>
+      'Не скачивайте данные сразу после отправки: облачному сервису может потребоваться от нескольких секунд до нескольких минут на синхронизацию';
 
   @override
-  String get cloudSyncGuideWrongItem3 => 'Не откладывайте синхронизацию надолго: при скачивании сразу большого числа изменений легко пропустить важные';
+  String get cloudSyncGuideWrongItem3 =>
+      'Не откладывайте синхронизацию надолго: при скачивании сразу большого числа изменений легко пропустить важные';
 
   @override
   String get cloudSyncGuideLimitations => 'Известные ограничения';
 
   @override
-  String get cloudSyncGuideLimitItem1 => 'Нет синхронизации в реальном времени: отправлять и скачивать данные нужно вручную';
+  String get cloudSyncGuideLimitItem1 =>
+      'Нет синхронизации в реальном времени: отправлять и скачивать данные нужно вручную';
 
   @override
-  String get cloudSyncGuideLimitItem2 => 'Изменения не объединяются автоматически: в облаке остаются данные последней отправки';
+  String get cloudSyncGuideLimitItem2 =>
+      'Изменения не объединяются автоматически: в облаке остаются данные последней отправки';
 
   @override
-  String get cloudSyncGuideLimitItem3 => 'Задержка в облаке: в зависимости от сервиса данные могут появиться на других устройствах через несколько секунд или минут после отправки';
+  String get cloudSyncGuideLimitItem3 =>
+      'Задержка в облаке: в зависимости от сервиса данные могут появиться на других устройствах через несколько секунд или минут после отправки';
 
   @override
-  String get cloudSyncGuideLimitItem4 => 'Без вложений: изображения из транзакций не синхронизируются. Их можно экспортировать отдельно в разделе «Управление данными»';
+  String get cloudSyncGuideLimitItem4 =>
+      'Без вложений: изображения из транзакций не синхронизируются. Их можно экспортировать отдельно в разделе «Управление данными»';
 
   @override
   String get mineMultiDeviceSyncTitle => 'Синхронизация устройств';
 
   @override
-  String get mineMultiDeviceSyncSubtitle => 'Проверять изменения в облаке при открытии страницы';
+  String get mineMultiDeviceSyncSubtitle =>
+      'Проверять изменения в облаке при открытии страницы';
 
   @override
   String get appLockTitle => 'Блокировка приложения';
@@ -7130,7 +7589,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appLockEnable => 'Включить блокировку';
 
   @override
-  String get appLockEnableDesc => 'Проверять личность при запуске и возврате в приложение';
+  String get appLockEnableDesc =>
+      'Проверять личность при запуске и возврате в приложение';
 
   @override
   String get appLockSetPin => 'Задать PIN-код';
@@ -7163,10 +7623,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appLockBiometric => 'Разблокировка по биометрии';
 
   @override
-  String get appLockBiometricDesc => 'Разблокировка с помощью Face ID или отпечатка пальца';
+  String get appLockBiometricDesc =>
+      'Разблокировка с помощью Face ID или отпечатка пальца';
 
   @override
-  String get appLockBiometricReason => 'Подтвердите личность, чтобы разблокировать BeeCount';
+  String get appLockBiometricReason =>
+      'Подтвердите личность, чтобы разблокировать BeeCount';
 
   @override
   String get appLockTimeout => 'Автоблокировка через';
@@ -7238,7 +7700,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get creditCardInitialBalanceHint => 'Текущий долг (отрицательное число)';
+  String get creditCardInitialBalanceHint =>
+      'Текущий долг (отрицательное число)';
 
   @override
   String get selectDay => 'Выбрать день';
@@ -7372,10 +7835,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get budgetManagement => 'Бюджет';
 
   @override
-  String get budgetManagementDesc => 'Планируйте бюджет на месяц и контролируйте расходы';
+  String get budgetManagementDesc =>
+      'Планируйте бюджет на месяц и контролируйте расходы';
 
   @override
-  String get budgetSetupHint => 'Установите бюджет, чтобы контролировать расходы за месяц';
+  String get budgetSetupHint =>
+      'Установите бюджет, чтобы контролировать расходы за месяц';
 
   @override
   String get budgetSetupAction => 'Настроить';
@@ -7384,31 +7849,36 @@ class AppLocalizationsRu extends AppLocalizations {
   String get syncHealthTitle => 'Статус синхронизации';
 
   @override
-  String get cloudSyncHelpTitle => 'Как работает синхронизация · Почему она зависает';
+  String get cloudSyncHelpTitle =>
+      'Как работает синхронизация · Почему она зависает';
 
   @override
   String get cloudSyncHelpModesTitle => 'Три режима синхронизации';
 
   @override
-  String get cloudSyncHelpModesBody => '• Синхронизация изменений (автоматическая): когда вы добавляете или меняете транзакцию, передаётся только это изменение. Это быстро и не требует действий с вашей стороны. В обычной работе используется именно этот режим.\n• Полная отправка: при первом включении облачной синхронизации или если в облаке ещё нет данных этой ведомости, все данные с устройства отправляются в облако за один раз.\n• Полное скачивание: на новом устройстве, после переустановки приложения или при отсутствии данных на устройстве всё скачивается из облака.';
+  String get cloudSyncHelpModesBody =>
+      '• Синхронизация изменений (автоматическая): когда вы добавляете или меняете транзакцию, передаётся только это изменение. Это быстро и не требует действий с вашей стороны. В обычной работе используется именно этот режим.\n• Полная отправка: при первом включении облачной синхронизации или если в облаке ещё нет данных этой ведомости, все данные с устройства отправляются в облако за один раз.\n• Полное скачивание: на новом устройстве, после переустановки приложения или при отсутствии данных на устройстве всё скачивается из облака.';
 
   @override
   String get cloudSyncHelpWhenFullTitle => 'Когда нужна полная синхронизация?';
 
   @override
-  String get cloudSyncHelpWhenFullBody => 'Полная синхронизация запускается автоматически, только если на устройстве или в облаке нет данных: при первом включении синхронизации, на новом устройстве, после переустановки или очистки данных. Пока данные есть в обоих местах, синхронизируются только изменения. Чтобы запустить полную синхронизацию заново, сначала нужно очистить данные там, куда их нужно перенести.';
+  String get cloudSyncHelpWhenFullBody =>
+      'Полная синхронизация запускается автоматически, только если на устройстве или в облаке нет данных: при первом включении синхронизации, на новом устройстве, после переустановки или очистки данных. Пока данные есть в обоих местах, синхронизируются только изменения. Чтобы запустить полную синхронизацию заново, сначала нужно очистить данные там, куда их нужно перенести.';
 
   @override
   String get cloudSyncHelpStuckTitle => 'Почему синхронизация зависает';
 
   @override
-  String get cloudSyncHelpStuckBody => '• Полную отправку или скачивание нельзя продолжить с места остановки: если пропадёт сеть или система закроет приложение в фоне, передача начнётся заново. Если данных много, подключитесь к стабильной сети (лучше к Wi-Fi) и не переключайтесь на другое приложение до завершения передачи.\n• Синхронизация изменений может возобновляться после прерывания, поэтому в обычном режиме таких проблем нет.';
+  String get cloudSyncHelpStuckBody =>
+      '• Полную отправку или скачивание нельзя продолжить с места остановки: если пропадёт сеть или система закроет приложение в фоне, передача начнётся заново. Если данных много, подключитесь к стабильной сети (лучше к Wi-Fi) и не переключайтесь на другое приложение до завершения передачи.\n• Синхронизация изменений может возобновляться после прерывания, поэтому в обычном режиме таких проблем нет.';
 
   @override
   String get cloudSyncHelpTroubleshootTitle => 'Устранение неполадок';
 
   @override
-  String get cloudSyncHelpTroubleshootBody => '• Потяните эту страницу вниз, чтобы запустить «Глубокую проверку» и сравнить данные на устройстве и в облаке.\n• Если проблема осталась, откройте «Журнал событий». Там можно посмотреть ход синхронизации и причины сбоев, чтобы сообщить о проблеме.';
+  String get cloudSyncHelpTroubleshootBody =>
+      '• Потяните эту страницу вниз, чтобы запустить «Глубокую проверку» и сравнить данные на устройстве и в облаке.\n• Если проблема осталась, откройте «Журнал событий». Там можно посмотреть ход синхронизации и причины сбоев, чтобы сообщить о проблеме.';
 
   @override
   String get cloudSyncHelpOpenLogCenter => 'Открыть журнал событий';
@@ -7419,7 +7889,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get syncHealthHasDiff => 'Обнаружены различия, данные синхронизированы автоматически';
+  String get syncHealthHasDiff =>
+      'Обнаружены различия, данные синхронизированы автоматически';
 
   @override
   String get syncHealthInSync => 'Данные на устройстве и в облаке совпадают';
@@ -7474,10 +7945,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get twofaMethodRecovery => 'Код восстановления';
 
   @override
-  String get twofaTotpHint => 'Введите шестизначный код из приложения-аутентификатора (Google Authenticator, 1Password, Authy и др.).';
+  String get twofaTotpHint =>
+      'Введите шестизначный код из приложения-аутентификатора (Google Authenticator, 1Password, Authy и др.).';
 
   @override
-  String get twofaRecoveryHint => 'Введите код восстановления, сохранённый при включении двухфакторной аутентификации (например, abcd-efgh). Каждый код можно использовать один раз.';
+  String get twofaRecoveryHint =>
+      'Введите код восстановления, сохранённый при включении двухфакторной аутентификации (например, abcd-efgh). Каждый код можно использовать один раз.';
 
   @override
   String get twofaTotpInputPlaceholder => 'Шестизначный код';
@@ -7508,7 +7981,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get twofaStatusManageHint => 'Включить или выключить защиту и создать новые коды восстановления можно в веб-версии';
+  String get twofaStatusManageHint =>
+      'Включить или выключить защиту и создать новые коды восстановления можно в веб-версии';
 
   @override
   String get twofaStatusOpenWeb => 'Включить в веб-версии →';
@@ -7532,13 +8006,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharedJoinPageTitle => 'Присоединиться к ведомости';
 
   @override
-  String get sharedJoinPageSubtitle => 'Введите код приглашения или откройте ссылку';
+  String get sharedJoinPageSubtitle =>
+      'Введите код приглашения или откройте ссылку';
 
   @override
   String get sharedJoinEnterCode => 'Ввести код приглашения';
 
   @override
-  String get sharedJoinEnterCodeHint => '6 символов: заглавные буквы и цифры. Если открыть ссылку-приглашение, этот шаг не нужен.';
+  String get sharedJoinEnterCodeHint =>
+      '6 символов: заглавные буквы и цифры. Если открыть ссылку-приглашение, этот шаг не нужен.';
 
   @override
   String get sharedJoinPreviewButton => 'Проверить код';
@@ -7577,16 +8053,19 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get sharedJoinCodeFormatError => 'Код приглашения должен состоять из 6 букв или цифр.';
+  String get sharedJoinCodeFormatError =>
+      'Код приглашения должен состоять из 6 букв или цифр.';
 
   @override
-  String get sharedJoinInvalidOrExpired => 'Код приглашения недействителен или просрочен. Попросите новый код у того, кто вас пригласил.';
+  String get sharedJoinInvalidOrExpired =>
+      'Код приглашения недействителен или просрочен. Попросите новый код у того, кто вас пригласил.';
 
   @override
   String get sharedJoinAlreadyMember => 'Вы уже участвуете в этой ведомости.';
 
   @override
-  String get sharedJoinMemberLimit => 'Достигнут лимит участников ведомости. Обратитесь к владельцу.';
+  String get sharedJoinMemberLimit =>
+      'Достигнут лимит участников ведомости. Обратитесь к владельцу.';
 
   @override
   String get sharedInvitePageTitle => 'Приглашение участника';
@@ -7636,10 +8115,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get sharedInviteWarning => '⚠️ Не публикуйте коды приглашений в открытых чатах и соцсетях. Любой, у кого есть код, может присоединиться к ведомости. Если код попал к посторонним, отзовите его на экране «Участники» и создайте новый.';
+  String get sharedInviteWarning =>
+      '⚠️ Не публикуйте коды приглашений в открытых чатах и соцсетях. Любой, у кого есть код, может присоединиться к ведомости. Если код попал к посторонним, отзовите его на экране «Участники» и создайте новый.';
 
   @override
-  String get sharedInviteInstruction => 'Отправьте код или короткую ссылку. После установки BeeCount получатель сможет открыть ссылку или ввести код в разделе «Профиль → Присоединиться к ведомости».';
+  String get sharedInviteInstruction =>
+      'Отправьте код или короткую ссылку. После установки BeeCount получатель сможет открыть ссылку или ввести код в разделе «Профиль → Присоединиться к ведомости».';
 
   @override
   String sharedInviteShareText(String ledger, String code, String url) {
@@ -7721,7 +8202,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get sharedRequiresCloudSync => 'Сначала включите облачную синхронизацию';
+  String get sharedRequiresCloudSync =>
+      'Сначала включите облачную синхронизацию';
 
   @override
   String get sharedMembersStatsTitle => 'Доходы и расходы участников';
@@ -7755,13 +8237,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get maintenanceOrphanCleanupTitle => 'Очистка данных';
 
   @override
-  String get maintenanceOrphanCleanupSubtitle => 'Найти и удалить локальные данные без связей';
+  String get maintenanceOrphanCleanupSubtitle =>
+      'Найти и удалить локальные данные без связей';
 
   @override
   String get maintenanceOrphanRescan => 'Проверить снова';
 
   @override
-  String get maintenanceOrphanEmpty => 'Локальные данные в порядке: элементов без связей нет';
+  String get maintenanceOrphanEmpty =>
+      'Локальные данные в порядке: элементов без связей нет';
 
   @override
   String get maintenanceOrphanGroupDb => 'Записи БД без связей';
@@ -7858,7 +8342,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get exchangeRatePageTitle => 'Курсы валют';
 
   @override
-  String get exchangeRateEntrySubtitle => 'Курсы загружаются автоматически, но их можно изменить вручную';
+  String get exchangeRateEntrySubtitle =>
+      'Курсы загружаются автоматически, но их можно изменить вручную';
 
   @override
   String get baseCurrencyLabel => 'Основная валюта';
@@ -7895,13 +8380,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rateRefreshSuccess => 'Курсы обновлены';
 
   @override
-  String get rateRefreshFailed => 'Не удалось загрузить курсы. Их можно задать вручную';
+  String get rateRefreshFailed =>
+      'Не удалось загрузить курсы. Их можно задать вручную';
 
   @override
-  String get ratesEmptyHint => 'Курсы появятся здесь, когда у ваших счетов будут разные валюты';
+  String get ratesEmptyHint =>
+      'Курсы появятся здесь, когда у ваших счетов будут разные валюты';
 
   @override
-  String get rateDisclaimer => 'Источник: открытые данные о курсах валют, обновляемые ежедневно. Пересчёт справочный: курсы могут отличаться от банковских.';
+  String get rateDisclaimer =>
+      'Источник: открытые данные о курсах валют, обновляемые ежедневно. Пересчёт справочный: курсы могут отличаться от банковских.';
 
   @override
   String convertedNetWorth(String currency) {
@@ -7968,7 +8456,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get netWorthTrendLineLiabilities => 'Всего обязательств';
 
   @override
-  String get netWorthTrendMultiCurrencyNote => 'Суммы пересчитаны в основную валюту по текущим курсам. Счета без курса не учтены.';
+  String get netWorthTrendMultiCurrencyNote =>
+      'Суммы пересчитаны в основную валюту по текущим курсам. Счета без курса не учтены.';
 
   @override
   String get txFlagExcludeFromStats => 'Исключить из доходов и расходов';
@@ -7983,7 +8472,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get txFlagDialogTitle => 'Настройки учёта транзакции';
 
   @override
-  String get txFlagExcludeFromStatsHint => 'Не влияет на статистику доходов и расходов, но учитывается в балансе счёта';
+  String get txFlagExcludeFromStatsHint =>
+      'Не влияет на статистику доходов и расходов, но учитывается в балансе счёта';
 
   @override
   String get txFlagExcludeFromBudgetHint => 'Не уменьшает остаток бюджета';
@@ -8004,7 +8494,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transactionDoubleTapHint => 'Дважды нажмите для повтора';
 
   @override
-  String get transactionSavedNextCategory => 'Сохранено. Выберите категорию для следующей транзакции.';
+  String get transactionSavedNextCategory =>
+      'Сохранено. Выберите категорию для следующей транзакции.';
 
   @override
   String txConvertedPreview(Object amount, Object currency) {
@@ -8012,10 +8503,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get txRateMissingHint => 'Укажите курс для этой транзакции перед сохранением';
+  String get txRateMissingHint =>
+      'Укажите курс для этой транзакции перед сохранением';
 
   @override
-  String get txCrossCurrencyTransferBlocked => 'Переводы между счетами в разных валютах пока не поддерживаются. Добавьте две транзакции или используйте счета в одной валюте.';
+  String get txCrossCurrencyTransferBlocked =>
+      'Переводы между счетами в разных валютах пока не поддерживаются. Добавьте две транзакции или используйте счета в одной валюте.';
 
   @override
   String get ledgerBaseCurrencyLabel => 'Основная валюта';
@@ -8026,10 +8519,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get ledgerCurrencyChangeRecalcHint => 'При смене основной валюты все прошлые транзакции будут пересчитаны по текущим курсам';
+  String get ledgerCurrencyChangeRecalcHint =>
+      'При смене основной валюты все прошлые транзакции будут пересчитаны по текущим курсам';
 
   @override
-  String get recalcForeignTxBanner => 'В этой ведомости есть транзакции в иностранной валюте без пересчёта';
+  String get recalcForeignTxBanner =>
+      'В этой ведомости есть транзакции в иностранной валюте без пересчёта';
 
   @override
   String get recalcForeignTxAction => 'Пересчитать по текущим курсам';
@@ -8388,31 +8883,36 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentAssistantSettingsTitle => 'ИИ-ассистент';
 
   @override
-  String get agentAssistantSettingsSubtitle => 'Настройте, как ассистент использует локальные данные и инструменты.';
+  String get agentAssistantSettingsSubtitle =>
+      'Настройте, как ассистент использует локальные данные и инструменты.';
 
   @override
   String get agentAssistantPermissionsEntry => 'Разрешения';
 
   @override
-  String get agentAssistantPermissionsEntryDescription => 'Выберите, когда ассистенту нужно ваше разрешение на изменение данных.';
+  String get agentAssistantPermissionsEntryDescription =>
+      'Выберите, когда ассистенту нужно ваше разрешение на изменение данных.';
 
   @override
   String get agentAssistantMemoryEntry => 'Локальная память';
 
   @override
-  String get agentAssistantMemoryEntryDescription => 'Просматривайте и удаляйте записи, которые хранятся только на этом устройстве.';
+  String get agentAssistantMemoryEntryDescription =>
+      'Просматривайте и удаляйте записи, которые хранятся только на этом устройстве.';
 
   @override
   String get agentAssistantActivityEntry => 'Недавние действия';
 
   @override
-  String get agentAssistantActivityEntryDescription => 'Просматривайте, какие локальные инструменты запускались и с каким результатом.';
+  String get agentAssistantActivityEntryDescription =>
+      'Просматривайте, какие локальные инструменты запускались и с каким результатом.';
 
   @override
   String get agentExecutionDepthEntry => 'Лимит шагов';
 
   @override
-  String get agentExecutionDepthEntryDescription => 'Чем выше лимит, тем больше шагов может выполнить ассистент, но тем дольше может занять ответ.';
+  String get agentExecutionDepthEntryDescription =>
+      'Чем выше лимит, тем больше шагов может выполнить ассистент, но тем дольше может занять ответ.';
 
   @override
   String agentExecutionDepthSelected(int turns) {
@@ -8446,7 +8946,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentMemoryTitle => 'Локальная память';
 
   @override
-  String get agentMemoryIntro => 'Эти сведения хранятся только на этом устройстве и используются только в текущей ведомости.';
+  String get agentMemoryIntro =>
+      'Эти сведения хранятся только на этом устройстве и используются только в текущей ведомости.';
 
   @override
   String get agentMemoryEmpty => 'Пока ничего не сохранено.';
@@ -8455,7 +8956,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentMemoryDeleteTitle => 'Удалить из памяти?';
 
   @override
-  String get agentMemoryDeleteDescription => 'Ассистент больше не будет использовать эти сведения.';
+  String get agentMemoryDeleteDescription =>
+      'Ассистент больше не будет использовать эти сведения.';
 
   @override
   String get agentMemoryClear => 'Очистить память ведомости';
@@ -8464,16 +8966,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentMemoryClearTitle => 'Очистить всю память текущей ведомости?';
 
   @override
-  String get agentMemoryClearDescription => 'Все сведения из локальной памяти этой ведомости будут удалены. Отменить это действие нельзя.';
+  String get agentMemoryClearDescription =>
+      'Все сведения из локальной памяти этой ведомости будут удалены. Отменить это действие нельзя.';
 
   @override
   String get agentActivityTitle => 'Недавние действия';
 
   @override
-  String get agentActivityIntro => 'История действий хранится только на этом устройстве и не синхронизируется.';
+  String get agentActivityIntro =>
+      'История действий хранится только на этом устройстве и не синхронизируется.';
 
   @override
-  String get agentActivityEmpty => 'Ассистент пока не выполнял никаких действий.';
+  String get agentActivityEmpty =>
+      'Ассистент пока не выполнял никаких действий.';
 
   @override
   String get agentActivityCompleted => 'Завершено';
@@ -8506,43 +9011,50 @@ class AppLocalizationsRu extends AppLocalizations {
   String get agentRunStop => 'Остановить';
 
   @override
-  String get agentQueryValidationFailed => 'Не удалось исправить параметры запроса и получить надёжный результат. Попробуйте ещё раз.';
+  String get agentQueryValidationFailed =>
+      'Не удалось исправить параметры запроса и получить надёжный результат. Попробуйте ещё раз.';
 
   @override
   String get annualReportInsightsTitle => 'Аналитика за год';
 
   @override
-  String get annualReportInsightsSubtitle => 'Узнайте из отчёта, как вы тратите деньги';
+  String get annualReportInsightsSubtitle =>
+      'Узнайте из отчёта, как вы тратите деньги';
 
   @override
   String get annualReportAveragePerRecord => 'Средний расход за транзакцию';
 
   @override
-  String get annualReportAveragePerRecordDesc => 'Средняя сумма расходной транзакции';
+  String get annualReportAveragePerRecordDesc =>
+      'Средняя сумма расходной транзакции';
 
   @override
   String get annualReportDailyAverage => 'Средний расход за день';
 
   @override
-  String get annualReportDailyAverageDesc => 'Сколько в среднем вы тратите в день';
+  String get annualReportDailyAverageDesc =>
+      'Сколько в среднем вы тратите в день';
 
   @override
   String get annualReportMonthlyAverage => 'Средний расход за месяц';
 
   @override
-  String get annualReportMonthlyAverageDesc => 'Сколько в среднем вы тратите в месяц';
+  String get annualReportMonthlyAverageDesc =>
+      'Сколько в среднем вы тратите в месяц';
 
   @override
   String get annualReportBusiestMonth => 'Самый активный месяц';
 
   @override
-  String get annualReportBusiestMonthDesc => 'Месяц с наибольшим числом транзакций';
+  String get annualReportBusiestMonthDesc =>
+      'Месяц с наибольшим числом транзакций';
 
   @override
   String get annualReportCategoryCount => 'Категории расходов';
 
   @override
-  String get annualReportCategoryCountDesc => 'Сколько категорий расходов вы использовали';
+  String get annualReportCategoryCountDesc =>
+      'Сколько категорий расходов вы использовали';
 
   @override
   String annualReportCategoryCountValue(int count) {
@@ -8561,16 +9073,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get annualReportSavingsRate => 'Доля сбережений';
 
   @override
-  String get annualReportSavingsRatePositive => 'Какую долю дохода вы отложили за год';
+  String get annualReportSavingsRatePositive =>
+      'Какую долю дохода вы отложили за год';
 
   @override
-  String get annualReportSavingsRateNegative => 'В этом году расходы превысили доходы';
+  String get annualReportSavingsRateNegative =>
+      'В этом году расходы превысили доходы';
 
   @override
   String get annualReportComparisonTitle => 'Доходы и расходы';
 
   @override
-  String get annualReportComparisonSubtitle => 'Сравнение доходов и расходов по месяцам';
+  String get annualReportComparisonSubtitle =>
+      'Сравнение доходов и расходов по месяцам';
 
   @override
   String get annualReportHighestIncome => 'Пик доходов';
@@ -8598,7 +9113,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get annualReportSavingsPositive => 'Поздравляем с накоплениями';
 
   @override
-  String get annualReportSavingsNegative => 'В этом году расходы превысили доходы';
+  String get annualReportSavingsNegative =>
+      'В этом году расходы превысили доходы';
 
   @override
   String get annualReportMonthlyExpenseTrend => 'Динамика расходов по месяцам';
@@ -8610,22 +9126,26 @@ class AppLocalizationsRu extends AppLocalizations {
   String get annualReportNotAchieved => 'Не достигнуто';
 
   @override
-  String get annualReportDownloadHint => 'Отсканируйте код, чтобы скачать BeeCount и начать вести учёт';
+  String get annualReportDownloadHint =>
+      'Отсканируйте код, чтобы скачать BeeCount и начать вести учёт';
 
   @override
   String get attachmentKeepOriginal => 'Сохранять оригиналы вложений';
 
   @override
-  String get attachmentKeepOriginalDesc => 'Занимает больше места и расходует больше трафика при синхронизации';
+  String get attachmentKeepOriginalDesc =>
+      'Занимает больше места и расходует больше трафика при синхронизации';
 
   @override
   String get transactionCopyAction => 'Копировать как новую';
 
   @override
-  String get transactionCopyUnavailable => 'Не удалось скопировать транзакцию. Проверьте ведомость и права доступа.';
+  String get transactionCopyUnavailable =>
+      'Не удалось скопировать транзакцию. Проверьте ведомость и права доступа.';
 
   @override
-  String get aiChatGenericFailure => 'Извините, что-то пошло не так. Попробуйте ещё раз.';
+  String get aiChatGenericFailure =>
+      'Извините, что-то пошло не так. Попробуйте ещё раз.';
 
   @override
   String get aiChatRecordSuccessOne => '✅ Транзакция добавлена';
@@ -8657,16 +9177,19 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get reminderBackupChannelName => 'Напоминание об учёте (резервный канал)';
+  String get reminderBackupChannelName =>
+      'Напоминание об учёте (резервный канал)';
 
   @override
-  String get reminderBackupChannelDescription => 'Резервный канал для напоминаний об учёте';
+  String get reminderBackupChannelDescription =>
+      'Резервный канал для напоминаний об учёте';
 
   @override
   String get autoBillingChannelName => 'Распознавание скриншотов';
 
   @override
-  String get autoBillingChannelDescription => 'Уведомления об автоматическом распознавании скриншотов';
+  String get autoBillingChannelDescription =>
+      'Уведомления об автоматическом распознавании скриншотов';
 
   @override
   String get appLinkOpenVoiceBilling => 'Открыть голосовой ввод';
@@ -8700,10 +9223,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appLinkNoLedger => 'Сначала выберите ведомость';
 
   @override
-  String get appLinkMissingAmount => 'Транзакция не добавлена: введите корректную сумму';
+  String get appLinkMissingAmount =>
+      'Транзакция не добавлена: введите корректную сумму';
 
   @override
-  String get appLinkMissingCategory => 'Транзакция не добавлена: укажите категорию';
+  String get appLinkMissingCategory =>
+      'Транзакция не добавлена: укажите категорию';
 
   @override
   String appLinkCategoryNotFound(String name) {
@@ -8835,10 +9360,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get orphanFileNoRef => 'В базе данных нет ссылки на файл вложения';
 
   @override
-  String get orphanCustomIconNoRef => 'В базе данных нет ссылки на пользовательский значок категории';
+  String get orphanCustomIconNoRef =>
+      'В базе данных нет ссылки на пользовательский значок категории';
 
   @override
-  String get orphanSharedIconNoRef => 'В базе данных нет ссылки на кэш значка совместной категории';
+  String get orphanSharedIconNoRef =>
+      'В базе данных нет ссылки на кэш значка совместной категории';
 
   @override
   String orphanSyncChangeTitle(String id) {
@@ -8854,10 +9381,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get customIconFileMissing => 'Файл изображения не найден';
 
   @override
-  String get customIconFileTooLarge => 'Файл изображения слишком большой (макс. 5 МБ)';
+  String get customIconFileTooLarge =>
+      'Файл изображения слишком большой (макс. 5 МБ)';
 
   @override
-  String get customIconUnsupportedFormat => 'Формат изображения не поддерживается';
+  String get customIconUnsupportedFormat =>
+      'Формат изображения не поддерживается';
 
   @override
   String get customIconCompressFailed => 'Не удалось сжать изображение';
@@ -8874,7 +9403,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sharePosterDefaultLedgerName => 'Основная ведомость';
 
   @override
-  String get aiProviderNotConfiguredText => 'Поставщик для текстового чата не настроен';
+  String get aiProviderNotConfiguredText =>
+      'Поставщик для текстового чата не настроен';
 
   @override
   String aiProviderMissingTextModelFor(String name) {
@@ -8882,13 +9412,16 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aiProviderNotConfiguredTextUsable => 'Нет доступного поставщика для текстового чата';
+  String get aiProviderNotConfiguredTextUsable =>
+      'Нет доступного поставщика для текстового чата';
 
   @override
-  String get aiProviderNotConfiguredVision => 'Поставщик для анализа изображений не настроен';
+  String get aiProviderNotConfiguredVision =>
+      'Поставщик для анализа изображений не настроен';
 
   @override
-  String get aiProviderNotConfiguredSpeech => 'Поставщик для распознавания речи не настроен';
+  String get aiProviderNotConfiguredSpeech =>
+      'Поставщик для распознавания речи не настроен';
 
   @override
   String get aiProviderNoVisionModel => 'Модель для изображений не настроена';
@@ -8926,7 +9459,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get donationPurchaseRequestFailed => 'Не удалось отправить запрос на покупку';
+  String get donationPurchaseRequestFailed =>
+      'Не удалось отправить запрос на покупку';
 
   @override
   String get donationUnknownError => 'Неизвестная ошибка';
@@ -8946,7 +9480,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get attachmentArchiveMissing => 'Архив не найден';
 
   @override
-  String get attachmentArchiveInvalidFormat => 'Неверный формат архива: нет файла metadata.json';
+  String get attachmentArchiveInvalidFormat =>
+      'Неверный формат архива: нет файла metadata.json';
 
   @override
   String get categoryPackageCompressFailed => 'Не удалось создать архив';
@@ -8955,7 +9490,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get categoryPackageFileMissing => 'Файл не существует';
 
   @override
-  String get categoryPackageMissingYaml => 'Некорректный архив категорий: нет файла categories.yaml';
+  String get categoryPackageMissingYaml =>
+      'Некорректный архив категорий: нет файла categories.yaml';
 
   @override
   String get categoryPackageInvalidFormat => 'Неверный формат файла настроек';
@@ -8964,7 +9500,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get configExportInvalidYaml => 'Неверный формат YAML';
 
   @override
-  String get configExportTransferCategoryMissing => 'Категория переводов не найдена';
+  String get configExportTransferCategoryMissing =>
+      'Категория переводов не найдена';
 
   @override
   String configExportFileMissing(String path) {
@@ -8980,13 +9517,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ledgerMissing => 'Ведомость не существует';
 
   @override
-  String get sharedLedgerBalanceRestricted => 'Участники совместной ведомости не могут менять баланс счетов';
+  String get sharedLedgerBalanceRestricted =>
+      'Участники совместной ведомости не могут менять баланс счетов';
 
   @override
   String get accountMissing => 'Счёт не существует';
 
   @override
-  String get syncCloudUnavailable => 'Облачный сервис недоступен. Проверьте настройки или убедитесь, что вы вошли в аккаунт';
+  String get syncCloudUnavailable =>
+      'Облачный сервис недоступен. Проверьте настройки или убедитесь, что вы вошли в аккаунт';
 
   @override
   String syncHealthLedgerMissing(String id) {
@@ -9010,19 +9549,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get creditCardOverpayment => 'Переплата';
 
   @override
-  String get creditCardDebtHint => 'Укажите общую сумму долга положительным числом. Если долга нет, введите 0.';
+  String get creditCardDebtHint =>
+      'Укажите общую сумму долга положительным числом. Если долга нет, введите 0.';
 
   @override
-  String get creditCardOverpaymentHint => 'Укажите положительную сумму, оставшуюся на карте после переплаты.';
+  String get creditCardOverpaymentHint =>
+      'Укажите положительную сумму, оставшуюся на карте после переплаты.';
 
   @override
-  String get creditCardAmountInvalid => 'Введите корректную сумму: долг и переплата по кредитной карте не могут быть отрицательными.';
+  String get creditCardAmountInvalid =>
+      'Введите корректную сумму: долг и переплата по кредитной карте не могут быть отрицательными.';
 
   @override
-  String get creditCardReminderDueRequired => 'Укажите день платежа, прежде чем включать напоминания.';
+  String get creditCardReminderDueRequired =>
+      'Укажите день платежа, прежде чем включать напоминания.';
 
   @override
-  String get creditCardEstimateHint => 'Сумма рассчитана по транзакциям в приложении. Точную доступную сумму уточняйте в банке.';
+  String get creditCardEstimateHint =>
+      'Сумма рассчитана по транзакциям в приложении. Точную доступную сумму уточняйте в банке.';
 
   @override
   String get accountAllFlows => 'Все транзакции';
@@ -9037,13 +9581,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get positiveAssetBalance => 'Положительные остатки по активам';
 
   @override
-  String get negativeAssetBalanceHint => 'Отрицательные остатки на счетах уменьшают общую сумму активов.';
+  String get negativeAssetBalanceHint =>
+      'Отрицательные остатки на счетах уменьшают общую сумму активов.';
 
   @override
   String get importAccountCurrencyPreview => 'Подтвердить валюты счетов';
 
   @override
-  String get importAccountCurrencyPreviewHint => 'Счета создаются или подбираются по валюте транзакций в файле. Если у одноимённых счетов валюты различаются, транзакции распределяются по отдельным счетам без изменения существующих. Если валюта не указана, используется валюта существующего счёта, другая однозначно определяемая валюта счёта или валюта ведомости.';
+  String get importAccountCurrencyPreviewHint =>
+      'Счета создаются или подбираются по валюте транзакций в файле. Если у одноимённых счетов валюты различаются, транзакции распределяются по отдельным счетам без изменения существующих. Если валюта не указана, используется валюта существующего счёта, другая однозначно определяемая валюта счёта или валюта ведомости.';
 
   @override
   String get importCurrencyInvalid => 'Недопустимая валюта. Исправьте строку:';
@@ -9067,10 +9613,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get transactionReceiptFooter => 'Моменты жизни, бережно сохранённые';
 
   @override
-  String get transactionReceiptUnavailable => 'Не удалось создать квитанцию. Проверьте, не удалена ли транзакция.';
+  String get transactionReceiptUnavailable =>
+      'Не удалось создать квитанцию. Проверьте, не удалена ли транзакция.';
 
   @override
-  String get transactionReceiptShareFailed => 'Не удалось поделиться. Попробуйте ещё раз.';
+  String get transactionReceiptShareFailed =>
+      'Не удалось поделиться. Попробуйте ещё раз.';
 
   @override
   String get v4RecordingMoreCategories => 'Ещё категории';
@@ -9088,7 +9636,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4RecordingSelectCategory => 'Выберите категорию';
 
   @override
-  String get v4RecordingSaveFailed => 'Не удалось сохранить. Попробуйте ещё раз.';
+  String get v4RecordingSaveFailed =>
+      'Не удалось сохранить. Попробуйте ещё раз.';
 
   @override
   String get v4RecordingCategoriesFailed => 'Не удалось загрузить категории';
@@ -9100,7 +9649,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4RecordingDiscardTitle => 'Отменить ввод?';
 
   @override
-  String get v4RecordingDiscardMessage => 'Сумма, заметка и выбранные параметры не сохранятся.';
+  String get v4RecordingDiscardMessage =>
+      'Сумма, заметка и выбранные параметры не сохранятся.';
 
   @override
   String get v4RateInvalid => 'Введите курс больше 0';
@@ -9114,7 +9664,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4CategoryToolsTitle => 'Управление категориями';
 
   @override
-  String get v4CategoryToolsHint => 'Сортировка, импорт, обмен и стандартные категории';
+  String get v4CategoryToolsHint =>
+      'Сортировка, импорт, обмен и стандартные категории';
 
   @override
   String get v4AttachmentPending => 'Не сохранено';
@@ -9174,7 +9725,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4SearchLedgerAmount => 'Сумма после пересчёта';
 
   @override
-  String get v4SearchInvalidRange => 'Введите неотрицательные суммы и проверьте границы диапазона';
+  String get v4SearchInvalidRange =>
+      'Введите неотрицательные суммы и проверьте границы диапазона';
 
   @override
   String get v4SearchSetTags => 'Задать теги';
@@ -9280,7 +9832,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4MineSupportGroup => 'Поддержать нас';
 
   @override
-  String get v4ConfigImportWarning => 'При импорте текущие настройки будут заменены. Сначала создайте их резервную копию.';
+  String get v4ConfigImportWarning =>
+      'При импорте текущие настройки будут заменены. Сначала создайте их резервную копию.';
 
   @override
   String get v4CategoryPresetIcons => 'Стандартные значки';
@@ -9289,7 +9842,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4CategoryCommonIcons => 'Популярные';
 
   @override
-  String get v4CategoryImageHint => 'Цвета и прозрачность сохранятся. Выберите изображение и обрежьте его до квадрата.';
+  String get v4CategoryImageHint =>
+      'Цвета и прозрачность сохранятся. Выберите изображение и обрежьте его до квадрата.';
 
   @override
   String get welcomePreferencesLater => 'Эти настройки можно изменить позже.';
@@ -9298,13 +9852,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomeRestoreTitle => 'С возвращением.';
 
   @override
-  String get welcomeRestoreDescription => 'Восстановите свои ведомости и продолжайте вести учёт.';
+  String get welcomeRestoreDescription =>
+      'Восстановите свои ведомости и продолжайте вести учёт.';
 
   @override
-  String get welcomeReadyDescription => 'Ведите учёт спокойно: данные остаются под вашим контролем.';
+  String get welcomeReadyDescription =>
+      'Ведите учёт спокойно: данные остаются под вашим контролем.';
 
   @override
-  String get welcomeCloudLater => 'Сейчас ничего настраивать не нужно. Синхронизацию можно включить позже в разделе «Профиль → Облачный сервис».';
+  String get welcomeCloudLater =>
+      'Сейчас ничего настраивать не нужно. Синхронизацию можно включить позже в разделе «Профиль → Облачный сервис».';
 
   @override
   String get welcomeSelectBackup => 'Выбрать резервную копию';
@@ -9325,16 +9882,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get welcomeAttachmentRestoreTitle => 'Верните и свои воспоминания.';
 
   @override
-  String get welcomeAttachmentRestoreDescription => 'Восстановите чеки вместе с их привязкой к транзакциям или импортируйте их позже.';
+  String get welcomeAttachmentRestoreDescription =>
+      'Восстановите чеки вместе с их привязкой к транзакциям или импортируйте их позже.';
 
   @override
-  String get welcomeAttachmentBackupDescription => 'TAR.GZ · Чеки, скриншоты и другие вложения';
+  String get welcomeAttachmentBackupDescription =>
+      'TAR.GZ · Чеки, скриншоты и другие вложения';
 
   @override
-  String get welcomeImportAttachmentsContinue => 'Импортировать вложения и завершить';
+  String get welcomeImportAttachmentsContinue =>
+      'Импортировать вложения и завершить';
 
   @override
-  String get v4QuickAddSlideHint => 'Нажмите и удерживайте, затем проведите пальцем к нужному действию и отпустите';
+  String get v4QuickAddSlideHint =>
+      'Нажмите и удерживайте, затем проведите пальцем к нужному действию и отпустите';
 
   @override
   String get v4AccountDetailTitle => 'Сведения о счёте';
@@ -9352,13 +9913,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4TagDistribution => 'По категориям';
 
   @override
-  String get v4TagOriginalLedgerTotals => 'Для итогов используются исходные суммы каждой ведомости';
+  String get v4TagOriginalLedgerTotals =>
+      'Для итогов используются исходные суммы каждой ведомости';
 
   @override
   String get v4TagToolsTitle => 'Управление тегами';
 
   @override
-  String get v4TagToolsHint => 'Добавление, импорт, создание стандартных тегов и очистка';
+  String get v4TagToolsHint =>
+      'Добавление, импорт, создание стандартных тегов и очистка';
 
   @override
   String get v4TrendClosing => 'Баланс на конец';
@@ -9467,7 +10030,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4InsightsCategoryShare => 'Доля категории';
 
   @override
-  String get v4InsightsShareHint => 'Нажмите на категорию, чтобы узнать её долю в общей сумме';
+  String get v4InsightsShareHint =>
+      'Нажмите на категорию, чтобы узнать её долю в общей сумме';
 
   @override
   String get v4InsightsTapBar => 'Нажмите на столбец, чтобы узнать сумму';
@@ -9476,13 +10040,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4InsightsAverageTitle => 'Как считается среднее';
 
   @override
-  String get v4InsightsAverageDays => 'Учитываются дни периода по сегодня включительно, даже если транзакций не было. Будущие дни не учитываются.';
+  String get v4InsightsAverageDays =>
+      'Учитываются дни периода по сегодня включительно, даже если транзакций не было. Будущие дни не учитываются.';
 
   @override
-  String get v4InsightsAverageMonths => 'Учитываются месяцы с начала года по текущий включительно, даже если транзакций не было. Будущие месяцы не учитываются.';
+  String get v4InsightsAverageMonths =>
+      'Учитываются месяцы с начала года по текущий включительно, даже если транзакций не было. Будущие месяцы не учитываются.';
 
   @override
-  String get v4InsightsAverageYears => 'Учитываются все годы, охваченные ведомостью, даже если транзакций не было. Будущие годы не учитываются.';
+  String get v4InsightsAverageYears =>
+      'Учитываются все годы, охваченные ведомостью, даже если транзакций не было. Будущие годы не учитываются.';
 
   @override
   String get v4InsightsDaysUnit => 'дн.';
@@ -9512,7 +10079,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4InsightsSortedByAmount => 'По сумме';
 
   @override
-  String get v4InsightsNoData => 'Выберите другой период или переключитесь между расходами, доходами и балансом на вкладках выше.';
+  String get v4InsightsNoData =>
+      'Выберите другой период или переключитесь между расходами, доходами и балансом на вкладках выше.';
 
   @override
   String v4InsightsTrendTitle(String type) {
@@ -9553,7 +10121,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4AssetsCurrencyView => 'Отображение сумм';
 
   @override
-  String get v4AssetsHiddenIncluded => 'Скрытые счета по-прежнему учитываются в чистых активах.';
+  String get v4AssetsHiddenIncluded =>
+      'Скрытые счета по-прежнему учитываются в чистых активах.';
 
   @override
   String v4AssetsIncludesHidden(int count) {
@@ -9572,10 +10141,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4AssetsOrder => 'Порядок счетов';
 
   @override
-  String get v4AssetsOrderHint => 'Меняйте порядок счетов внутри одного типа. Баланс не изменится.';
+  String get v4AssetsOrderHint =>
+      'Меняйте порядок счетов внутри одного типа. Баланс не изменится.';
 
   @override
-  String get v4AssetsSeparateCurrencyHint => 'Суммы показаны отдельно по каждой валюте и не складываются.';
+  String get v4AssetsSeparateCurrencyHint =>
+      'Суммы показаны отдельно по каждой валюте и не складываются.';
 
   @override
   String get v4AssetsOriginal => 'Исходная валюта';
@@ -9621,13 +10192,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4SharePosterDayCaption => 'дн. осознанного учёта.';
 
   @override
-  String get v4SharePosterProfileJourney => 'Вести учёт — маленькая привычка, которая остаётся с вами.';
+  String get v4SharePosterProfileJourney =>
+      'Вести учёт — маленькая привычка, которая остаётся с вами.';
 
   @override
   String get v4SharePosterPromoInvite => 'Давайте вести учёт каждый день.';
 
   @override
-  String get v4SharePosterOpenSourceBody => 'Ваши данные остаются у вас. Наш код открыт.\nВместе мы делаем учёт проще.';
+  String get v4SharePosterOpenSourceBody =>
+      'Ваши данные остаются у вас. Наш код открыт.\nВместе мы делаем учёт проще.';
 
   @override
   String get v4SharePosterOpenSourceAction => 'Посмотреть исходный код';
@@ -9660,16 +10233,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get v4AccountNetFlow => 'Чистый приток';
 
   @override
-  String get v4AccountFlowRules => 'Переводы учтены, транзакции вне статистики исключены';
+  String get v4AccountFlowRules =>
+      'Переводы учтены, транзакции вне статистики исключены';
 
   @override
-  String get v4AccountBalanceRangeNote => 'Текущий баланс не зависит от выбранного периода.';
+  String get v4AccountBalanceRangeNote =>
+      'Текущий баланс не зависит от выбранного периода.';
 
   @override
   String get v4AccountNoTrend => 'За этот период нет данных о балансе';
 
   @override
-  String get v4AccountNoPeer => 'Чтобы сделать перевод, добавьте ещё один счёт в этой валюте.';
+  String get v4AccountNoPeer =>
+      'Чтобы сделать перевод, добавьте ещё один счёт в этой валюте.';
 
   @override
   String get v4AccountActions => 'Действия со счётом';
@@ -9694,7 +10270,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appearanceCardMaterial => 'Оформление карточек';
 
   @override
-  String get appearanceCardMaterialDescription => 'Настройте прозрачность и размытие карточек поверх скина. Для всех строк списка используется одна карточка. Нижняя панель навигации остаётся непрозрачной.';
+  String get appearanceCardMaterialDescription =>
+      'Настройте прозрачность и размытие карточек поверх скина. Для всех строк списка используется одна карточка. Нижняя панель навигации остаётся непрозрачной.';
 
   @override
   String get appearanceCardTransparency => 'Прозрачность карточек';
@@ -9721,7 +10298,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appearanceCardMaterialPreview => 'Предпросмотр';
 
   @override
-  String get appearanceCardMaterialPreviewBody => 'Текст и значки остаются чёткими';
+  String get appearanceCardMaterialPreviewBody =>
+      'Текст и значки остаются чёткими';
 
   @override
   String appearanceCardMaterialSummary(int transparency, int blur) {
@@ -9729,7 +10307,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aboutBrandStatement => 'Записывайте события жизни. Храните данные у себя.';
+  String get aboutBrandStatement =>
+      'Записывайте события жизни. Храните данные у себя.';
 
   @override
   String get aboutHelpSupport => 'Помощь и поддержка';
@@ -9764,13 +10343,16 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get v4HomeSummaryFullDescription => 'Emphasizes spending above income, balance, and budget';
+  String get v4HomeSummaryFullDescription =>
+      'Emphasizes spending above income, balance, and budget';
 
   @override
-  String get v4HomeSummaryCompactDescription => 'Shows the budget ring with spending, income, and balance';
+  String get v4HomeSummaryCompactDescription =>
+      'Shows the budget ring with spending, income, and balance';
 
   @override
-  String get v4HomeSummarySlidingDescription => 'Keeps the budget ring in place while you swipe between totals';
+  String get v4HomeSummarySlidingDescription =>
+      'Keeps the budget ring in place while you swipe between totals';
 
   @override
   String get v4HomeBudgetExceeded => 'Перерасход';
@@ -9782,13 +10364,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get recordingProgressRecognizing => 'Распознавание чека';
 
   @override
-  String get recordingProgressRecognizingDetail => 'Определяем суммы, категории и заметки';
+  String get recordingProgressRecognizingDetail =>
+      'Определяем суммы, категории и заметки';
 
   @override
-  String get recordingProgressSavingDetail => 'Сохраняем распознанные транзакции';
+  String get recordingProgressSavingDetail =>
+      'Сохраняем распознанные транзакции';
 
   @override
-  String get recordingProgressSlow => 'Обработка продолжается и займёт немного больше времени.';
+  String get recordingProgressSlow =>
+      'Обработка продолжается и займёт немного больше времени.';
 
   @override
   String get v4RecurringNotGeneratedYet => 'Транзакций пока нет';
@@ -9836,7 +10421,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get v4RecurringAccountMissingWarning => 'Связанный счёт не найден. Выберите счёт заново';
+  String get v4RecurringAccountMissingWarning =>
+      'Связанный счёт не найден. Выберите счёт заново';
 
   @override
   String v4RecurringMonthlyOnDay(String freq, int day) {
@@ -9865,16 +10451,19 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get v4RecurringPreviewEmptyEnded => 'Срок действия правила истёк. Новых транзакций по этому расписанию не будет.';
+  String get v4RecurringPreviewEmptyEnded =>
+      'Срок действия правила истёк. Новых транзакций по этому расписанию не будет.';
 
   @override
-  String get v4RecurringPreviewPausedHint => 'Правило на паузе. Включите его, чтобы снова добавлять транзакции автоматически.';
+  String get v4RecurringPreviewPausedHint =>
+      'Правило на паузе. Включите его, чтобы снова добавлять транзакции автоматически.';
 
   @override
   String get v4RecurringPreviewDueToday => 'Сегодня · добавится при сохранении';
 
   @override
-  String get v4RecurringPreviewPendingCatchUp => 'Дата уже прошла · добавится при сохранении';
+  String get v4RecurringPreviewPendingCatchUp =>
+      'Дата уже прошла · добавится при сохранении';
 
   @override
   String get v4RecurringPreviewTomorrow => 'Завтра';
@@ -9928,5 +10517,6 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get v4RecurringUsageSummary => 'Транзакции с наступившей датой добавляются при открытии приложения или возвращении в него. Нажмите на правило, чтобы изменить расписание.';
+  String get v4RecurringUsageSummary =>
+      'Транзакции с наступившей датой добавляются при открытии приложения или возвращении в него. Нажмите на правило, чтобы изменить расписание.';
 }
