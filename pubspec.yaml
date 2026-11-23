@@ -24,7 +24,6 @@ dependencies:
   connectivity_plus: ^6.1.0
   csv: ^5.0.2
   file_picker: ^8.1.2
-  supabase_flutter: ^2.5.6
   crypto: ^3.0.5
   uuid: ^4.5.1
   flutter_svg: ^2.0.10+1
@@ -84,16 +83,6 @@ dependencies:
     path: packages/beecount_ui
   beecount_business_ui:
     path: packages/beecount_business_ui
-  flutter_cloud_sync:
-    path: packages/flutter_cloud_sync
-  flutter_cloud_sync_supabase:
-    path: packages/flutter_cloud_sync_supabase
-  flutter_cloud_sync_webdav:
-    path: packages/flutter_cloud_sync_webdav
-  flutter_cloud_sync_icloud:
-    path: packages/flutter_cloud_sync_icloud
-  flutter_cloud_sync_s3:
-    path: packages/flutter_cloud_sync_s3
   quick_actions: ^1.1.0
   table_calendar: ^3.1.0
   local_auth: ^2.3.0
