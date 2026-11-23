@@ -1,6 +1,8 @@
 /// AI 服务商配置
 ///
 /// 存储单个服务商的完整配置信息
+import 'ai_constants.dart';
+
 class AIServiceProviderConfig {
   /// 唯一标识（UUID）
   final String id;
@@ -8,7 +10,7 @@ class AIServiceProviderConfig {
   /// 显示名称（如"智谱GLM"、"硅基流动"）
   final String name;
 
-  /// 是否为内置服务商（智谱GLM 是内置的，不可删除）
+  /// 是否为内置服务商（FinVerse AI 是内置的，不可删除）
   final bool isBuiltIn;
 
   /// API Key
@@ -41,20 +43,27 @@ class AIServiceProviderConfig {
     required this.createdAt,
   });
 
-  /// 智谱GLM 默认配置
-  static AIServiceProviderConfig get zhipuDefault => AIServiceProviderConfig(
-        id: 'zhipu_glm',
-        name: '智谱GLM',
+  /// FinVerse AI 默认配置 — the single built-in provider.
+  /// The API key lives server-side behind the FinVerse backend; the app
+  /// never holds one. Model names are display-only: the server picks the
+  /// real model (see GET /api/ai/status).
+  static AIServiceProviderConfig get finverseDefault =>
+      AIServiceProviderConfig(
+        id: AIConstants.finverseProviderId,
+        name: AIConstants.finverseProviderName,
         isBuiltIn: true,
-        baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
-        textModel: 'glm-4-flash',
-        visionModel: 'glm-4v-flash',
-        audioModel: 'glm-4-voice',
-        createdAt: DateTime(2024, 1, 1),
+        baseUrl: AIConstants.finverseApiBaseUrl,
+        textModel: AIConstants.finverseModelDisplayName,
+        visionModel: AIConstants.finverseModelDisplayName,
+        audioModel: AIConstants.finverseModelDisplayName,
+        createdAt: DateTime(2026, 11, 23),
       );
 
-  /// 配置是否有效（至少有 API Key）
-  bool get isValid => apiKey.isNotEmpty;
+  /// 配置是否有效。FinVerse AI needs no on-device API key (the key is
+  /// server-side), so the built-in provider is always valid; custom
+  /// providers still need a key.
+  bool get isValid =>
+      id == AIConstants.finverseProviderId || apiKey.isNotEmpty;
 
   /// 是否支持文本对话
   bool get supportsText => textModel.isNotEmpty;
@@ -145,11 +154,11 @@ class AICapabilityBinding {
     this.speechProviderId,
   });
 
-  /// 默认绑定（全部使用智谱GLM）
+  /// 默认绑定（全部使用 FinVerse AI）
   static const AICapabilityBinding defaultBinding = AICapabilityBinding(
-    textProviderId: 'zhipu_glm',
-    visionProviderId: 'zhipu_glm',
-    speechProviderId: 'zhipu_glm',
+    textProviderId: AIConstants.finverseProviderId,
+    visionProviderId: AIConstants.finverseProviderId,
+    speechProviderId: AIConstants.finverseProviderId,
   );
 
   /// 复制并修改

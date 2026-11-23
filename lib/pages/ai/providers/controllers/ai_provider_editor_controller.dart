@@ -164,11 +164,11 @@ class AIProviderEditorController extends ChangeNotifier {
 
   String modelHint(ProviderTestCapability c) => switch (c) {
         ProviderTestCapability.text =>
-          builtIn ? AIConstants.defaultGlmModel : 'gpt-4o-mini',
+          builtIn ? AIConstants.finverseModelDisplayName : 'gpt-4o-mini',
         ProviderTestCapability.vision =>
-          builtIn ? AIConstants.defaultGlmVisionModel : 'gpt-4o',
+          builtIn ? AIConstants.finverseModelDisplayName : 'gpt-4o',
         ProviderTestCapability.speech =>
-          builtIn ? AIConstants.defaultGlmAudioModel : 'whisper-1',
+          builtIn ? AIConstants.finverseModelDisplayName : 'whisper-1',
       };
   @override
   void dispose() {

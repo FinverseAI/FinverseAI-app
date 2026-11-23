@@ -7,9 +7,9 @@ import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter_ai_kit/flutter_ai_kit.dart';
 import 'package:flutter_ai_kit_openai/flutter_ai_kit_openai.dart'
     show OpenAIException;
-import 'package:flutter_ai_kit_zhipu/flutter_ai_kit_zhipu.dart';
 
 import 'ai_provider_config.dart';
+import 'ai_constants.dart';
 import 'ai_provider_manager.dart';
 import '../../services/system/logger_service.dart';
 
@@ -70,11 +70,13 @@ class AIProviderFactory {
 
     logger.debug(tag, '发起文本对话 (${config.name}, 模型: ${config.textModel})');
 
-    if (config.isBuiltIn) {
-      return _chatZhipu(config, prompt, systemPrompt, temperature);
-    } else {
-      return _chatOpenAI(config, prompt, systemPrompt, temperature);
+    // FinVerse AI is not wired yet: the chat/extract transport lands with
+    // the backend endpoints (POST /api/ai/extract). Report it honestly
+    // instead of calling a provider that no longer exists.
+    if (config.id == AIConstants.finverseProviderId) {
+      throw AIException(resolveAppLocalizations(null).aiProviderNotConfiguredText);
     }
+    return _chatOpenAI(config, prompt, systemPrompt, temperature);
   }
 
   /// Real Server-Sent Events from an OpenAI-compatible tool-call endpoint.
@@ -93,6 +95,9 @@ class AIProviderFactory {
     }
     logger.debug(logTag ?? 'AgentNativeTools',
         '发起原生工具流式对话 (${config.name}, 模型: ${config.textModel})');
+    if (config.id == AIConstants.finverseProviderId) {
+      throw AIException(resolveAppLocalizations(null).aiProviderNotConfiguredText);
+    }
     yield* chatWithToolsStreamForConfig(
       config: config,
       messages: messages,
@@ -454,11 +459,10 @@ class AIProviderFactory {
 
     logger.debug(tag, '发起图片理解 (${config.name}, 模型: ${config.visionModel})');
 
-    if (config.isBuiltIn) {
-      return _visionZhipu(config, image, prompt);
-    } else {
-      return _visionOpenAI(config, image, prompt);
+    if (config.id == AIConstants.finverseProviderId) {
+      throw AIException(resolveAppLocalizations(null).aiProviderNotConfiguredVision);
     }
+    return _visionOpenAI(config, image, prompt);
   }
 
   /// 语音转文字
@@ -486,11 +490,10 @@ class AIProviderFactory {
 
     logger.debug(tag, '发起语音转文字 (${config.name}, 模型: ${config.audioModel})');
 
-    if (config.isBuiltIn) {
-      return _speechToTextZhipu(config, audio);
-    } else {
-      return _speechToTextOpenAI(config, audio);
+    if (config.id == AIConstants.finverseProviderId) {
+      throw AIException(resolveAppLocalizations(null).aiProviderNotConfiguredSpeech);
     }
+    return _speechToTextOpenAI(config, audio);
   }
 
   /// 验证当前文本服务商配置是否可用
@@ -536,19 +539,19 @@ class AIProviderFactory {
       return (false, '未配置文本模型');
     }
 
+    if (config.id == AIConstants.finverseProviderId) {
+      return (false, resolveAppLocalizations(null).aiProviderNotConfiguredText);
+    }
+
     try {
       String response;
-      if (config.isBuiltIn) {
-        response = await _chatZhipu(config, 'hi', null, 0.7);
-      } else {
-        response = await _chatOpenAI(
-          config,
-          'hi',
-          null,
-          0.7,
-          client: client,
-        );
-      }
+      response = await _chatOpenAI(
+        config,
+        'hi',
+        null,
+        0.7,
+        client: client,
+      );
 
       if (response.isNotEmpty) {
         final capabilities = await probeAgentCapabilities(
@@ -597,6 +600,13 @@ class AIProviderFactory {
             : AgentCapabilitySupport.unsupported,
         nativeToolCalls: AgentCapabilitySupport.unsupported,
         detail: config.isValid ? '未配置文本模型' : '未配置 API Key',
+      );
+    }
+    if (config.id == AIConstants.finverseProviderId) {
+      return AgentModelCapabilities(
+        text: AgentCapabilitySupport.supported,
+        nativeToolCalls: AgentCapabilitySupport.unsupported,
+        detail: resolveAppLocalizations(null).aiProviderNotConfiguredText,
       );
     }
     final dio = client ?? _getDio(config);
@@ -792,13 +802,12 @@ class AIProviderFactory {
       final testImage = File('${tempDir.path}/bee_test_image.jpg');
       await testImage.writeAsBytes(testImageBytes);
 
+      if (config.id == AIConstants.finverseProviderId) {
+        return (false, resolveAppLocalizations(null).aiProviderNotConfiguredVision);
+      }
       try {
         String response;
-        if (config.isBuiltIn) {
-          response = await _visionZhipu(config, testImage, '描述这张图片');
-        } else {
-          response = await _visionOpenAI(config, testImage, '描述这张图片');
-        }
+        response = await _visionOpenAI(config, testImage, '描述这张图片');
 
         if (response.isNotEmpty) {
           logger.info(tag, '视觉能力验证成功: ${config.name}');
@@ -846,12 +855,11 @@ class AIProviderFactory {
       final testAudio = File('${tempDir.path}/bee_test_audio.wav');
       await testAudio.writeAsBytes(testAudioBytes);
 
+      if (config.id == AIConstants.finverseProviderId) {
+        return (false, resolveAppLocalizations(null).aiProviderNotConfiguredSpeech);
+      }
       try {
-        if (config.isBuiltIn) {
-          await _speechToTextZhipu(config, testAudio);
-        } else {
-          await _speechToTextOpenAI(config, testAudio);
-        }
+        await _speechToTextOpenAI(config, testAudio);
 
         // 静音音频返回空字符串也算成功
         logger.info(tag, '语音能力验证成功: ${config.name}');
@@ -873,7 +881,7 @@ class AIProviderFactory {
 
   /// 创建测试用的 JPEG 图片（64x64 像素红色方块）
   /// 这是一个有效的 JPEG 文件，base64 解码后可直接使用
-  /// GLM VL 模型要求图片尺寸至少 28x28 像素
+  /// 视觉模型要求图片尺寸至少 28x28 像素
   static List<int> _createTestImage() {
     // 64x64 像素的红色 JPEG 图片 base64 编码
     const base64Jpeg =
@@ -938,80 +946,6 @@ class AIProviderFactory {
       result.add((value >> (i * 8)) & 0xFF);
     }
     return result;
-  }
-
-  // ============================================================
-  // 智谱 GLM 实现
-  // ============================================================
-
-  static Future<String> _chatZhipu(
-    AIServiceProviderConfig config,
-    String prompt,
-    String? systemPrompt,
-    double temperature,
-  ) async {
-    final provider = ZhipuGLMProvider(
-      apiKey: config.apiKey,
-      model: config.textModel,
-      temperature: temperature,
-    );
-
-    final task = _SimpleTask(prompt);
-    final result = await provider.execute(task);
-
-    if (!result.success) {
-      throw AIException(result.error ?? '智谱GLM调用失败');
-    }
-
-    return result.data!;
-  }
-
-  static Future<String> _visionZhipu(
-    AIServiceProviderConfig config,
-    File image,
-    String prompt,
-  ) async {
-    final provider = ZhipuGLMProvider(
-      apiKey: config.apiKey,
-      model: config.visionModel,
-      imageFile: image,
-      temperature: 0.3,
-      // 视觉模型处理大图更慢，给 120s 避免误超时
-      receiveTimeout: const Duration(seconds: 120),
-      sendTimeout: const Duration(seconds: 120),
-    );
-
-    final task = _SimpleTask(prompt);
-    final result = await provider.execute(task);
-
-    if (!result.success) {
-      throw AIException(result.error ?? '智谱GLM视觉调用失败');
-    }
-
-    return result.data!;
-  }
-
-  static Future<String> _speechToTextZhipu(
-    AIServiceProviderConfig config,
-    File audio,
-  ) async {
-    final provider = ZhipuGLMProvider(
-      apiKey: config.apiKey,
-      model: config.audioModel,
-      audioFile: audio,
-      // 语音需上传音频文件，给更长的发送和接收超时
-      receiveTimeout: const Duration(seconds: 120),
-      sendTimeout: const Duration(seconds: 120),
-    );
-
-    final task = _SimpleTask('请将语音内容转换为文字，只返回识别的文字内容，不要添加任何解释或标点修饰。');
-    final result = await provider.execute(task);
-
-    if (!result.success) {
-      throw AIException(result.error ?? '智谱GLM语音识别失败');
-    }
-
-    return result.data!.trim();
   }
 
   // ============================================================

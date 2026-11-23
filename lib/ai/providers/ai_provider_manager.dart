@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ai_provider_config.dart';
@@ -13,6 +14,58 @@ class AIProviderManager {
   static const String _tag = 'AIProviderManager';
   static const String _keyProviders = 'ai_providers_v2';
   static const String _keyBinding = 'ai_capability_binding_v2';
+
+  /// FinVerse AI status, from GET {finverseApiBaseUrl}/ai/status.
+  /// The endpoint is session-guarded, so before sign-in (and whenever the
+  /// backend key is unset) every check fails and capability reports
+  /// "not configured" — that is the honest answer until auth lands.
+  static DateTime? _finverseStatusCheckedAt;
+  static bool _finverseStatusConfigured = false;
+  static String? _finverseStatusPrimaryModel;
+
+  /// Backend pieces capture still needs. Flip each to true when the
+  /// endpoint ships (see CAPTURE-PLAN.md §2.1/§2.2); until then the
+  /// matching capability honestly reports "not configured".
+  static const bool _finverseExtractReady = false; // POST /api/ai/extract
+  static const bool _finverseTranscribeReady = false; // POST /api/ai/transcribe
+  static const bool _finverseVisionReady = false; // vision in /api/ai/extract
+
+  /// Whether the FinVerse backend reports its AI as configured.
+  /// Cached for 60s; any failure (no session, no key, offline) is false.
+  static Future<bool> isFinverseAiConfigured() async {
+    final now = DateTime.now();
+    if (_finverseStatusCheckedAt != null &&
+        now.difference(_finverseStatusCheckedAt!).inSeconds < 60) {
+      return _finverseStatusConfigured;
+    }
+    var configured = false;
+    try {
+      final dio = Dio(BaseOptions(
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+      ));
+      final response = await dio.get<Map<String, dynamic>>(
+        '${AIConstants.finverseApiBaseUrl}/ai/status',
+      );
+      final data = response.data;
+      if (response.statusCode == 200 && data != null) {
+        configured = data['configured'] == true;
+        final model = data['primaryModel'];
+        if (model is String && model.isNotEmpty) {
+          _finverseStatusPrimaryModel = model;
+        }
+      }
+    } catch (e) {
+      logger.info(_tag, 'FinVerse AI status check failed: $e');
+      configured = false;
+    }
+    _finverseStatusCheckedAt = now;
+    _finverseStatusConfigured = configured;
+    return configured;
+  }
+
+  /// Primary model name last reported by GET /api/ai/status, if any.
+  static String? get finversePrimaryModel => _finverseStatusPrimaryModel;
 
   /// 全局回调:任何改了 providers / binding / custom_prompt 的地方都会打到这里,
   /// sync_providers 启动时注入一个"推送 AI 配置到 server"的实现,就能把变更
@@ -50,7 +103,7 @@ class AIProviderManager {
       final migratedStr = prefs.getString(_keyProviders);
       if (migratedStr == null || migratedStr.isEmpty) {
         // 如果迁移后仍为空，初始化默认服务商
-        final defaultProviders = [AIServiceProviderConfig.zhipuDefault];
+        final defaultProviders = [AIServiceProviderConfig.finverseDefault];
         await _saveProviders(defaultProviders);
         return defaultProviders;
       }
@@ -69,33 +122,19 @@ class AIProviderManager {
           .map((e) => AIServiceProviderConfig.fromJson(e as Map<String, dynamic>))
           .toList();
 
-      // 确保智谱GLM始终存在
-      if (!providers.any((p) => p.id == 'zhipu_glm')) {
-        providers.insert(0, AIServiceProviderConfig.zhipuDefault);
+      // FinVerse AI is the only provider now: drop any stored Zhipu/custom
+      // provider (no per-user provider configuration) and make sure the
+      // built-in FinVerse provider is present.
+      providers.removeWhere((p) => p.id != AIConstants.finverseProviderId);
+      if (!providers.any((p) => p.id == AIConstants.finverseProviderId)) {
+        providers.insert(0, AIServiceProviderConfig.finverseDefault);
         await _saveProviders(providers);
-      }
-
-      // 修复：如果智谱GLM的API Key为空，尝试从旧配置读取
-      final zhipuIndex = providers.indexWhere((p) => p.id == 'zhipu_glm');
-      if (zhipuIndex >= 0 && !providers[zhipuIndex].isValid) {
-        final prefs = await SharedPreferences.getInstance();
-        final oldApiKey = prefs.getString('ai_glm_api_key') ?? '';
-        if (oldApiKey.isNotEmpty) {
-          logger.info(_tag, '从旧配置恢复智谱API Key');
-          providers[zhipuIndex] = providers[zhipuIndex].copyWith(
-            apiKey: oldApiKey,
-            textModel: prefs.getString('ai_glm_model') ?? providers[zhipuIndex].textModel,
-            visionModel: prefs.getString('ai_glm_vision_model') ?? providers[zhipuIndex].visionModel,
-            audioModel: prefs.getString('ai_glm_audio_model') ?? providers[zhipuIndex].audioModel,
-          );
-          await _saveProviders(providers);
-        }
       }
 
       return providers;
     } catch (e, st) {
       logger.error(_tag, '解析服务商配置失败', e, st);
-      return [AIServiceProviderConfig.zhipuDefault];
+      return [AIServiceProviderConfig.finverseDefault];
     }
   }
 
@@ -164,7 +203,7 @@ class AIProviderManager {
     final providers = await getProviders();
     final provider = providers.firstWhere(
       (p) => p.id == id,
-      orElse: () => AIServiceProviderConfig.zhipuDefault,
+      orElse: () => AIServiceProviderConfig.finverseDefault,
     );
 
     // 内置服务商不可删除
@@ -182,15 +221,18 @@ class AIProviderManager {
     var newBinding = binding;
 
     if (binding.textProviderId == id) {
-      newBinding = newBinding.copyWith(textProviderId: 'zhipu_glm');
+      newBinding = newBinding.copyWith(
+          textProviderId: AIConstants.finverseProviderId);
       needUpdate = true;
     }
     if (binding.visionProviderId == id) {
-      newBinding = newBinding.copyWith(visionProviderId: 'zhipu_glm');
+      newBinding = newBinding.copyWith(
+          visionProviderId: AIConstants.finverseProviderId);
       needUpdate = true;
     }
     if (binding.speechProviderId == id) {
-      newBinding = newBinding.copyWith(speechProviderId: 'zhipu_glm');
+      newBinding = newBinding.copyWith(
+          speechProviderId: AIConstants.finverseProviderId);
       needUpdate = true;
     }
 
@@ -378,21 +420,37 @@ class AIProviderManager {
     }
 
     if (providerId == null) {
-      return AIServiceProviderConfig.zhipuDefault;
+      return AIServiceProviderConfig.finverseDefault;
     }
 
     return await getProvider(providerId);
   }
 
-  /// 指定能力对应的 provider 是否已配置好(有 apiKey)。
-  /// v3.2.1 删 OCR 后,图片/语音记账完全依赖 AI,UI 调用前先检查,未配置直接
-  /// 提示用户去 AI 设置页,避免 vision()/speechToText() 内部抛异常用户看不懂。
+  /// 指定能力对应的 provider 是否已配置好。
+  ///
+  /// For the built-in FinVerse AI provider, "configured" means the backend
+  /// reports its AI as configured (GET /api/ai/status) AND the backend
+  /// piece that capability needs exists (extract / transcribe / vision).
+  /// Until those endpoints ship, every capability honestly reports
+  /// "not configured" and capture buttons stay disabled.
   static Future<bool> isCapabilityConfigured(AICapabilityType type) async {
     final provider = await getProviderForCapability(type);
-    return provider != null && provider.isValid;
+    if (provider == null) return false;
+    if (provider.id != AIConstants.finverseProviderId) {
+      return provider.isValid;
+    }
+    if (!await isFinverseAiConfigured()) return false;
+    switch (type) {
+      case AICapabilityType.text:
+        return _finverseExtractReady;
+      case AICapabilityType.vision:
+        return _finverseExtractReady && _finverseVisionReady;
+      case AICapabilityType.speech:
+        return _finverseTranscribeReady && _finverseExtractReady;
+    }
   }
 
-  /// 迁移旧配置到新格式
+  /// 迁移旧配置到新格式：只保留 FinVerse AI，丢弃旧的智谱/自定义服务商。
   static Future<void> migrateFromOldConfig() async {
     final prefs = await SharedPreferences.getInstance();
 
@@ -401,59 +459,12 @@ class AIProviderManager {
       return;
     }
 
-    logger.info(_tag, '开始迁移旧配置');
+    logger.info(_tag, '开始迁移旧配置：切换到 FinVerse AI');
 
-    // 读取旧配置 - 使用 AIConstants 中定义的 key
-    final oldProvider = prefs.getString('ai_service_provider') ?? 'zhipuGLM';
-    final isCustom = oldProvider == 'custom';
-
-    // 读取智谱 GLM 配置（使用正确的 key）
-    final glmApiKey = prefs.getString('ai_glm_api_key') ?? '';
-    final glmTextModel = prefs.getString('ai_glm_model') ?? 'glm-4-flash';
-    final glmVisionModel = prefs.getString('ai_glm_vision_model') ?? 'glm-4v-flash';
-    final glmAudioModel = prefs.getString('ai_glm_audio_model') ?? 'glm-4-voice';
-
-    logger.info(_tag, '迁移智谱配置: apiKey=${glmApiKey.isNotEmpty ? "已配置" : "未配置"}');
-
-    final providers = <AIServiceProviderConfig>[
-      // 智谱GLM（从旧配置读取 API Key）
-      AIServiceProviderConfig.zhipuDefault.copyWith(
-        apiKey: glmApiKey,
-        textModel: glmTextModel,
-        visionModel: glmVisionModel,
-        audioModel: glmAudioModel,
-      ),
-    ];
-
-    // 如果有自定义服务商配置，也迁移过来（使用正确的 key）
-    final customApiKey = prefs.getString('ai_custom_api_key') ?? '';
-    final customBaseUrl = prefs.getString('ai_custom_base_url') ?? '';
-    if (customApiKey.isNotEmpty && customBaseUrl.isNotEmpty) {
-      providers.add(AIServiceProviderConfig(
-        id: 'custom_migrated',
-        name: '自定义服务商',
-        apiKey: customApiKey,
-        baseUrl: customBaseUrl,
-        textModel: prefs.getString('ai_custom_text_model') ?? '',
-        visionModel: prefs.getString('ai_custom_vision_model') ?? '',
-        audioModel: prefs.getString('ai_custom_audio_model') ?? '',
-        createdAt: DateTime.now(),
-      ));
-      logger.info(_tag, '迁移自定义服务商配置');
-    }
-
-    await _saveProviders(providers);
+    await _saveProviders([AIServiceProviderConfig.finverseDefault]);
 
     // 设置能力绑定
-    final defaultProviderId = isCustom && customApiKey.isNotEmpty
-        ? 'custom_migrated'
-        : 'zhipu_glm';
-
-    await saveCapabilityBinding(AICapabilityBinding(
-      textProviderId: defaultProviderId,
-      visionProviderId: defaultProviderId,
-      speechProviderId: defaultProviderId,
-    ));
+    await saveCapabilityBinding(AICapabilityBinding.defaultBinding);
 
     logger.info(_tag, '配置迁移完成');
   }

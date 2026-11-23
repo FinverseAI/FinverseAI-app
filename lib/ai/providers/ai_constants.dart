@@ -58,6 +58,18 @@ class AIConstants {
     'glm-4-voice',
   ];
 
+  // FinVerse AI — the single built-in provider (replaces Zhipu GLM).
+  // The API key lives server-side behind the FinVerse backend; the app
+  // never holds one, and there is no per-user provider configuration.
+  static const String finverseProviderId = 'finverse_ai';
+  static const String finverseProviderName = 'FinVerse AI';
+  static const String finverseApiBaseUrl =
+      'https://finverseaii.netlify.app/.netlify/functions/api';
+
+  /// Display model name for the built-in provider. The server picks the
+  /// real model (see GET /api/ai/status); the app never chooses one.
+  static const String finverseModelDisplayName = 'FinVerse AI';
+
   /// 获取模型显示名称
   static String getModelDisplayName(String modelId, {String? fastLabel, String? accurateLabel}) {
     final fast = fastLabel ?? '快速';

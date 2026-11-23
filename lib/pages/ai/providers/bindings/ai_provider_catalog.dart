@@ -47,7 +47,9 @@ class AIProviderCatalog extends ConsumerWidget {
                             const BeeLineIcon('Mic', size: 14),
                             enabled: p.supportsSpeech),
                       ],
-                      onEdit: () => onEdit(p),
+                      // The built-in FinVerse AI provider has no key or
+                      // model settings to edit: it is status-only.
+                      onEdit: p.isBuiltIn ? null : () => onEdit(p),
                       deleteLabel: l.commonDelete,
                       onDelete:
                           p.isBuiltIn ? null : () => _delete(context, ref, p)),

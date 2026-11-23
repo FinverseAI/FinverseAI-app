@@ -29,13 +29,7 @@ class AIProviderManagePage extends ConsumerWidget {
         body: Column(children: [
       BeePageHeader(
           title: l.aiProviderManageTitle,
-          leading: const BackButton(),
-          actions: [
-            BeeIconButton(
-                label: l.aiProviderAdd,
-                icon: const BeeLineIcon('Plus'),
-                onPressed: () => edit(null))
-          ]),
+          leading: const BackButton()),
       Expanded(child: AIProviderCatalog(onEdit: (p) => edit(p))),
     ]));
   }

@@ -71,8 +71,6 @@ dependencies:
   in_app_purchase_platform_interface: ^1.4.0
   flutter_ai_kit:
     path: packages/flutter_ai_kit
-  flutter_ai_kit_zhipu:
-    path: packages/flutter_ai_kit_zhipu
   flutter_ai_kit_openai:
     path: packages/flutter_ai_kit_openai
   agentcore:

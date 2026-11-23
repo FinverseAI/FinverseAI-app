@@ -47,7 +47,7 @@ class AISettingsCapabilityCard extends ConsumerWidget {
                 icon: BeeLineIcon(item.$4),
                 providerName: options
                     .firstWhere((p) => p.id == item.$5,
-                        orElse: () => AIServiceProviderConfig.zhipuDefault)
+                        orElse: () => AIServiceProviderConfig.finverseDefault)
                     .name,
                 onSelect: () => _choose(context, ref,
                     title: item.$2,
