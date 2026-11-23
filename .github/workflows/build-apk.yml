@@ -1,3 +1,4 @@
+# Re-triggered after minSdk 24 fix (run #1 failed on minSdk 23).
 name: Build APK
 
 # Builds the FinVerse Android app (BeeCount 4.0.1 fork) on GitHub's runners,
