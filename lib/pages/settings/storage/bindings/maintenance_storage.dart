@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:beecount_ui/beecount_ui.dart';
-import 'package:beecount_business_ui/maintenance.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../shared/dialogs/app_dialogs.dart' show AppDialog;
 import '../../data/bindings/maintenance_access.dart';
@@ -166,28 +165,44 @@ class _StorageState extends ConsumerState<MaintenanceStorageControls> {
                         onPressed: _busy ? null : _scan),
                     const SizedBox(height: 12)
                   ],
-                  BeeMaintenanceAction(
+                  // BeeMaintenanceAction lived in the deleted
+                  // maintenance barrel; BeeMenuRow renders the same row.
+                  BeeMenuRow(
                       key: const ValueKey('maintenance-clear-models'),
                       title: l.storageAIModels,
                       subtitle: _models.isEmpty
                           ? l.storageNoData
                           : '${_models.length} ${l.storageFiles}',
-                      value: _size(_modelsSize),
-                      icon: const BeeLineIcon('Brain', size: 22),
-                      busy: _busy,
-                      onTap: _modelsSize > 0 ? () => _clear(true) : null),
+                      leading: const BeeLineIcon('Brain', size: 22),
+                      trailing: _busy
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child:
+                                  CircularProgressIndicator(strokeWidth: 2))
+                          : Text(_size(_modelsSize)),
+                      onTap: _busy || _modelsSize == 0
+                          ? null
+                          : () => _clear(true)),
                   if (android) ...[
                     const SizedBox(height: 12),
-                    BeeMaintenanceAction(
+                    BeeMenuRow(
                         key: const ValueKey('maintenance-clear-apks'),
                         title: l.storageAPKFiles,
                         subtitle: _apks.isEmpty
                             ? l.storageNoData
                             : '${_apks.length} ${l.storageFiles}',
-                        value: _size(_apkSize),
-                        icon: const BeeLineIcon('Package', size: 22),
-                        busy: _busy,
-                        onTap: _apkSize > 0 ? () => _clear(false) : null)
+                        leading: const BeeLineIcon('Package', size: 22),
+                        trailing: _busy
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                    strokeWidth: 2))
+                            : Text(_size(_apkSize)),
+                        onTap: _busy || _apkSize == 0
+                            ? null
+                            : () => _clear(false))
                   ],
                   const SizedBox(height: 16),
                   Text(l.storageHint,

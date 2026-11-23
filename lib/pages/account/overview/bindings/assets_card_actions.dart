@@ -107,7 +107,6 @@ extension _AssetsCardActions on _AccountsOverviewBindings {
                           subtitle: l.v4AssetsHiddenIncluded,
                           leading: const BeeLineIcon('EyeOff'),
                           onTap: () => next(sheet, _scrollToAssetHidden)),
-                      const BeeAssetsHeaderEntryBinding(asMenuRow: true),
                     ]))));
   }
 

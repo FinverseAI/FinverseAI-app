@@ -6,10 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:collection/collection.dart';
 import '../../../../providers.dart';
 import '../../../../services/currency/rate_math.dart';
-import '../../../../services/marketing/product_promos.dart';
 import '../../../shared/formatting/amount_text.dart';
 import '../../../../utils/format_money.dart';
-import '../../../settings/support/bindings/product_promo_actions.dart';
 import '../../../../data/db.dart' as db;
 import '../../../../l10n/app_localizations.dart';
 import '../../../../styles/tokens.dart';
@@ -744,36 +742,6 @@ class CardStatBinding extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// 紧凑默认账户选择行
-/// 资产管理页 header 右上角的「蜜蜂家当」入口。
-///
-/// 用 Material 标准的 Premium / 进阶版图标(`workspace_premium_outlined`),
-/// 跟 setting / add 等 outlined 图标视觉重量完全一致;语义上暗示「升级 /
-/// 进阶版本」,鼓励点击。颜色自适应 header 背景。点击进入介绍弹窗。
-class BeeAssetsHeaderEntryBinding extends StatelessWidget {
-  const BeeAssetsHeaderEntryBinding({super.key, this.asMenuRow = false});
-  final bool asMenuRow;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    final info = beeAssetsPromo(context);
-    final texts = buildPromoTexts(context, l10n.aboutBeeAssets);
-
-    if (asMenuRow) {
-      return BeeMenuRow(
-          title: info.title,
-          leading: const BeeLineIcon('Sparkles'),
-          onTap: () => ProductPromoLauncher.open(context, info, texts));
-    }
-    return BeeIconButton(
-      onPressed: () => ProductPromoLauncher.open(context, info, texts),
-      label: info.title,
-      icon: const BeeLineIcon('Sparkles'),
     );
   }
 }

@@ -9,7 +9,6 @@ import '../../../../providers.dart';
 import '../../../../styles/tokens.dart';
 import '../../../../utils/ui_scale_extensions.dart';
 import '../../../../widget/views/budget_view.dart';
-import '../../../../widget/views/bee_trail_view.dart';
 import '../../../../widget/views/consumption_rhythm_view.dart';
 import '../../../../widget/views/dashboard_view.dart';
 import '../../../../widget/views/glance_view.dart';
@@ -25,7 +24,6 @@ import '../../../../widget/widget_data_service.dart'
         QuickAddCategoryItem,
         RecentTransactionItem;
 import '../../../../widget/widget_spec.dart' show HWSize;
-import 'package:beecount_business_ui/maintenance.dart';
 import 'package:beecount_ui/beecount_ui.dart';
 import '../../../shared/scaffold/widgets/page_scaffold.dart';
 import '../../data/bindings/maintenance_access.dart';
@@ -278,25 +276,6 @@ class MaintenanceWidgetsControls extends ConsumerWidget {
                 ),
                 SizedBox(height: 12.0.scaled(context, ref)),
 
-                _buildGalleryCard(
-                  context,
-                  ref,
-                  title: l10n.widgetBeeTrailTitle,
-                  subtitle: l10n.widgetGalleryBeeTrailDesc,
-                  sizeLabel: l10n.widgetSizeSmall,
-                  previewSize: const Size(155, 155),
-                  preview: BeeTrailView(
-                    activity: _sampleDailyActivity(),
-                    themeColor: primaryColor,
-                    dark: dark,
-                    titleLabel: l10n.widgetBeeTrailTitle,
-                    streakSuffix: l10n.widgetBeeTrailStreakSuffix,
-                    completionLabel: l10n.widgetBeeTrailCompletion,
-                    emptyLabel: l10n.widgetBeeTrailEmpty,
-                    width: 155,
-                    height: 155,
-                  ),
-                ),
                 SizedBox(height: 20.0.scaled(context, ref)),
 
                 // 添加指引
@@ -365,12 +344,38 @@ class MaintenanceWidgetsControls extends ConsumerWidget {
     required Size previewSize,
     required Widget preview,
   }) {
-    return BeeMaintenanceWidgetCard(
-        title: title,
-        subtitle: subtitle,
-        sizeLabel: sizeLabel,
-        previewSize: previewSize,
-        preview: preview);
+    // BeeMaintenanceWidgetCard lived in the deleted maintenance barrel;
+    // a plain card renders the same title/subtitle/preview layout.
+    return Card(
+        margin: EdgeInsets.zero,
+        child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title,
+                      style: TextStyle(
+                          fontSize: 15.0.scaled(context, ref),
+                          fontWeight: FontWeight.w700,
+                          color: BeeTokens.textPrimary(context))),
+                  const SizedBox(height: 4),
+                  Text(subtitle,
+                      style: TextStyle(
+                          fontSize: 12.5.scaled(context, ref),
+                          color: BeeTokens.textTertiary(context),
+                          height: 1.4)),
+                  const SizedBox(height: 4),
+                  Text(sizeLabel,
+                      style: TextStyle(
+                          fontSize: 11,
+                          color: BeeTokens.textTertiary(context))),
+                  const SizedBox(height: 12),
+                  FittedBox(
+                      child: SizedBox(
+                          width: previewSize.width,
+                          height: previewSize.height,
+                          child: preview)),
+                ])));
   }
 
   Widget _buildAddGuideSection(
@@ -378,21 +383,37 @@ class MaintenanceWidgetsControls extends ConsumerWidget {
     WidgetRef ref,
     AppLocalizations l10n,
   ) {
-    return BeeMaintenanceGuide(
-        title: l10n.howToAddWidget,
-        steps: ref.watch(maintenancePlatformProvider) == TargetPlatform.iOS
-            ? [
-                l10n.iosWidgetStep1,
-                l10n.iosWidgetStep2,
-                l10n.iosWidgetStep3,
-                l10n.iosWidgetStep4
-              ]
-            : [
-                l10n.androidWidgetStep1,
-                l10n.androidWidgetStep2,
-                l10n.androidWidgetStep3,
-                l10n.androidWidgetStep4
-              ]);
+    final steps = ref.watch(maintenancePlatformProvider) == TargetPlatform.iOS
+        ? [
+            l10n.iosWidgetStep1,
+            l10n.iosWidgetStep2,
+            l10n.iosWidgetStep3,
+            l10n.iosWidgetStep4
+          ]
+        : [
+            l10n.androidWidgetStep1,
+            l10n.androidWidgetStep2,
+            l10n.androidWidgetStep3,
+            l10n.androidWidgetStep4
+          ];
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.howToAddWidget,
+              style: TextStyle(
+                  fontSize: 15.0.scaled(context, ref),
+                  fontWeight: FontWeight.w700,
+                  color: BeeTokens.textPrimary(context))),
+          const SizedBox(height: 8),
+          for (var i = 0; i < steps.length; i++)
+            Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Text('${i + 1}. ${steps[i]}',
+                    style: TextStyle(
+                        fontSize: 12.5.scaled(context, ref),
+                        color: BeeTokens.textTertiary(context),
+                        height: 1.4))),
+        ]);
   }
 
   Widget _buildQuickEntrySection(
@@ -400,18 +421,39 @@ class MaintenanceWidgetsControls extends ConsumerWidget {
     WidgetRef ref,
     AppLocalizations l10n,
   ) {
-    return BeeMaintenanceInfo(
-        title: l10n.widgetQuickEntryTitle,
-        message: l10n.widgetQuickEntryDesc,
-        icon: const BeeLineIcon('MousePointerClick', size: 22));
+    return _infoRow(context, ref,
+        l10n.widgetQuickEntryTitle, l10n.widgetQuickEntryDesc,
+        const BeeLineIcon('MousePointerClick', size: 22));
   }
 
   Widget _buildDescriptionSection(
           BuildContext context, WidgetRef ref, AppLocalizations l10n) =>
-      BeeMaintenanceInfo(
-          title: l10n.aboutWidget,
-          message: l10n.widgetDescription,
-          icon: const BeeLineIcon('Info', size: 22));
+      _infoRow(context, ref, l10n.aboutWidget, l10n.widgetDescription,
+          const BeeLineIcon('Info', size: 22));
+
+  /// Simple icon + title/message row (replaces deleted BeeMaintenanceInfo).
+  Widget _infoRow(BuildContext context, WidgetRef ref, String title,
+          String message, Widget icon) =>
+      Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        icon,
+        const SizedBox(width: 10),
+        Expanded(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+              Text(title,
+                  style: TextStyle(
+                      fontSize: 14.0.scaled(context, ref),
+                      fontWeight: FontWeight.w700,
+                      color: BeeTokens.textPrimary(context))),
+              const SizedBox(height: 2),
+              Text(message,
+                  style: TextStyle(
+                      fontSize: 12.5.scaled(context, ref),
+                      color: BeeTokens.textTertiary(context),
+                      height: 1.4)),
+            ])),
+      ]);
 }
 
 // ===========================================================================

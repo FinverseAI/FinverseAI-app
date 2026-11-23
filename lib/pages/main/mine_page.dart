@@ -8,9 +8,6 @@ import '../../l10n/app_localizations.dart';
 import 'mine/widgets/mine_profile.dart';
 import 'mine/bindings/mine_cloud.dart';
 import 'mine/bindings/mine_actions.dart';
-import '../../providers/github_star_provider.dart';
-import '../../services/export/share_poster_service.dart';
-import '../../utils/website_urls.dart';
 import '../shared/widgets/feature_dot.dart';
 import '../settings/help_center_page.dart';
 import '../settings/data_management_page.dart';
@@ -19,7 +16,6 @@ import '../settings/smart_billing_page.dart';
 import '../settings/automation_page.dart';
 import '../settings/about_page.dart';
 import '../report/annual_report_page.dart';
-import '../donation/donation_page.dart';
 
 class MinePage extends ConsumerWidget {
   const MinePage({super.key});
@@ -55,8 +51,6 @@ class MinePage extends ConsumerWidget {
                 ]
               ]))
         ]);
-    final stars = ref.watch(githubStarCountProvider).valueOrNull ??
-        githubStarFallbackCount;
     return V4PageScaffold(
         profileHeaderSkin: true,
         backgroundColor: BeeCardTheme.of(context).canvas,
@@ -95,31 +89,19 @@ class MinePage extends ConsumerWidget {
                     if (kHelpCenterInApp) {
                       open(const HelpCenterPage());
                     } else {
+                      // FinVerse v1 has no docs site yet: help opens the
+                      // FinVerse web app.
                       await tryOpenMineUrl(Uri.parse(
-                          WebsiteUrls.docs(Localizations.localeOf(context))));
+                          'https://finverseaii.netlify.app'));
                     }
                   })
                 ]),
                 group(l.v4MineSupportGroup, [
-                  if (Platform.isIOS)
-                    row(l.donationTitle, l.donationEntrySubtitle, 'Heart',
-                        () => open(const DonationPage())),
-                  row(
-                      l.mineSupportAuthor,
-                      l.mineSupportAuthorSubtitle(stars.toString()),
-                      'Star',
-                      () => showMineGitHubStarGuide(context)),
                   row(
                       l.annualReportTitle,
                       l.annualReportEntrySubtitle,
                       'ChartNoAxesCombined',
                       () => open(const AnnualReportPage())),
-                  row(
-                      l.mineShareApp,
-                      l.mineShareWithFriends,
-                      'Share2',
-                      () => SharePosterService.showPosterCarouselPreview(
-                          context)),
                   row(l.mineCopyPromoText, l.mineCopyPromoSubtitle, 'Copy',
                       () async {
                     await Clipboard.setData(

@@ -2,12 +2,9 @@ import 'package:beecount_business_ui/beecount_business_ui.dart';
 import 'package:beecount_ui/beecount_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../ai/providers/ai_provider_config.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../providers/ai_chat_providers.dart';
-import '../../../../services/system/logger_service.dart';
-import '../../../../utils/website_urls.dart';
 import '../controllers/ai_provider_editor_controller.dart';
 
 final aiProviderConnectionTesterProvider = Provider<AIProviderConnectionTester>(
@@ -159,13 +156,6 @@ class _AIProviderEditorState extends ConsumerState<AIProviderEditor> {
             Text(l.aiCloudApiKeyHelper,
                 style: TextStyle(
                     fontSize: 11, color: Theme.of(context).hintColor)),
-            Wrap(alignment: WrapAlignment.spaceBetween, children: [
-              TextButton(
-                  onPressed: () => _openKey(), child: Text(l.aiCloudApiGetKey)),
-              TextButton(
-                  onPressed: () => _openTutorial(),
-                  child: Text(l.aiCloudApiTutorial))
-            ])
           ],
           const SizedBox(height: 14),
           const Divider(height: 1),
@@ -198,26 +188,5 @@ class _AIProviderEditorState extends ConsumerState<AIProviderEditor> {
               onPressed: c.busy || c.key.text.isEmpty ? null : c.testAll,
               icon: const BeeLineIcon('RefreshCw', size: 18)),
         ]);
-  }
-
-  Future<void> _openKey() async {
-    final uri = Uri.parse(WebsiteUrls.glmInvite);
-    try {
-      if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
-      } else {
-        logger.warning('AIProviderEditPage', '无法打开邀请链接: $uri');
-      }
-    } catch (e) {
-      logger.error('AIProviderEditPage', '打开邀请链接失败: $uri', e);
-    }
-  }
-
-  Future<void> _openTutorial() async {
-    final uri = Uri.parse(
-        WebsiteUrls.docsAi('overview', Localizations.localeOf(context)));
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
   }
 }

@@ -12,7 +12,6 @@ import '../../styles/header_skins.dart' show headerSkinById;
 import '../../utils/currencies.dart';
 import '../shared/selectors/currency_picker_sheet.dart';
 import '../shared/widgets/feature_dot.dart';
-import '../currency/exchange_rate_page.dart';
 import 'app_lock_settings_page.dart';
 import 'font_settings_page.dart';
 import 'header_skin_page.dart';
@@ -262,11 +261,6 @@ class _AppearanceSettingsPageState
                   displayCurrency(
                       ref.watch(baseCurrencyProvider).toUpperCase(), context),
                   _pickCurrency),
-              entry(
-                  'ArrowLeftRight',
-                  l.exchangeRatePageTitle,
-                  l.exchangeRateEntrySubtitle,
-                  () => open(const ExchangeRatePage())),
             ]),
             const SizedBox(height: 16),
             group([

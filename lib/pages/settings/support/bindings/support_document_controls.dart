@@ -5,25 +5,26 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 import '../../../../l10n/app_localizations.dart';
-import '../../../../providers/theme_providers.dart';
 import '../../../../styles/tokens.dart';
-import '../../../../utils/website_urls.dart';
 import 'package:beecount_ui/beecount_ui.dart';
 import 'package:beecount_business_ui/support.dart';
 import 'support_frame.dart';
 import 'support_platform.dart';
 
-/// 帮助中心 — 内嵌 WebView 打开文档站(embed 模式)。
+/// 帮助中心 — 内嵌 WebView 打开 FinVerse 网站。
 ///
-/// - URL 带 embed=1(站点隐藏 navbar/footer 等外链 chrome,避免审核风险)
-///   + theme/primary(跟随 App 暗黑模式与主题色)+ 语言前缀(跟随 App 语言)
-/// - 缓存:走 WebView 默认 HTTP 缓存 —— 文档站静态资源带 content-hash 长缓存头,
-///   WKWebView(URLCache)与 Android WebView(LOAD_DEFAULT)都会落盘,无需自建
-/// - 域名白名单:仅放行官网域名,外链一律转系统浏览器(审核第二道防线)
+/// FinVerse v1 没有独立文档站:帮助页直接打开 FinVerse 网站
+/// (https://finverseaii.netlify.app)。独立的隐私页也还没有,隐私入口
+/// 同样打开网站首页(待后端/网站补隐私页后再接)。
+/// - 缓存:走 WebView 默认 HTTP 缓存
+/// - 域名白名单:仅放行 FinVerse 域名,外链一律转系统浏览器
 /// - 离线:加载失败显示兜底页,可重试或跳浏览器
 class SupportDocumentControls extends ConsumerStatefulWidget {
   const SupportDocumentControls(
       {super.key, this.initialUrl, this.title, this.privacy = false});
+
+  /// FinVerse 网站(帮助中心与隐私入口的打开目标)。v1 没有独立文档站/隐私页。
+  static const finverseWebUrl = 'https://finverseaii.netlify.app';
   final bool privacy;
 
   /// 可选:指定初始打开的文档 URL(应为本站 embed 模式链接)。不传则打开文档
@@ -51,10 +52,6 @@ class _SupportDocumentControlsState
   // 改为直接对比 URL 路径:人在文档首页 → 放行左滑退出;不在 → 让位网页回退。
   bool _awayFromHome = false;
 
-  static String _hex(Color c) => [c.r, c.g, c.b]
-      .map((v) => ((v * 255).round() & 0xff).toRadixString(16).padLeft(2, '0'))
-      .join();
-
   static String _normPath(String url) {
     final path = Uri.tryParse(url)?.path ?? '';
     return path.endsWith('/') ? path.substring(0, path.length - 1) : path;
@@ -70,15 +67,9 @@ class _SupportDocumentControlsState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // 初始化需要 context(locale / 暗黑 / 主题色),放 didChangeDependencies 首跑
+    // 初始化需要 context,放 didChangeDependencies 首跑
     if (_controller != null) return;
-    final locale = Localizations.localeOf(context);
-    _url = widget.initialUrl ??
-        (widget.privacy ? WebsiteUrls.privacy : WebsiteUrls.docsEmbed)(
-          locale,
-          dark: BeeTokens.isDark(context),
-          primaryHex: _hex(ref.read(primaryColorProvider)),
-        );
+    _url = widget.initialUrl ?? SupportDocumentControls.finverseWebUrl;
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(BeeTokens.scaffoldBackground(context))
@@ -107,7 +98,7 @@ class _SupportDocumentControlsState
           // 下载/捐赠等外链,这是审核合规的第二道防线)
           final uri = Uri.tryParse(request.url);
           final host = uri?.host ?? '';
-          if (host.isEmpty || host.endsWith('beejz.com')) {
+          if (host.isEmpty || host.endsWith('finverseaii.netlify.app')) {
             return NavigationDecision.navigate;
           }
           launchUrl(Uri.parse(request.url),
@@ -126,10 +117,8 @@ class _SupportDocumentControlsState
   }
 
   Future<void> _openInBrowser() async {
-    final locale = Localizations.localeOf(context);
     if (widget.privacy) {
-      final lang = locale.languageCode == 'zh' ? '' : '/en';
-      await launchUrl(Uri.parse('${WebsiteUrls.baseUrl}$lang/privacy'),
+      await launchUrl(Uri.parse(SupportDocumentControls.finverseWebUrl),
           mode: LaunchMode.externalApplication);
       return;
     }
@@ -138,7 +127,7 @@ class _SupportDocumentControlsState
     // 去掉 query 还原正常文档 URL;拿不到当前 URL 才兜底文档首页。
     final String url;
     if (current == null) {
-      url = WebsiteUrls.docs(locale);
+      url = SupportDocumentControls.finverseWebUrl;
     } else if (current.contains('embed=1')) {
       url = current.split('?').first;
     } else {

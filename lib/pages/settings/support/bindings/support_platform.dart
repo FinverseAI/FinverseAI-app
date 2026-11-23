@@ -4,9 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../services/system/update_service.dart';
 import '../../../../services/system/logger_service.dart';
-import 'product_promo_actions.dart';
 
 final supportPlatformProvider =
     Provider<SupportPlatform>((ref) => const SupportPlatform());
@@ -55,12 +53,4 @@ class SupportPlatform {
     }
   }
 
-  Future<void> checkUpdate(BuildContext context,
-          {required void Function(bool) setLoading,
-          required void Function(double, String) setProgress}) =>
-      UpdateService.checkUpdateWithUI(context,
-          setLoading: setLoading, setProgress: setProgress);
-  Future<void> product(
-          BuildContext context, ProductPromo info, ProductPromoTexts texts) =>
-      ProductPromoLauncher.open(context, info, texts);
 }

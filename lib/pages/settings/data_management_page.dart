@@ -6,14 +6,11 @@ import '../../providers.dart';
 import '../../l10n/app_localizations.dart';
 import '../shared/scaffold/widgets/page_scaffold.dart';
 import 'attachments/bindings/attachment_transfer_actions.dart';
-import '../data/import_page.dart';
 import '../data/export_page.dart';
 import '../category/category_manage_page.dart';
 import '../category/category_migration_page.dart';
 import '../tag/tag_manage_page.dart';
-import 'config_import_export_page.dart';
 import 'storage_management_page.dart';
-import '../maintenance/orphan_cleanup_page.dart';
 
 class DataManagementPage extends ConsumerStatefulWidget {
   const DataManagementPage({super.key});
@@ -27,10 +24,7 @@ class _DataManagementPageState extends ConsumerState<DataManagementPage>
       Navigator.push(context, MaterialPageRoute<void>(builder: (_) => page));
   @override
   Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context),
-        p = ref.watch(importProgressProvider);
-    final complete = !p.running && p.total > 0,
-        allOk = complete && p.done == p.total && p.fail == 0;
+    final l = AppLocalizations.of(context);
     Widget menu(String title, String icon, Widget page, [String? subtitle]) =>
         BeeMenuRow(
             title: title,
@@ -53,18 +47,6 @@ class _DataManagementPageState extends ConsumerState<DataManagementPage>
                 ]
               ]))
         ]);
-    final importTitle = p.running
-        ? l.mineImportProgressTitle
-        : complete
-            ? l.mineImportCompleteTitle
-            : l.mineImport;
-    final importSubtitle = p.running
-        ? l.mineImportProgressSubtitle(p.done, p.fail, p.ok, p.total)
-        : allOk
-            ? l.mineImportCompleteAllSuccess
-            : complete
-                ? '${l.commonSuccess} ${p.ok}，${l.commonFailed} ${p.fail}'
-                : null;
     return V4PageScaffold(
         body: Column(children: [
       BeePageHeader(
@@ -79,31 +61,6 @@ class _DataManagementPageState extends ConsumerState<DataManagementPage>
                     height: 1.6,
                     color: Theme.of(context).hintColor)),
             section(l.v4DataBills, [
-              BeeFileTransferStatus(
-                  title: importTitle,
-                  subtitle: importSubtitle,
-                  leading: BeeLineIcon(
-                      p.running
-                          ? 'FileUp'
-                          : allOk
-                              ? 'CircleCheck'
-                              : complete
-                                  ? 'Info'
-                                  : 'FileUp',
-                      size: 20),
-                  state: p.running
-                      ? BeeFileTaskState.running
-                      : allOk
-                          ? BeeFileTaskState.success
-                          : complete
-                              ? BeeFileTaskState.partial
-                              : BeeFileTaskState.ready,
-                  progress: p.total == 0 ? null : p.done / p.total,
-                  progressLabel: importSubtitle,
-                  animateCompletion: allOk,
-                  onTap: !p.running && p.total == 0
-                      ? () => open(const ImportPage())
-                      : null),
               menu(l.mineExport, 'FileDown', const ExportPage())
             ]),
             section(l.v4DataCategories, [
@@ -118,12 +75,8 @@ class _DataManagementPageState extends ConsumerState<DataManagementPage>
                   l.tagManageSubtitle)
             ]),
             section(l.v4DataConfiguration, [
-              menu(l.configImportExportTitle, 'FileCog',
-                  const ConfigImportExportPage(), l.configImportExportSubtitle),
               menu(l.storageManagementTitle, 'HardDrive',
                   const StorageManagementPage(), l.storageManagementSubtitle),
-              menu(l.maintenanceOrphanCleanupTitle, 'BrushCleaning',
-                  const OrphanCleanupPage(), l.maintenanceOrphanCleanupSubtitle)
             ]),
             section(l.v4DataAttachments, [
               BeeMenuRow(
