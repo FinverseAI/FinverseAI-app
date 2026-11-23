@@ -147,15 +147,6 @@ extension _AssetsCardActions on _AccountsOverviewBindings {
                             });
                             Navigator.pop(sheet);
                           }),
-                      BeeMenuRow(
-                          title: l.exchangeRatePageTitle,
-                          subtitle: base,
-                          leading: const BeeLineIcon('RefreshCw'),
-                          onTap: () {
-                            Navigator.pop(sheet);
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) => const ExchangeRatePage()));
-                          }),
                     ]))));
   }
 

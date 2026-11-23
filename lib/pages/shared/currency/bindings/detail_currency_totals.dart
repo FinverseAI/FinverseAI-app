@@ -84,7 +84,6 @@ final detailCurrencyContextProvider =
   ref.watch(currentLedgerProvider);
   ref.watch(rateRefreshTickProvider);
   ref.watch(statsRefreshProvider);
-  ref.watch(syncGenerationProvider);
   return loadDetailCurrencyContext(ref.watch(repositoryProvider),
       targetLedgerId: targetId);
 });

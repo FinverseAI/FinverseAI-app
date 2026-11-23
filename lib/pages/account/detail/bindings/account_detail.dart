@@ -138,7 +138,6 @@ class AccountDetailReferences {
 }
 
 final accountDetailReferencesProvider = FutureProvider.autoDispose((ref) async {
-  ref.watch(syncGenerationProvider);
   ref.watch(statsRefreshProvider);
   final repo = ref.watch(repositoryProvider);
   return AccountDetailReferences(
@@ -155,7 +154,6 @@ typedef AccountRowMetadata = ({
 final accountRowMetadataProvider = FutureProvider.autoDispose
     .family<AccountRowMetadata, String>((ref, ids) async {
   ref.watch(statsRefreshProvider);
-  ref.watch(syncGenerationProvider);
   final repo = ref.watch(repositoryProvider);
   final parsed = ids.isEmpty ? <int>[] : ids.split(',').map(int.parse).toList();
   return (
@@ -168,7 +166,6 @@ final accountPeriodCategoryStatsProvider = FutureProvider.autoDispose.family<
     List<({int? id, String name, String? icon, double total})>,
     ({int accountId, String type, DateTime? start, DateTime? end})>((ref, p) {
   ref.watch(statsRefreshProvider);
-  ref.watch(syncGenerationProvider);
   return ref.watch(repositoryProvider).getAccountCategoryStats(p.accountId,
       type: p.type, startDate: p.start, endExclusive: p.end);
 });

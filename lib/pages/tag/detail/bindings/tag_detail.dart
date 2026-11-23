@@ -72,7 +72,6 @@ class TagDetailRows {
 /// to the current ledger currency, without per-row rate requests.
 final tagDetailRowsProvider = FutureProvider.autoDispose
     .family<TagDetailRows, List<db.Transaction>>((ref, transactions) async {
-  ref.watch(syncGenerationProvider);
   ref.watch(statsRefreshProvider);
   final repo = ref.watch(repositoryProvider);
   final categories = await repo.getAllCategoriesIncludingShared();

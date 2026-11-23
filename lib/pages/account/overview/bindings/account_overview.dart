@@ -430,11 +430,8 @@ mixin _AccountsOverviewBindings on ConsumerState<AccountsPage> {
     final isStale = !hasMissing &&
         rd != null &&
         DateTime.now().difference(rd) > const Duration(days: 7);
-    final footer = InkWell(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const ExchangeRatePage()),
-      ),
-      child: Padding(
+    // FinVerse v1:汇率页已随 FX 功能移除，缺失/过期提示不再可点。
+    final footer = Padding(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
         child: Text(
           hasMissing
@@ -555,7 +552,6 @@ mixin _AccountsOverviewBindings on ConsumerState<AccountsPage> {
       final expense =
           localRef.watch(defaultExpenseAccountIdProvider).valueOrNull;
       final income = localRef.watch(defaultIncomeAccountIdProvider).valueOrNull;
-      final used = localRef.watch(usedCurrenciesProvider).valueOrNull;
       String accountName(int? id) =>
           accounts.where((a) => a.id == id).firstOrNull?.name ??
           l.accountDefaultNone;
@@ -578,14 +574,7 @@ mixin _AccountsOverviewBindings on ConsumerState<AccountsPage> {
               incomeAccount: accountName(income),
               onIncomeAccount: () => _showDefaultAccountPicker(sheet,
                   accounts: accounts, current: income, income: true),
-              rateLabel: l.exchangeRatePageTitle,
-              onRates: used != null && used.length >= 2
-                  ? () {
-                      Navigator.pop(sheet);
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => const ExchangeRatePage()));
-                    }
-                  : null));
+));
     }));
   }
 

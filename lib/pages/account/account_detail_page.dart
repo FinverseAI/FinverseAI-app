@@ -66,7 +66,6 @@ class _AccountDetailPageState extends ConsumerState<AccountDetailPage>
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     ref.listen(statsRefreshProvider, (_, __) => unawaited(c.refresh()));
-    ref.listen(syncGenerationProvider, (_, __) => unawaited(c.refresh()));
     final refs = ref.watch(accountDetailReferencesProvider);
     return AnimatedBuilder(
         animation: c,

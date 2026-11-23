@@ -185,8 +185,6 @@ class _CategoryDetailState extends ConsumerState<CategoryDetailPage> {
         (_, __) => unawaited(_data?.refreshResources()));
     ref.listen(
         statsRefreshProvider, (_, __) => unawaited(_data?.refreshResources()));
-    ref.listen(syncGenerationProvider,
-        (_, __) => unawaited(_data?.refreshResources()));
     ref.listen(currentLedgerProvider, (previous, next) {
       if (previous?.valueOrNull?.currency != next.valueOrNull?.currency) {
         unawaited(_data?.refreshResources());

@@ -1,20 +1,12 @@
-// 共享账本:本地写 tx 后回填创建人 / 编辑人。
-// 不阻塞主流程 — auth 取不到 / 单人账本场景静默跳过,不抛错。
+// FinVerse v1:单人账本，tx 作者标记为空操作(见下方 TODO)。
+// 原实现是共享账本:本地写 tx 后回填创建人 / 编辑人。
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/repositories/local/local_repository.dart';
-import '../../providers.dart';
-import '../system/logger_service.dart';
-
-/// 共享账本 tx 作者标记工具。
+/// tx 作者标记工具(v1 为空操作，调用方保持不变)。
 ///
 /// 调用场景:
-/// - `markCreated`:本地新建 tx 后调,写 createdByUserId + lastEditedByUserId
-/// - `markEdited`:本地编辑 tx 后调,只写 lastEditedByUserId(createdByUserId
-///   维持 first-write-wins)
-///
-/// 失败一律 swallow 走 logger.warning — 头像数据不是关键路径,影响仅是 UI
-/// 展示稍迟回填(下次 server pull / push 拉回时也会修正)。
+/// - `markCreated`:本地新建 tx 后调
+/// - `markEdited`:本地编辑 tx 后调
 class TxAuthorService {
   TxAuthorService._();
 
@@ -31,51 +23,20 @@ class TxAuthorService {
   static Future<void> markEditedC(ProviderContainer c, int txId) async =>
       _markImplC(c, txId, isCreate: false);
 
+  // FinVerse v1:单人账本，没有云账号可取作者 id，标记为空操作。
+  //
+  // TODO(finverse-sync):接后端同步层(同一 Google/Better Auth 账号)后，
+  // 在这里取当前用户 id 并调 repo.markTxAuthor。原实现从 BeeCount Cloud
+  // 的 auth.currentUser 取 id。
   static Future<void> _markImpl(
     WidgetRef ref,
     int txId, {
     required bool isCreate,
-  }) async {
-    try {
-      final cloud = await ref.read(beecountCloudProviderInstance.future);
-      if (cloud == null) return;
-      final me = await cloud.auth.currentUser;
-      final userId = me?.id;
-      if (userId == null || userId.isEmpty) return;
-      final repo = ref.read(repositoryProvider);
-      if (repo is! LocalRepository) return;
-      await repo.markTxAuthor(
-        txId: txId,
-        userId: userId,
-        isCreate: isCreate,
-      );
-    } catch (e, st) {
-      logger.error('TxAuthorService',
-          'markImpl 失败 txId=$txId isCreate=$isCreate', e, st);
-    }
-  }
+  }) async {}
 
   static Future<void> _markImplC(
     ProviderContainer c,
     int txId, {
     required bool isCreate,
-  }) async {
-    try {
-      final cloud = await c.read(beecountCloudProviderInstance.future);
-      if (cloud == null) return;
-      final me = await cloud.auth.currentUser;
-      final userId = me?.id;
-      if (userId == null || userId.isEmpty) return;
-      final repo = c.read(repositoryProvider);
-      if (repo is! LocalRepository) return;
-      await repo.markTxAuthor(
-        txId: txId,
-        userId: userId,
-        isCreate: isCreate,
-      );
-    } catch (e, st) {
-      logger.error('TxAuthorService',
-          'markImplC 失败 txId=$txId isCreate=$isCreate', e, st);
-    }
-  }
+  }) async {}
 }
