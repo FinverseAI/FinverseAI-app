@@ -1,0 +1,55 @@
+name: Build APK
+
+# Builds the FinVerse Android app (BeeCount 4.0.1 fork) on GitHub's runners,
+# because local builds are blocked on the dev VM (Gradle loopback + RAM).
+# Pushing this file (or re-running it from the Actions tab) starts a build.
+# Artifacts: debug APK (dev flavor) + release APKs (prod flavor, per-ABI).
+
+on:
+  push:
+    branches: [fork/beecount-base]
+    paths:
+      - '.github/workflows/build-apk.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter 3.35.7
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.7'
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build debug APK (dev flavor)
+        run: flutter build apk --debug
+
+      - name: Build release APKs (prod flavor, per-ABI splits)
+        run: flutter build apk --release --flavor prod
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: finverse-debug-apk
+          path: build/app/outputs/flutter-apk/app-dev-debug.apk
+          if-no-files-found: error
+
+      - name: Upload release APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: finverse-release-apks
+          path: build/app/outputs/flutter-apk/*release*.apk
+          if-no-files-found: error
