@@ -12,15 +12,12 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../category/category_edit_page.dart';
 import '../../../category/category_manage_page.dart';
 import '../../../../providers.dart';
-import '../../../../providers/shared_ledger_providers.dart';
 import '../../../../utils/category_utils.dart';
 import '../../../../utils/shared_ledger_picker_filter.dart';
 import '../../../shared/resources/bindings/recording_category_icon.dart';
 
 final recordingCategoriesProvider = FutureProvider.autoDispose
     .family<List<Category>, ({int ledgerId, String kind})>((ref, query) async {
-  ref.watch(sharedResourceRefreshProvider);
-  ref.watch(syncGenerationProvider);
   final repo = ref.watch(repositoryProvider);
   final all = (await repo.getAllCategories())
       .where((category) => category.kind == query.kind)

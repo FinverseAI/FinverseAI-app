@@ -3,15 +3,12 @@ import '../../../../data/db.dart';
 import '../../../../data/repositories/local/local_repository.dart';
 import '../../../../data/repositories/base_repository.dart';
 import '../../../../providers.dart';
-import '../../../../providers/shared_ledger_providers.dart';
 import '../../../../utils/account_type_utils.dart';
 import '../../../../utils/shared_ledger_picker_filter.dart';
 
 typedef TransferInlineAccountQuery = ({int ledgerId, int? fromPin, int? toPin});
 final transferInlineAccountsProvider = FutureProvider.autoDispose
     .family<List<Account>, TransferInlineAccountQuery>((ref, query) async {
-  ref.watch(sharedResourceRefreshProvider);
-  ref.watch(syncGenerationProvider);
   final repo = ref.watch(repositoryProvider);
   var accounts = await repo.getAllAccounts();
   if (repo is LocalRepository) {

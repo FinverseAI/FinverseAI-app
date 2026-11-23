@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../data/db.dart';
 import '../../../../data/repositories/base_repository.dart';
 import '../../../../providers.dart';
-import '../../../../providers/shared_ledger_providers.dart';
 import '../../../../services/attachment_service.dart';
 import '../../search/bindings/transaction_search.dart';
 
@@ -99,8 +98,6 @@ final transactionDetailDataProvider = FutureProvider.autoDispose
     .family<TransactionDetailData?, TransactionDetailRequest>((ref, request) {
   ref.watch(statsRefreshProvider);
   ref.watch(tagListRefreshProvider);
-  ref.watch(syncGenerationProvider);
-  ref.watch(sharedResourceRefreshProvider);
   ref.watch(attachmentListRefreshProvider);
   return loadTransactionDetail(ref.watch(repositoryProvider), request);
 });

@@ -8,12 +8,10 @@ import 'package:beecount_ui/beecount_ui.dart';
 import 'package:beecount_business_ui/beecount_business_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:decimal/decimal.dart';
-import 'package:flutter_cloud_sync/flutter_cloud_sync.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:beecount/pages/shared/pickers/wheel_date_picker.dart';
 import 'recording_category_section.dart';
 import '../../../../data/db.dart';
-import '../../../../providers/shared_ledger_providers.dart';
 import '../../../../styles/tokens.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../services/data/note_history_service.dart';
@@ -37,145 +35,11 @@ import '../../../attachment/bindings/attachment_source.dart';
 final _recordingAccountProvider =
     FutureProvider.autoDispose.family<Account?, int>((ref, id) async {
   final repo = ref.watch(repositoryProvider);
-  ref.watch(syncGenerationProvider);
   if (id < 0 && repo is LocalRepository) {
     return repo.db.findAccountBySyntheticId(id);
   }
   return repo.getAccount(id);
 });
-
-/// 共享账本 tx 作者信息(创建人 + 最后编辑人)— 编辑器底部 sheet 用。
-/// editingTransactionId=null(新建 tx)或非共享账本 → 返 null,widget 不渲染。
-class _TxAuthorInfo {
-  const _TxAuthorInfo({
-    required this.creatorUserId,
-    required this.lastEditedByUserId,
-    required this.currentUserId,
-    required this.members,
-  });
-
-  final String? creatorUserId;
-  final String? lastEditedByUserId;
-  final String? currentUserId;
-  final List<BeeCountCloudLedgerMember> members;
-
-  BeeCountCloudLedgerMember? memberOf(String? userId) {
-    if (userId == null || userId.isEmpty) return null;
-    for (final m in members) {
-      if (m.userId == userId) return m;
-    }
-    return null;
-  }
-}
-
-final _txAuthorInfoProvider =
-    FutureProvider.autoDispose.family<_TxAuthorInfo?, int>((ref, txId) async {
-  final repo = ref.watch(repositoryProvider);
-  final tx = await repo.getTransactionById(txId);
-  if (tx == null) return null;
-  final ledger = await repo.getLedgerById(tx.ledgerId);
-  if (ledger == null || !ledger.isShared) return null;
-  final ledgerSyncId = ledger.syncId;
-  if (ledgerSyncId == null || ledgerSyncId.isEmpty) return null;
-  if (tx.createdByUserId == null && tx.lastEditedByUserId == null) return null;
-
-  final cloud = await ref.watch(beecountCloudProviderInstance.future);
-  if (cloud == null) return null;
-  ref.watch(sharedResourceRefreshProvider);
-  final me = await cloud.auth.currentUser;
-  final members = await cloud.listMembers(ledgerId: ledgerSyncId);
-  return _TxAuthorInfo(
-    creatorUserId: tx.createdByUserId,
-    lastEditedByUserId: tx.lastEditedByUserId,
-    currentUserId: me?.id,
-    members: members,
-  );
-});
-
-/// 紧凑头像组 — UX 规则(用户指定):
-///   - 创建人 != 编辑人:展示两个头像(long-press tooltip 区分"创建" / "最后编辑")
-///   - 创建人 == 编辑人 == 自己:不展示(自己的 tx 看自己头像无意义)
-///   - 创建人 == 编辑人 != 自己:展示一个头像(long-press tooltip "X 创建并编辑")
-class _TxAuthorAvatars extends ConsumerWidget {
-  const _TxAuthorAvatars({required this.editingTransactionId});
-
-  final int editingTransactionId;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context);
-    final infoAsync = ref.watch(_txAuthorInfoProvider(editingTransactionId));
-    final info = infoAsync.valueOrNull;
-    if (info == null) return const SizedBox.shrink();
-
-    final creatorId = info.creatorUserId;
-    final editorId = info.lastEditedByUserId;
-    final meId = info.currentUserId;
-    final sameUser = creatorId != null && creatorId == editorId;
-
-    // 单人(创建 == 编辑)且就是自己 → 整体不显示
-    if (sameUser && creatorId == meId) return const SizedBox.shrink();
-
-    final cloud = ref.watch(beecountCloudProviderInstance).valueOrNull;
-    final baseUrl = cloud?.baseUrl;
-
-    final authors = <RecordingAuthor>[];
-    if (sameUser) {
-      // 同一人(非自己):展示一个头像,tooltip 提示"创建并编辑"
-      authors.add(_author(
-        member: info.memberOf(creatorId),
-        userIdFallback: creatorId,
-        baseUrl: baseUrl,
-        tooltipBuilder: (name) => l10n.sharedTxCreatedAndEditedBy(name),
-      ));
-    } else {
-      // 创建人 + 编辑人是两个人:两个头像都展示
-      if (creatorId != null) {
-        authors.add(_author(
-          member: info.memberOf(creatorId),
-          userIdFallback: creatorId,
-          baseUrl: baseUrl,
-          tooltipBuilder: (name) => l10n.sharedTxCreatedBy(name),
-        ));
-      }
-      if (editorId != null && editorId != creatorId) {
-        authors.add(_author(
-          member: info.memberOf(editorId),
-          userIdFallback: editorId,
-          baseUrl: baseUrl,
-          tooltipBuilder: (name) => l10n.sharedTxEditedBy(name),
-        ));
-      }
-    }
-    if (authors.isEmpty) return const SizedBox.shrink();
-    return RecordingAuthors(authors: authors);
-  }
-}
-
-// Resolve membership and URL semantics in the host; the package draws the avatars.
-RecordingAuthor _author(
-    {required BeeCountCloudLedgerMember? member,
-    required String userIdFallback,
-    required String? baseUrl,
-    required String Function(String) tooltipBuilder}) {
-  final name = member != null
-      ? (member.displayName?.isNotEmpty == true
-          ? member.displayName!
-          : member.email.split('@').first)
-      : userIdFallback;
-  final relative = member?.avatarUrl;
-  final absolute = relative != null && relative.isNotEmpty
-      ? (relative.startsWith('http')
-          ? relative
-          : baseUrl == null
-              ? null
-              : '$baseUrl$relative')
-      : null;
-  return RecordingAuthor(
-      name: name,
-      tooltip: tooltipBuilder(name),
-      image: absolute == null ? null : NetworkImage(absolute));
-}
 
 typedef AmountEditorResult = ({
   double amount,
@@ -898,10 +762,7 @@ class AmountEditorSheetState extends ConsumerState<AmountEditorSheet> {
             RecordingLegacyAmount(
                 amount: _amountStr,
                 currency: _buildCurrencyChip(context),
-                authors: widget.editingTransactionId == null
-                    ? null
-                    : _TxAuthorAvatars(
-                        editingTransactionId: widget.editingTransactionId!),
+                authors: null,
                 accumulated: _acc
                     .abs()
                     .toStringAsFixed(2)
@@ -1332,10 +1193,7 @@ class AmountEditorSheetState extends ConsumerState<AmountEditorSheet> {
             details: details,
             category: widget.categorySection ?? const SizedBox.shrink(),
             fitCategory: fallback != null,
-            authors: widget.editingTransactionId == null
-                ? null
-                : _TxAuthorAvatars(
-                    editingTransactionId: widget.editingTransactionId!),
+            authors: null,
             compact: compact,
             narrow: narrow,
             transfer: widget.transactionKind == 'transfer',

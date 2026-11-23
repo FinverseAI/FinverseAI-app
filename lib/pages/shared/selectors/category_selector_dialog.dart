@@ -9,7 +9,6 @@ import '../../../l10n/app_localizations.dart';
 import 'bindings/category_selector.dart';
 import '../resources/bindings/recording_category_icon.dart';
 import '../../../providers.dart';
-import '../../../providers/shared_ledger_providers.dart';
 import '../../../utils/category_utils.dart';
 
 /// 分类过滤器回调类型
@@ -100,11 +99,8 @@ class _CategorySelectorDialogState
   late Future<CategorySelectorData> _future;
   late Object _loadedSignature;
 
-  Object _signature() => (
-        ref.read(repositoryProvider),
-        ref.read(sharedResourceRefreshProvider),
-        ref.read(syncGenerationProvider)
-      );
+  // FinVerse v1 是单人本地账本:签名只看 repository,不再监听共享/同步 tick。
+  Object _signature() => ref.read(repositoryProvider);
 
   Future<CategorySelectorData> _load() =>
       loadCategorySelectorData(ref.read(repositoryProvider),
@@ -134,8 +130,6 @@ class _CategorySelectorDialogState
   @override
   Widget build(BuildContext context) {
     ref.watch(repositoryProvider);
-    ref.watch(sharedResourceRefreshProvider);
-    ref.watch(syncGenerationProvider);
     final signature = _signature();
     if (signature != _loadedSignature) {
       _loadedSignature = signature;
