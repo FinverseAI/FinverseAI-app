@@ -1,6 +1,6 @@
 import 'ledger_repository.dart';
 import 'transaction_repository.dart';
-import '../db.dart' show Transaction;
+import '../db.dart' show Transaction, ExchangeRate, ExchangeRateOverride;
 import 'category_repository.dart';
 import 'account_repository.dart'
     show AccountBalanceUpdateResult, AccountRepository;
@@ -10,7 +10,6 @@ import 'ai_repository.dart';
 import 'tag_repository.dart';
 import 'budget_repository.dart';
 import 'attachment_repository.dart';
-import 'exchange_rate_repository.dart';
 import '../../models/home_transaction_preview.dart';
 
 /// 基础 Repository 抽象类
@@ -32,8 +31,7 @@ abstract class BaseRepository
         AIRepository,
         TagRepository,
         BudgetRepository,
-        AttachmentRepository,
-        ExchangeRateRepository {
+        AttachmentRepository {
   /// Read a small, complete first screen and its full-day totals in one snapshot.
   /// The ordering must be the exact prefix of transactionsWithCategoryAll.
   Future<HomeTransactionPreview> getHomeTransactionPreview({
@@ -90,4 +88,41 @@ abstract class BaseRepository
     required int recurringId,
     required DateTime scheduledDate,
   });
+
+  // -------------------------------------------------------------------
+  // 汇率读写(原 ExchangeRateRepository 接口,文件已随云同步剥离而删掉)。
+  // FinVerse v1 是 INR-only:LocalRepository 里是本地空实现(见
+  // local_repository.dart),仅保留签名供现有调用方编译。
+  // -------------------------------------------------------------------
+
+  /// 存入一组自动汇率(1 quote = rate base)。
+  Future<void> upsertAutoRates({
+    required String base,
+    required String rateDate,
+    required Map<String, String> rates,
+    required String source,
+    required DateTime fetchedAt,
+  });
+
+  /// 取某 base 的最新自动汇率组。
+  Future<List<ExchangeRate>> getLatestAutoRates(String base);
+
+  /// 取某 base 自动汇率的最后拉取时间(无记录为 null)。
+  Future<DateTime?> getLastFetchedAt(String base);
+
+  /// 取某 base 的手动汇率 override 列表。
+  Future<List<ExchangeRateOverride>> getOverrides(String base);
+
+  /// 监听某 base 的手动汇率 override 列表。
+  Stream<List<ExchangeRateOverride>> watchOverrides(String base);
+
+  /// 设置一条手动汇率 override。
+  Future<void> setOverride({
+    required String base,
+    required String quote,
+    required String rate,
+  });
+
+  /// 删除一条手动汇率 override。
+  Future<void> removeOverride({required String base, required String quote});
 }

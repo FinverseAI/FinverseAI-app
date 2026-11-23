@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_dynamic_calls
+// (changeTracker 字段是 dynamic,见下方注释;类型化追踪器随 FinVerse 同步层回来。)
 import 'package:drift/drift.dart' as d;
 import 'package:uuid/uuid.dart';
 
 import '../../db.dart';
-import '../../../cloud/sync/change_tracker.dart';
 import '../../../services/currency/rate_math.dart';
 import '../../../utils/shared_ledger_picker_filter.dart';
 import '../../../utils/app_localizations_resolver.dart';
@@ -24,7 +25,6 @@ import 'local_ai_repository.dart';
 import 'local_tag_repository.dart';
 import 'local_budget_repository.dart';
 import 'local_attachment_repository.dart';
-import 'local_exchange_rate_repository.dart';
 
 const _balanceSettlementCategoryName = '平账';
 
@@ -36,8 +36,11 @@ class LocalRepository extends BaseRepository {
   /// 仅供需要直接数据库访问的场景使用（如数据库初始化、导入导出）
   final BeeDatabase db;
 
-  /// 可选的变更追踪器，用于云同步
-  ChangeTracker? changeTracker;
+  /// 可选的变更追踪器,用于云同步。
+  /// FinVerse v1 是本地单人账本:ChangeTracker 类已随云同步剥离而删掉,本字段
+  /// 保留为 dynamic(恒为 null),所有 `changeTracker != null` 守卫分支因此
+  /// 走本地路径;类型化的追踪器随 FinVerse 同步层一起回来。
+  dynamic changeTracker;
 
   /// UUID 生成器,批量方法需要预填 syncId 才能查回插入的行登记变更。
   static const _uuid = Uuid();
@@ -53,7 +56,6 @@ class LocalRepository extends BaseRepository {
   late final LocalTagRepository _tagRepo;
   late final LocalBudgetRepository _budgetRepo;
   late final LocalAttachmentRepository _attachmentRepo;
-  late final LocalExchangeRateRepository _exchangeRateRepo;
 
   LocalRepository(this.db, {this.changeTracker}) {
     _ledgerRepo = LocalLedgerRepository(db);
@@ -66,8 +68,6 @@ class LocalRepository extends BaseRepository {
     _tagRepo = LocalTagRepository(db);
     _budgetRepo = LocalBudgetRepository(db);
     _attachmentRepo = LocalAttachmentRepository(db);
-    _exchangeRateRepo =
-        LocalExchangeRateRepository(db, trackerGetter: () => changeTracker);
   }
 
   // ============================================
@@ -3181,7 +3181,10 @@ class LocalRepository extends BaseRepository {
       _attachmentRepo.watchAttachmentCountByTransaction(transactionId);
 
   // ============================================
-  // ExchangeRateRepository 接口实现 - 委托给 LocalExchangeRateRepository
+  // 汇率读写(原 ExchangeRateRepository 接口实现)。
+  // FinVerse v1 是 INR-only:LocalExchangeRateRepository 已随云同步剥离而
+  // 删掉,这里是本地空实现——自动汇率恒为空、手动 override 恒为空,写操作
+  // 为 no-op;汇率读写随 FinVerse 后端 / FX 层一起回来。
   // ============================================
 
   @override
@@ -3191,40 +3194,28 @@ class LocalRepository extends BaseRepository {
     required Map<String, String> rates,
     required String source,
     required DateTime fetchedAt,
-  }) =>
-      _exchangeRateRepo.upsertAutoRates(
-        base: base,
-        rateDate: rateDate,
-        rates: rates,
-        source: source,
-        fetchedAt: fetchedAt,
-      );
+  }) async {}
 
   @override
-  Future<List<ExchangeRate>> getLatestAutoRates(String base) =>
-      _exchangeRateRepo.getLatestAutoRates(base);
+  Future<List<ExchangeRate>> getLatestAutoRates(String base) async => [];
 
   @override
-  Future<DateTime?> getLastFetchedAt(String base) =>
-      _exchangeRateRepo.getLastFetchedAt(base);
+  Future<DateTime?> getLastFetchedAt(String base) async => null;
 
   @override
-  Future<List<ExchangeRateOverride>> getOverrides(String base) =>
-      _exchangeRateRepo.getOverrides(base);
+  Future<List<ExchangeRateOverride>> getOverrides(String base) async => [];
 
   @override
   Stream<List<ExchangeRateOverride>> watchOverrides(String base) =>
-      _exchangeRateRepo.watchOverrides(base);
+      Stream.value([]);
 
   @override
   Future<void> setOverride({
     required String base,
     required String quote,
     required String rate,
-  }) =>
-      _exchangeRateRepo.setOverride(base: base, quote: quote, rate: rate);
+  }) async {}
 
   @override
-  Future<void> removeOverride({required String base, required String quote}) =>
-      _exchangeRateRepo.removeOverride(base: base, quote: quote);
+  Future<void> removeOverride({required String base, required String quote}) async {}
 }
